@@ -10,10 +10,10 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'ElmCast/elm-vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/syntastic'
 if (v:version == 704 && has('patch143') || v:version > 704) && (has('python') || has('python3'))
     Plugin 'Valloric/YouCompleteMe'
 endif
+Plugin 'scrooloose/syntastic'
 Plugin 'vim-perl/vim-perl'
 
 call vundle#end()
