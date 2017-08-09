@@ -8,6 +8,7 @@ Plugin 'ssh://git@gitlab.datcon.co.uk/RyanNorris/vimips.git'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'ElmCast/elm-vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'rust-lang/rust.vim'
 if (v:version == 704 && has('patch143') || v:version > 704) && (has('python') || has('python3'))
@@ -33,7 +34,7 @@ filetype plugin indent on
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType make set noexpandtab
 autocmd FileType perl,python setlocal shiftwidth=4
-autocmd FileType c,cpp,sh,yaml setlocal shiftwidth=2
+autocmd FileType c,cpp,ruby,sh,typescript,yaml setlocal shiftwidth=2
 let c_space_errors = 1
 
 set bg=dark
@@ -43,6 +44,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_python_flake8_args = "--max-line-length=99"
+
+let g:syntastic_typescript_checkers = ['tslint']
 
 let g:elm_syntastic_show_warnings = 1
 let g:elm_format_autosave = 1
