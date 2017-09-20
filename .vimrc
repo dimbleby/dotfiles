@@ -22,6 +22,10 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
+" Backups
+set backup
+set backupdir=~/.vim/.backup
+
 " More natural split opening
 set splitbelow
 set splitright
@@ -31,10 +35,13 @@ nnoremap Q <nop>
 
 set expandtab
 filetype plugin indent on
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd FileType make set noexpandtab
-autocmd FileType perl,python setlocal shiftwidth=4
-autocmd FileType c,cpp,ruby,sh,typescript,yaml setlocal shiftwidth=2
+augroup filetypes
+        autocmd!
+        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+        autocmd FileType make set noexpandtab
+        autocmd FileType perl,python setlocal shiftwidth=4
+        autocmd FileType c,cpp,ruby,sh,typescript,yaml setlocal shiftwidth=2
+augroup END
 let c_space_errors = 1
 
 set bg=dark
