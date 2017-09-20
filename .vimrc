@@ -23,6 +23,8 @@ filetype plugin indent on
 syntax on
 
 " Backups
+" NB consider a crontab entry like this:
+" 0 0 * * *   find ~/.vim/.backup -not -newerat "1 month ago" -type f -delete
 set backup
 set backupdir=~/.vim/.backup
 
