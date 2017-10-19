@@ -5,9 +5,10 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'ssh://git@gitlab.datcon.co.uk/RyanNorris/vimips.git'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'ElmCast/elm-vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'rust-lang/rust.vim'
@@ -57,6 +58,10 @@ if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.elm = ['.']
+
+" Navigating errors
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 
 " More convenient navigation between splits
 nnoremap <c-j> <c-w>j
