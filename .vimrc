@@ -14,8 +14,8 @@ Plugin 'rust-lang/rust.vim'
 if (v:version == 704 && has('patch143') || v:version > 704) && (has('python') || has('python3'))
     Plugin 'Valloric/YouCompleteMe'
 endif
-Plugin 'scrooloose/syntastic'
 Plugin 'vim-perl/vim-perl'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
@@ -48,15 +48,8 @@ let c_space_errors = 1
 
 set bg=dark
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:ale_python_flake8_args = "--max-line-length=99"
 
-let g:syntastic_python_flake8_args = "--max-line-length=99"
-
-let g:syntastic_typescript_checkers = ['tslint']
-
-let g:elm_syntastic_show_warnings = 1
 let g:elm_format_autosave = 1
 
 let g:ycm_confirm_extra_conf = 0
