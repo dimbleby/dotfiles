@@ -59,6 +59,10 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.elm = ['.']
 
+" FZF helpers
+nmap <leader>f :Files<CR>
+nmap <leader>b :Buffers<CR>
+
 " Navigating errors
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
