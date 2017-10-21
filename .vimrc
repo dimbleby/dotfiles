@@ -60,8 +60,9 @@ endif
 let g:ycm_semantic_triggers.elm = ['.']
 
 " FZF helpers
-nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
+nmap <leader>f :Files<CR>
+nmap <leader>h :History<CR>
 
 " Navigating errors
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
