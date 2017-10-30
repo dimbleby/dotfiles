@@ -49,6 +49,9 @@ let c_space_errors = 1
 
 set bg=dark
 
+let g:ale_linters = {}
+let g:ale_linters.c = []
+let g:ale_linters.cpp = []
 let g:ale_python_flake8_args = "--max-line-length=99"
 
 let g:elm_format_autosave = 1
