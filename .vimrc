@@ -7,6 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'ssh://git@gitlab.datcon.co.uk/RyanNorris/vimips.git'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'ElmCast/elm-vim'
+Plugin 'nathanalderson/yang.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'leafgarland/typescript-vim'
@@ -41,9 +42,10 @@ filetype plugin indent on
 augroup filetypes
         autocmd!
         autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+        autocmd BufNewFile,BufReadPost *.cli set filetype=xml
         autocmd FileType make set noexpandtab
         autocmd FileType perl,python setlocal shiftwidth=4
-        autocmd FileType c,cpp,ruby,sh,typescript,yaml setlocal shiftwidth=2
+        autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2
 augroup END
 let c_space_errors = 1
 
