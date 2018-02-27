@@ -44,7 +44,7 @@ augroup filetypes
         autocmd BufNewFile,BufReadPost *.md set filetype=markdown
         autocmd BufNewFile,BufReadPost *.cli set filetype=xml
         autocmd FileType make set noexpandtab
-        autocmd FileType perl,python setlocal shiftwidth=4
+        autocmd FileType json,perl,python setlocal shiftwidth=4
         autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2
 augroup END
 let c_space_errors = 1
