@@ -5,8 +5,9 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 if has('python') || has('python3')
-    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
     Plugin 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
+    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
+    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
 if has('python3')
     Plugin 'ambv/black'
@@ -19,6 +20,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'rust-lang/rust.vim'
+Plugin 'SirVer/ultisnips'
 if has('python') || has('python3')
     Plugin 'Valloric/YouCompleteMe'
 endif
@@ -58,6 +60,7 @@ set expandtab
 filetype plugin indent on
 augroup filetypes
     autocmd!
+    autocmd BufNewFile,BufReadPost *.h set filetype=c
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
     autocmd FileType make set noexpandtab
@@ -75,6 +78,10 @@ let g:ale_linters.cpp = []
 let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=88"
 
 let g:elm_format_autosave = 1
+
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 let g:ycm_confirm_extra_conf = 0
 if !exists('g:ycm_semantic_triggers')
