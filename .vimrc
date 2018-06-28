@@ -4,7 +4,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'ssh://git@gitlab.datcon.co.uk/RyanNorris/vimips.git'
+if has('python') || has('python3')
+    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
+    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
+endif
 if has('python3')
     Plugin 'ambv/black'
 endif
@@ -26,6 +29,10 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
+set scrolloff=1
+set sidescrolloff=5
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set list
 
 " Backups
 " NB consider a crontab entry like this:
@@ -36,6 +43,9 @@ if has('nvim')
 else
     set backupdir=~/.local/share/vim/backup
 endif
+
+" Logical Y
+:map Y y$
 
 " More natural split opening
 set splitbelow
@@ -55,13 +65,14 @@ augroup filetypes
     autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2
 augroup END
 let c_space_errors = 1
+let python_space_error_highlight = 1
 
 set bg=dark
 
 let g:ale_linters = {}
 let g:ale_linters.c = []
 let g:ale_linters.cpp = []
-let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=99"
+let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=88"
 
 let g:elm_format_autosave = 1
 
@@ -87,7 +98,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Reformat Python code
-nmap <C-b> :Black<CR>
+nmap <A-b> :Black<CR>
 
 " Learn to stop using arrow keys!
 noremap <Up>    <NOP>
@@ -99,12 +110,24 @@ inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 
+" Terminal mode shortcuts
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+endif
+
 " using GTAGS
 set csprg=gtags-cscope
 set cscopetag
 set csto=0
 set cst
-cs add GTAGS
-nmap <C-\>g :cs f g <C-r><C-w><CR>
-nmap <C-\>s :cs f s <C-r><C-w><CR>
-nmap <C-\>c :cs f c <C-r><C-w><CR>
+if filereadable("GTAGS")
+    silent cs add GTAGS
+endif
+
+" Go to definition, find callers.
+nmap <silent> <leader>g :YcmCompleter GoTo<CR>
+nmap <silent> <leader>c :cs find c <C-r><C-w><CR>
