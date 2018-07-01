@@ -79,16 +79,13 @@ let python_space_error_highlight = 1
 
 set bg=dark
 
-let g:ale_linters = {}
-let g:ale_linters.c = []
-let g:ale_linters.cpp = []
+let g:ale_linters = {
+    \ 'c': [],
+    \ 'cpp': [],
+    \ 'rust': ['rls'],
+    \ }
 let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=88"
-
-let g:elm_format_autosave = 1
-
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:ale_rust_rls_toolchain = 'stable'
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
@@ -96,6 +93,12 @@ if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.elm = ['.']
+
+let g:elm_format_autosave = 1
+
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " FZF helpers
 nmap <leader>b :Buffers<CR>
@@ -137,5 +140,5 @@ if filereadable("GTAGS")
 endif
 
 " Go to definition, find callers.
-nmap <silent> <leader>g :YcmCompleter GoTo<CR>
-nmap <silent> <leader>c :cs find c <C-r><C-w><CR>
+nnoremap <silent> gd :YcmCompleter GoTo<CR>
+nnoremap <silent> gc :cs find c <C-r><C-w><CR>
