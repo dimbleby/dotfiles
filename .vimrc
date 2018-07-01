@@ -1,36 +1,41 @@
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.py --clang-completer --rust-completer
+  endif
+endfunction
+
+call plug#begin('~/.vim/plugged')
 if has('python') || has('python3')
-    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
-    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
-    Plugin 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
 if has('python3')
-    Plugin 'ambv/black'
+    Plug 'ambv/black'
 endif
-Plugin 'derekwyatt/vim-scala'
-Plugin 'ElmCast/elm-vim'
-Plugin 'nathanalderson/yang.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'rust-lang/rust.vim'
-Plugin 'SirVer/ultisnips'
+Plug 'derekwyatt/vim-scala'
+Plug 'ElmCast/elm-vim'
+Plug 'nathanalderson/yang.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'SirVer/ultisnips'
 if has('python') || has('python3')
-    Plugin 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 endif
-Plugin 'vim-perl/vim-perl'
-Plugin 'w0rp/ale'
+Plug 'vim-perl/vim-perl'
+Plug 'w0rp/ale'
+call plug#end()
 
-call vundle#end()
-
-filetype plugin indent on
-syntax on
 set scrolloff=1
 set sidescrolloff=5
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -46,6 +51,9 @@ else
     set backupdir=~/.local/share/vim/backup
 endif
 
+" Leader
+let mapleader = "\<Space>"
+
 " Logical Y
 :map Y y$
 
@@ -57,7 +65,6 @@ set splitright
 nnoremap Q <nop>
 
 set expandtab
-filetype plugin indent on
 augroup filetypes
     autocmd!
     autocmd BufNewFile,BufReadPost *.h set filetype=c
@@ -83,6 +90,7 @@ let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
@@ -106,6 +114,9 @@ nnoremap <C-l> <C-w>l
 
 " Reformat Python code
 nmap <A-b> :Black<CR>
+
+" N-BASE comment block formatting.
+noremap <silent> <A-f> :BlockFormat<CR>
 
 " Learn to stop using arrow keys!
 noremap <Up>    <NOP>
