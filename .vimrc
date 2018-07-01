@@ -118,16 +118,6 @@ nmap <A-b> :Black<CR>
 " N-BASE comment block formatting.
 noremap <silent> <A-f> :BlockFormat<CR>
 
-" Learn to stop using arrow keys!
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
-inoremap <Up>    <NOP>
-inoremap <Down>  <NOP>
-inoremap <Left>  <NOP>
-inoremap <Right> <NOP>
-
 " Terminal mode shortcuts
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
