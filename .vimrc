@@ -24,7 +24,7 @@ endif
 Plug 'derekwyatt/vim-scala'
 Plug 'ElmCast/elm-vim'
 Plug 'nathanalderson/yang.vim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
@@ -140,5 +140,6 @@ if filereadable("GTAGS")
 endif
 
 " Go to definition, find callers.
-nnoremap <silent> gd :YcmCompleter GoTo<CR>
 nnoremap <silent> gc :cs find c <C-r><C-w><CR>
+nnoremap <silent> gd :YcmCompleter GoTo<CR>
+nnoremap <silent> gt :YcmCompleter GetType<CR>
