@@ -14,12 +14,12 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 if has('python') || has('python3')
-    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git', { 'for': ['c', 'cpp'] }
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
 if has('python3')
-    Plug 'ambv/black'
+    Plug 'ambv/black', { 'for': 'python' }
 endif
 Plug 'derekwyatt/vim-scala'
 Plug 'ElmCast/elm-vim'
