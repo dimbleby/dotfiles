@@ -143,3 +143,6 @@ endif
 nnoremap <silent> gc :cs find c <C-r><C-w><CR>
 nnoremap <silent> gd :YcmCompleter GoTo<CR>
 nnoremap <silent> gt :YcmCompleter GetType<CR>
+
+" For when we forget to sudo.
+cmap w!! w !sudo tee > /dev/null %
