@@ -77,7 +77,8 @@ augroup END
 let c_space_errors = 1
 let python_space_error_highlight = 1
 
-set bg=dark
+set background=dark
+set termguicolors
 
 let g:ale_linters = {
     \ 'c': [],
@@ -87,6 +88,7 @@ let g:ale_linters = {
 let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=88"
 let g:ale_rust_rls_toolchain = 'stable'
 
+let g:ycm_always_populate_location_list = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 if !exists('g:ycm_semantic_triggers')
