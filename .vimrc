@@ -1,15 +1,15 @@
 set nocompatible
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --rust-completer
-  endif
+    if a:info.status == 'installed' || a:info.force
+        !./install.py --clang-completer --rust-completer
+    endif
 endfunction
 
 call plug#begin('~/.vim/plugged')
@@ -71,7 +71,7 @@ augroup filetypes
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
     autocmd FileType make set noexpandtab
-    autocmd FileType json,perl,python setlocal shiftwidth=4
+    autocmd FileType json,perl,python,vim setlocal shiftwidth=4
     autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2
 augroup END
 let c_space_errors = 1
@@ -85,10 +85,10 @@ endif
 set termguicolors
 
 let g:ale_linters = {
-    \ 'c': [],
-    \ 'cpp': [],
-    \ 'rust': ['rls'],
-    \ }
+  \   'c': [],
+  \   'cpp': [],
+  \   'rust': ['rls'],
+  \ }
 let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=88"
 let g:ale_rust_rls_toolchain = 'stable'
 
@@ -99,7 +99,6 @@ if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.elm = ['.']
-
 let g:elm_format_autosave = 1
 
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -122,13 +121,17 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Reformat Python code
-nmap <A-b> :Black<CR>
+nmap <M-b> :Black<CR>
 
 " N-BASE comment block formatting.
-noremap <silent> <A-f> :BlockFormat<CR>
+noremap <silent> <M-f> :BlockFormat<CR>
 
 " Terminal mode shortcuts
 if has('nvim')
+    augroup terminal
+        autocmd!
+        autocmd TermOpen * startinsert
+    augroup END
     tnoremap <Esc> <C-\><C-n>
     tnoremap <C-h> <C-\><C-n><C-w>h
     tnoremap <C-j> <C-\><C-n><C-w>j
