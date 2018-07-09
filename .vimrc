@@ -78,6 +78,10 @@ let c_space_errors = 1
 let python_space_error_highlight = 1
 
 set background=dark
+if !has('nvim')
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+endif
 set termguicolors
 
 let g:ale_linters = {
