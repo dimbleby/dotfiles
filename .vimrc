@@ -36,10 +36,24 @@ Plug 'vim-perl/vim-perl'
 Plug 'w0rp/ale'
 call plug#end()
 
+set expandtab
+set list
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=1
 set sidescrolloff=5
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-set list
+set shiftround
+set shiftwidth=4
+set splitbelow
+set splitright
+
+" Colours
+set background=dark
+if !has('nvim')
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+endif
+set termguicolors
+highlight ColorColumn guibg=DimGray
 
 " Backups
 " NB consider a crontab entry like this:
@@ -57,32 +71,20 @@ let mapleader = "\<Space>"
 " Logical Y
 :map Y y$
 
-" More natural split opening
-set splitbelow
-set splitright
-
 " Avoid Ex mode
 nnoremap Q <nop>
 
-set expandtab
 augroup filetypes
     autocmd!
     autocmd BufNewFile,BufReadPost *.h set filetype=c
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
-    autocmd FileType make set noexpandtab
-    autocmd FileType json,perl,python,vim setlocal shiftwidth=4
+    autocmd FileType make setlocal noexpandtab
     autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2
+    autocmd FileType c,cpp setlocal colorcolumn=80
 augroup END
 let c_space_errors = 1
 let python_space_error_highlight = 1
-
-set background=dark
-if !has('nvim')
-    set t_8f=[38;2;%lu;%lu;%lum
-    set t_8b=[48;2;%lu;%lu;%lum
-endif
-set termguicolors
 
 let g:ale_linters = {
   \   'c': [],
@@ -124,7 +126,7 @@ nnoremap <C-l> <C-w>l
 nmap <M-b> :Black<CR>
 
 " N-BASE comment block formatting.
-noremap <silent> <M-f> :BlockFormat<CR>
+nmap <silent> <M-f> :BlockFormat<CR>
 
 " Terminal mode shortcuts
 if has('nvim')
@@ -149,7 +151,7 @@ if filereadable("GTAGS")
 endif
 
 " Go to definition, find callers.
-nnoremap <silent> gc :cs find c <C-r><C-w><CR>
+nnoremap <silent> gc :cscope find c <C-r><C-w><CR>
 nnoremap <silent> gd :YcmCompleter GoTo<CR>
 
 " For when we forget to sudo.
