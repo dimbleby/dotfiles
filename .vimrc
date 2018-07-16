@@ -26,9 +26,10 @@ Plug 'ElmCast/elm-vim'
 Plug 'nathanalderson/yang.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 if has('python') || has('python3')
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 endif
@@ -36,15 +37,19 @@ Plug 'vim-perl/vim-perl'
 Plug 'w0rp/ale'
 call plug#end()
 
-set expandtab
+set diffopt=vertical
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=1
 set sidescrolloff=5
 set shiftround
-set shiftwidth=4
 set splitbelow
 set splitright
+
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " Colours
 set background=dark
@@ -80,11 +85,17 @@ augroup filetypes
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
     autocmd FileType make setlocal noexpandtab
-    autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2
+    autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2 softtabstop=2
     autocmd FileType c,cpp setlocal colorcolumn=80
+    autocmd FileType markdown setlocal linebreak
 augroup END
 let c_space_errors = 1
 let python_space_error_highlight = 1
+
+augroup memory
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup END
 
 let g:ale_linters = {
   \   'c': [],
