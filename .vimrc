@@ -154,10 +154,9 @@ if has('nvim')
 endif
 
 " using GTAGS
-set csprg=gtags-cscope
+set cscopeprg=gtags-cscope
 set cscopetag
-set csto=0
-set cst
+set cscopetagorder=0
 if filereadable("GTAGS")
     silent cs add GTAGS
 endif
