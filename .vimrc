@@ -139,7 +139,7 @@ nmap <M-b> :Black<CR>
 " N-BASE comment block formatting.
 nmap <silent> <M-f> :BlockFormat<CR>
 
-" Terminal mode shortcuts
+" Terminal mode shortcuts etc
 if has('nvim')
     augroup terminal
         autocmd!
@@ -150,6 +150,7 @@ if has('nvim')
     tnoremap <C-j> <C-\><C-n><C-w>j
     tnoremap <C-k> <C-\><C-n><C-w>k
     tnoremap <C-l> <C-\><C-n><C-w>l
+    highlight TermCursorNC guibg=DimGray
 endif
 
 " using GTAGS
