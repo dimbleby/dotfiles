@@ -158,7 +158,9 @@ set cscopeprg=gtags-cscope
 set cscopetag
 set cscopetagorder=0
 if filereadable("GTAGS")
-    silent cs add GTAGS
+    set nocscopeverbose
+    silent cscope add GTAGS
+    set cscopeverbose
 endif
 
 " Go to definition, find callers.
