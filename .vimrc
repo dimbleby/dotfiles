@@ -182,6 +182,7 @@ if has('nvim')
     tnoremap <C-k> <C-\><C-n><C-w>k
     tnoremap <C-l> <C-\><C-n><C-w>l
 endif
+
 " Sudo write {{{2
 " NB broken in neovim - https://github.com/neovim/neovim/issues/1716
 if !has("nvim")
