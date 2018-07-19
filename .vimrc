@@ -154,10 +154,6 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>h :History<CR>
 
-" Navigating errors {{{2
-nmap <silent> <leader>j <Plug>(ale_next_wrap)
-nmap <silent> <leader>k <Plug>(ale_previous_wrap)
-
 " Navigating splits {{{2
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
