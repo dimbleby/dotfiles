@@ -33,7 +33,9 @@ Plug 'nathanalderson/yang.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'SirVer/ultisnips'
+if has('python') || has('python3')
+    Plug 'SirVer/ultisnips'
+endif
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
