@@ -172,6 +172,7 @@ nmap <silent> <M-f> :BlockFormat<CR>
 " Tags {{{2
 nnoremap <silent> gc :cscope find c <C-r><C-w><CR>
 nnoremap <silent> gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <localleader>t :YcmCompleter GetType<CR>
 
 " Terminal mode {{{2
 if has('nvim')
