@@ -29,6 +29,7 @@ if has('python3')
 endif
 Plug 'derekwyatt/vim-scala'
 Plug 'ElmCast/elm-vim'
+Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nathanalderson/yang.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
