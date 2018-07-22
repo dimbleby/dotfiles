@@ -148,7 +148,7 @@ augroup END
 let mapleader = "\<Space>"
 
 " Logical Y {{{2
-map Y y$
+noremap Y y$
 
 " Avoid Ex mode {{{2
 nnoremap Q <nop>
@@ -165,7 +165,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Tags {{{2
-nmap <silent> gc :cscope find c <C-r><C-w><CR>
+nnoremap <silent> gc :cscope find c <C-r><C-w><CR>
 nmap <silent> gd :YcmCompleter GoTo<CR>
 nmap <silent> <localleader>t :YcmCompleter GetType<CR>
 
