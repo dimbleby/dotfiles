@@ -38,6 +38,7 @@ if has('python') || has('python3')
     Plug 'SirVer/ultisnips'
 endif
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 if has('python') || has('python3')
@@ -147,7 +148,7 @@ augroup END
 let mapleader = "\<Space>"
 
 " Logical Y {{{2
-:map Y y$
+map Y y$
 
 " Avoid Ex mode {{{2
 nnoremap Q <nop>
@@ -163,16 +164,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Reformat Python code {{{2
-nmap <M-b> :Black<CR>
-
-" Reformat N-BASE comment {{{2
-nmap <silent> <M-f> :BlockFormat<CR>
-
 " Tags {{{2
-nnoremap <silent> gc :cscope find c <C-r><C-w><CR>
-nnoremap <silent> gd :YcmCompleter GoTo<CR>
-nnoremap <silent> <localleader>t :YcmCompleter GetType<CR>
+nmap <silent> gc :cscope find c <C-r><C-w><CR>
+nmap <silent> gd :YcmCompleter GoTo<CR>
+nmap <silent> <localleader>t :YcmCompleter GetType<CR>
 
 " Terminal mode {{{2
 if has('nvim')

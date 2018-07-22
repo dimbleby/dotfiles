@@ -7,6 +7,6 @@ function! EnsimeDeclarationMaybeSplit()
     endif
 endfunction
 
-nnoremap <buffer> <silent> gd :call EnsimeDeclarationMaybeSplit()<CR>
-nnoremap <buffer> <silent> <localleader>t :EnType<CR>
-xnoremap <buffer> <silent> <localleader>t :EnType selection<CR>
+nmap <buffer> <silent> gd :call EnsimeDeclarationMaybeSplit()<CR>
+nmap <buffer> <silent> <localleader>t :EnType<CR>
+xmap <buffer> <silent> <localleader>t :EnType selection<CR>
