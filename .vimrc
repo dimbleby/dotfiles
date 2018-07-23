@@ -54,7 +54,7 @@ let g:ale_linters = {
   \   'cpp': [],
   \   'rust': ['rls'],
   \ }
-let g:ale_python_flake8_options = "--ignore=E203,W503 --max-line-length=88"
+let g:ale_python_flake8_options = '--ignore=E203,W503 --max-line-length=88'
 let g:ale_rust_rls_toolchain = 'stable'
 
 " YCM {{{2
@@ -125,7 +125,7 @@ endif
 set cscopeprg=gtags-cscope
 set cscopetag
 set cscopetagorder=0
-if filereadable("GTAGS")
+if filereadable('GTAGS')
     set nocscopeverbose
     silent cscope add GTAGS
     set cscopeverbose
@@ -184,6 +184,6 @@ endif
 
 " Sudo write {{{2
 " NB broken in neovim - https://github.com/neovim/neovim/issues/1716
-if !has("nvim")
+if !has('nvim')
     cmap w!! w !sudo tee % > /dev/null
 endif
