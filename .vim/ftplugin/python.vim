@@ -1,2 +1,2 @@
 " Reformat Python code
-nmap <buffer> <localleader>f :Black<CR>
+nmap <buffer> <localleader>= :Black<CR>
