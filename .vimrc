@@ -20,7 +20,7 @@ endfunction
 " Install plugins {{{2
 call plug#begin('~/.vim/plugged')
 if has('python') || has('python3')
-    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git', { 'for': ['c', 'cpp'] }
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
