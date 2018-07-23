@@ -77,11 +77,14 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " Preferences {{{1
 " Defaults {{{2
 set diffopt=vertical
+set incsearch
+if exists('&inccommand')
+    set inccommand=nosplit
+endif
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=1
 set sidescrolloff=5
-set shiftround
 set splitbelow
 set splitright
 
@@ -89,6 +92,7 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+set shiftround
 
 " Filetype-specific variations {{{2
 augroup filetypes
