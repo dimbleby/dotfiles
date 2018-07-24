@@ -25,7 +25,7 @@ if has('python') || has('python3')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
 if has('python3')
-    Plug 'ambv/black', { 'for': 'python' }
+    Plug 'dimbleby/black.vim'
 endif
 Plug 'derekwyatt/vim-scala'
 Plug 'ElmCast/elm-vim'
