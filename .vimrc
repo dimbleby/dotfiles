@@ -13,7 +13,7 @@ endif
 " Compile YCM completers {{{2
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        !./install.py --clang-completer --rust-completer
+        !./install.py --clang-completer
     endif
 endfunction
 
@@ -49,6 +49,7 @@ Plug 'w0rp/ale'
 call plug#end()
 
 " Ale {{{2
+let g:ale_completion_enabled = 1
 let g:ale_linters = {
   \   'c': [],
   \   'cpp': [],
@@ -169,8 +170,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Tags {{{2
-nnoremap <silent> gc :cscope find c <C-r><C-w><CR>
 nmap <silent> gd :YcmCompleter GoTo<CR>
+nmap <silent> <localleader>r :cscope find c <C-r><C-w><CR>
 nmap <silent> <localleader>t :YcmCompleter GetType<CR>
 
 " Terminal mode {{{2
