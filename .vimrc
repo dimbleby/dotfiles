@@ -2,6 +2,12 @@
 " vim: foldmethod=marker
 set nocompatible
 
+" Python environment {{{1
+if has('nvim')
+    let g:loaded_python_provider = 1
+    let g:python3_host_prog = $HOME.'/.local/share/virtualenvs/neovim-py-SOCio1D1/bin/python3'
+endif
+
 " Plugins {{{1
 " Load plug.vim automatically {{{2
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -9,13 +15,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-" Compile YCM completers {{{2
-function! BuildYCM(info)
-    if a:info.status == 'installed' || a:info.force
-        !./install.py --clang-completer
-    endif
-endfunction
 
 " Install plugins {{{2
 call plug#begin('~/.vim/plugged')
@@ -29,11 +28,14 @@ if has('python3')
 endif
 Plug 'derekwyatt/vim-scala'
 Plug 'ElmCast/elm-vim'
-Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+if has('python') || has('python3')
+    Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+endif
 Plug 'nathanalderson/yang.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 if has('python') || has('python3')
     Plug 'SirVer/ultisnips'
 endif
@@ -41,9 +43,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
-if has('python') || has('python3')
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-endif
 Plug 'vim-perl/vim-perl'
 Plug 'w0rp/ale'
 call plug#end()
@@ -51,21 +50,16 @@ call plug#end()
 " Ale {{{2
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
-  \   'c': [],
-  \   'cpp': [],
+  \   'c': ['cquery'],
+  \   'cpp': ['cquery'],
+  \   'python': ['flake8', 'pyls'],
   \   'rust': ['rls'],
   \ }
-let g:ale_python_flake8_options = '--ignore=E203,W503 --max-line-length=88'
+let g:ale_linters_ignore = ['pyls']
 let g:ale_rust_rls_toolchain = 'stable'
 
-" YCM {{{2
-let g:ycm_always_populate_location_list = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_confirm_extra_conf = 0
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.elm = ['.']
+" Deoplete {{{2
+let g:deoplete#enable_at_startup = 1
 
 " Elm {{{2
 let g:elm_format_autosave = 1
@@ -122,16 +116,6 @@ else
     set backupdir=~/.local/share/vim/backup
 endif
 
-" Tags {{{2
-set cscopeprg=gtags-cscope
-set cscopetag
-set cscopetagorder=0
-if filereadable('GTAGS')
-    set nocscopeverbose
-    silent cscope add GTAGS
-    set cscopeverbose
-endif
-
 " Colours {{{2
 set background=dark
 if !has('nvim')
@@ -145,7 +129,7 @@ highlight TermCursorNC guibg=DimGray
 " Save cursor position {{{2
 augroup memory
     autocmd!
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
 " Mappings {{{1
@@ -159,9 +143,9 @@ noremap Y y$
 nnoremap Q <nop>
 
 " FZF helpers {{{2
-nmap <leader>b :Buffers<CR>
-nmap <leader>f :Files<CR>
-nmap <leader>h :History<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>h :History<CR>
 
 " Navigating splits {{{2
 nnoremap <C-j> <C-w>j
@@ -169,10 +153,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Tags {{{2
-nmap <silent> gd :YcmCompleter GoTo<CR>
-nmap <silent> <localleader>r :cscope find c <C-r><C-w><CR>
-nmap <silent> <localleader>t :YcmCompleter GetType<CR>
+" Language servers {{{2
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> <LocalLeader>r :ALEFindReferences <bar> copen<CR>
+nnoremap <silent> <LocalLeader>t :ALEHover<CR>
+
+" Tab for completion {{{2
+inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Terminal mode {{{2
 if has('nvim')
