@@ -49,14 +49,7 @@ call plug#end()
 
 " Ale {{{2
 let g:ale_completion_enabled = 1
-let g:ale_linters = {
-  \   'c': ['cquery'],
-  \   'cpp': ['cquery'],
-  \   'python': ['flake8', 'pyls'],
-  \   'rust': ['rls'],
-  \ }
-let g:ale_linters_ignore = ['pyls']
-let g:ale_rust_rls_toolchain = 'stable'
+let g:ale_fix_on_save = 1
 
 " Deoplete {{{2
 let g:deoplete#enable_at_startup = 1
