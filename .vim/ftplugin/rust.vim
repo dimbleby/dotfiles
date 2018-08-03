@@ -1,4 +1,4 @@
-" Reformat Python code
+" Reformat Rust code
 nmap <buffer> <localleader>= :RustFmt<CR>
 
 let b:ale_linters = ['rls']
