@@ -23,17 +23,17 @@ if has('python') || has('python3')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
+Plug 'derekwyatt/vim-scala'
 if has('python3')
     Plug 'dimbleby/black.vim'
 endif
-Plug 'derekwyatt/vim-scala'
 Plug 'ElmCast/elm-vim'
 if has('python') || has('python3')
     Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 endif
-Plug 'nathanalderson/yang.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'nathanalderson/yang.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 if has('python') || has('python3')
