@@ -32,9 +32,6 @@ if has('python3')
     Plug 'dimbleby/black.vim'
 endif
 Plug 'ElmCast/elm-vim'
-if has('python') || has('python3')
-    Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
-endif
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanalderson/yang.vim'
@@ -68,6 +65,7 @@ let g:LanguageClient_serverCommands = {
     \ 'c': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
     \ 'cpp': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
     \ 'rust': ['rls'],
+    \ 'scala': ['scalameta_lsp'],
     \ 'yang': ['/opt/yang-language-server/bin/yang-language-server'],
     \ }
 let g:LanguageClient_rootMarkers = {
