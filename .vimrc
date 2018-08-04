@@ -65,9 +65,13 @@ let g:elm_format_autosave = 1
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
 let g:LanguageClient_serverCommands = {
+    \ 'c': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
+    \ 'cpp': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
+    \ 'rust': ['rls'],
     \ 'yang': ['/opt/yang-language-server/bin/yang-language-server'],
     \ }
 let g:LanguageClient_rootMarkers = {
+    \ 'rust': ['Cargo.toml'],
     \ 'yang': ['yang.settings'],
     \ }
 
@@ -161,9 +165,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Language servers {{{2
-nnoremap <silent> gd :ALEGoToDefinition<CR>
-nnoremap <silent> <LocalLeader>r :ALEFindReferences <bar> copen<CR>
-nnoremap <silent> <LocalLeader>t :ALEHover<CR>
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
+nnoremap <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
 
 " Tab for completion {{{2
 inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
