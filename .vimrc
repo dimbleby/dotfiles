@@ -18,6 +18,10 @@ endif
 
 " Install plugins {{{2
 call plug#begin('~/.vim/plugged')
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 if has('python') || has('python3')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
@@ -56,6 +60,16 @@ let g:deoplete#enable_at_startup = 1
 
 " Elm {{{2
 let g:elm_format_autosave = 1
+
+" LanguageClient {{{2
+let g:LanguageClient_diagnosticsList = 'Location'
+let g:LanguageClient_selectionUI = 'Quickfix'
+let g:LanguageClient_serverCommands = {
+    \ 'yang': ['/opt/yang-language-server/bin/yang-language-server'],
+    \ }
+let g:LanguageClient_rootMarkers = {
+    \ 'yang': ['yang.settings'],
+    \ }
 
 " UltiSnips {{{2
 let g:UltiSnipsExpandTrigger="<C-j>"
