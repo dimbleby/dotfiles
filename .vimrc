@@ -70,6 +70,7 @@ let g:LanguageClient_serverCommands = {
     \ }
 let g:LanguageClient_rootMarkers = {
     \ 'rust': ['Cargo.toml'],
+    \ 'scala': ['build.sbt'],
     \ 'yang': ['yang.settings'],
     \ }
 
