@@ -32,6 +32,7 @@ if has('python3')
     Plug 'dimbleby/black.vim'
 endif
 Plug 'ElmCast/elm-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanalderson/yang.vim'
@@ -45,7 +46,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
 Plug 'vim-perl/vim-perl'
 Plug 'w0rp/ale'
 call plug#end()
@@ -75,6 +75,17 @@ let g:LanguageClient_rootMarkers = {
     \ 'rust': ['Cargo.toml'],
     \ 'scala': ['build.sbt'],
     \ 'yang': ['yang.settings'],
+    \ }
+
+" Lightline {{{2
+let g:lightline = {
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
     \ }
 
 " UltiSnips {{{2
