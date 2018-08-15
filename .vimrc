@@ -58,9 +58,6 @@ let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
 " Deoplete {{{2
 let g:deoplete#enable_at_startup = 1
 
-" Elm {{{2
-let g:elm_format_autosave = 1
-
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
