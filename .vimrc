@@ -53,6 +53,7 @@ call plug#end()
 " Ale {{{2
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
 
 " Deoplete {{{2
 let g:deoplete#enable_at_startup = 1

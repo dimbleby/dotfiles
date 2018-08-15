@@ -6,7 +6,6 @@
 " So we access pyls via ALE, ignore its linting, and switch in flake8.
 let b:ale_linters = ['flake8', 'pyls']
 let b:ale_linters_ignore = ['pyls']
-let b:ale_fixers = ['remove_trailing_lines', 'trim_whitespace']
 
 nnoremap <buffer> <localleader>= :Black<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
