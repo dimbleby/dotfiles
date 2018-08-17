@@ -69,6 +69,8 @@ let g:LanguageClient_serverCommands = {
     \ 'yang': ['/opt/yang-language-server/bin/yang-language-server'],
     \ }
 let g:LanguageClient_rootMarkers = {
+    \ 'c': ['compile_commands.json'],
+    \ 'cpp': ['compile_commands.json'],
     \ 'rust': ['Cargo.toml'],
     \ 'scala': ['build.sbt'],
     \ 'yang': ['yang.settings'],
