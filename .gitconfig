@@ -1,18 +1,18 @@
 [user]
-	name = David Hotham
-	email = david.hotham@metaswitch.com
+    name = David Hotham
+    email = david.hotham@metaswitch.com
 [grep]
-	lineNumber = true
+    lineNumber = true
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-        status = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [color "status"]
-        untracked = red
-        changed = yellow
-        added = green
+    untracked = red
+    changed = yellow
+    added = green
 [core]
-	editor = nvim
+    editor = nvim
 [push]
-	default = simple
+    default = simple
