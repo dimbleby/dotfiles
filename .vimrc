@@ -20,7 +20,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
+    \ 'do': './install.sh',
     \ }
 if has('python') || has('python3')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
@@ -37,7 +37,13 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanalderson/yang.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/deoplete.nvim'
+endif
 if has('python') || has('python3')
     Plug 'SirVer/ultisnips'
 endif
