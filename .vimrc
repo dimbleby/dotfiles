@@ -206,9 +206,9 @@ noremap Y y$
 nnoremap Q <nop>
 
 " FZF helpers {{{2
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>h :History<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>h :History<CR>
 
 " Navigating splits {{{2
 nnoremap <C-j> <C-w>j
@@ -238,5 +238,5 @@ endif
 " Sudo write {{{2
 " NB broken in neovim - https://github.com/neovim/neovim/issues/1716
 if !has('nvim')
-    cmap w!! w !sudo tee % > /dev/null
+    cnoremap w!! w !sudo tee % > /dev/null
 endif
