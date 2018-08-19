@@ -39,6 +39,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nathanalderson/yang.vim'
+Plug 'pearofducks/ansible-vim'
 Plug 'rust-lang/rust.vim'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
