@@ -1,6 +1,6 @@
 " Prelude {{{1
 " vim: foldmethod=marker
-set nocompatible
+scriptencoding utf-8
 
 " Python environment {{{1
 if has('nvim')
@@ -13,7 +13,10 @@ endif
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup plug
+        autocmd!
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup END
 endif
 
 " Install plugins {{{2
@@ -94,9 +97,9 @@ let g:lightline = {
     \ }
 
 " UltiSnips {{{2
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger='<C-j>'
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
 " https://github.com/autozimu/LanguageClient-neovim/issues/379#issuecomment-403876177
 let g:ulti_expand_res = 0
@@ -113,7 +116,7 @@ function! CompleteSnippet()
   let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
   let l:comp_len = len(l:complete)
 
-  let l:cur_col = mode() == 'i' ? col('.') - 2 : col('.') - 1
+  let l:cur_col = mode() ==# 'i' ? col('.') - 2 : col('.') - 1
   let l:cur_line = getline('.')
 
   let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
