@@ -73,52 +73,6 @@ augroup memory
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
-" Mappings {{{1
-" Leader {{{2
-let mapleader = "\<Space>"
-
-" Logical Y {{{2
-noremap Y y$
-
-" Avoid Ex mode {{{2
-nnoremap Q <nop>
-
-" Navigating splits {{{2
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" Tab for completion {{{2
-inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Terminal mode {{{2
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-h> <C-\><C-n><C-w>h
-    tnoremap <C-j> <C-\><C-n><C-w>j
-    tnoremap <C-k> <C-\><C-n><C-w>k
-    tnoremap <C-l> <C-\><C-n><C-w>l
-endif
-
-" Sudo write {{{2
-" NB broken in neovim - https://github.com/neovim/neovim/issues/1716
-if !has('nvim')
-    cnoremap w!! w !sudo tee % > /dev/null
-endif
-
-" FZF helpers {{{2
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>h :History<CR>
-
-" Language servers {{{2
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
-nnoremap <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
-
 " Plugins {{{1
 if has('user_commands')
     " Load plug.vim automatically {{{2
@@ -262,3 +216,49 @@ endfunction
 augroup ultisnips
     autocmd CompleteDone * call CompleteSnippet()
 augroup END
+
+" Mappings {{{1
+" Leader {{{2
+let mapleader = "\<Space>"
+
+" Logical Y {{{2
+noremap Y y$
+
+" Avoid Ex mode {{{2
+nnoremap Q <nop>
+
+" Navigating splits {{{2
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Tab for completion {{{2
+inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Terminal mode {{{2
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+endif
+
+" Sudo write {{{2
+" NB broken in neovim - https://github.com/neovim/neovim/issues/1716
+if !has('nvim')
+    cnoremap w!! w !sudo tee % > /dev/null
+endif
+
+" FZF helpers {{{2
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>h :History<CR>
+
+" Language servers {{{2
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
+nnoremap <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
