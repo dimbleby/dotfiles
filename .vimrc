@@ -133,25 +133,33 @@ if has('user_commands')
 
     " Install plugins {{{2
     call plug#begin('~/.vim/plugged')
-    if has('job') || has('nvim')
-        Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
-    endif
-    if has('python') || has('python3')
-        Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
-        Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
-        Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
-    endif
-    Plug 'derekwyatt/vim-scala'
+
+    " Language-specific highlighting and suchlike {{{3
+    Plug 'pearofducks/ansible-vim'
+    Plug 'ElmCast/elm-vim'
+    Plug 'vim-perl/vim-perl'
     if has('python3')
         Plug 'dimbleby/black.vim'
     endif
-    Plug 'ElmCast/elm-vim'
-    Plug 'itchyny/lightline.vim'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    Plug 'nathanalderson/yang.vim'
-    Plug 'pearofducks/ansible-vim'
     Plug 'rust-lang/rust.vim'
+    Plug 'derekwyatt/vim-scala'
+    Plug 'nathanalderson/yang.vim'
+
+    " Linting {{{3
+    Plug 'w0rp/ale'
+
+    " Language-client {{{3
+    if has('job') || has('nvim')
+        Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+    endif
+
+    " Snippets {{{3
+    if has('python') || has('python3')
+        Plug 'SirVer/ultisnips'
+        Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
+    endif
+
+    " Completions {{{3
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     elseif has('job')
@@ -159,16 +167,26 @@ if has('user_commands')
         Plug 'roxma/vim-hug-neovim-rpc'
         Plug 'Shougo/deoplete.nvim'
     endif
+
+    " Block formatting, IPS trace navigation {{{3
     if has('python') || has('python3')
-        Plug 'SirVer/ultisnips'
+        Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
+        Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
     endif
+
+    " Status line {{{3
+    Plug 'itchyny/lightline.vim'
+
+    " Fuzzy finder {{{3
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+
+    " Miscellany {{{3
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-    Plug 'vim-perl/vim-perl'
-    Plug 'w0rp/ale'
     call plug#end()
 endif
 
