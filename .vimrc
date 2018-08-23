@@ -64,8 +64,8 @@ endif
 if exists('&termguicolors')
     set termguicolors
 endif
-highlight ColorColumn guibg=DimGray
-highlight TermCursorNC guibg=DimGray
+highlight ColorColumn guibg=DimGray ctermbg=LightGray
+highlight TermCursorNC guibg=DimGray ctermbg=LightGray
 
 " Save cursor position {{{2
 augroup memory
