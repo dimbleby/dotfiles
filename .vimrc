@@ -133,7 +133,9 @@ if has('user_commands')
 
     " Install plugins {{{2
     call plug#begin('~/.vim/plugged')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+    if has('job') || has('nvim')
+        Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+    endif
     if has('python') || has('python3')
         Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
         Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
@@ -152,7 +154,7 @@ if has('user_commands')
     Plug 'rust-lang/rust.vim'
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
+    elseif has('job')
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
         Plug 'Shougo/deoplete.nvim'
