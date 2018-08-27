@@ -1,0 +1,9 @@
+{
+    "pyls": {
+        "plugins": {
+            "pyflakes": {
+                "enabled": false
+            }
+        }
+    }
+}

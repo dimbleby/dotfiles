@@ -164,10 +164,12 @@ let g:LanguageClient_selectionUI = 'Quickfix'
 let g:LanguageClient_serverCommands = {
     \ 'c': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
     \ 'cpp': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
+    \ 'python': ['pyls'],
     \ 'rust': ['rls'],
     \ 'scala': ['scalameta_lsp'],
     \ 'yang': ['/opt/yang-language-server/bin/yang-language-server'],
     \ }
+let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
     \ 'c': ['compile_commands.json'],
     \ 'cpp': ['compile_commands.json'],
@@ -266,7 +268,7 @@ nnoremap <Leader>h :History<CR>
 " Language server {{{2
 augroup lsp_mappings
     autocmd!
-    autocmd FileType c,cpp,rust,scala,yang
+    autocmd FileType c,cpp,rust,python,scala,yang
         \ nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>
         \ | nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
         \ | nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
