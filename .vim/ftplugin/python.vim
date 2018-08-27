@@ -4,6 +4,7 @@
 " LanguageClient can only be configured to ignore diagnostics globally.
 "
 " So we access pyls via ALE, ignore its linting, and switch in flake8.
+let b:ale_completion_enabled = 1
 let b:ale_linters = ['flake8', 'pyls']
 let b:ale_linters_ignore = ['pyls']
 
