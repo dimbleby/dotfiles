@@ -9,6 +9,6 @@ let b:ale_linters = ['flake8', 'pyls']
 let b:ale_linters_ignore = ['pyls']
 
 nnoremap <buffer> <localleader>= :Black<CR>
-nnoremap <silent> gd :ALEGoToDefinition<CR>
-nnoremap <silent> <LocalLeader>r :ALEFindReferences <bar> copen<CR>
-nnoremap <silent> <LocalLeader>t :ALEHover<CR>
+nnoremap <buffer> <silent> gd :ALEGoToDefinition<CR>
+nnoremap <buffer> <silent> <LocalLeader>r :ALEFindReferences <bar> copen<CR>
+nnoremap <buffer> <silent> <LocalLeader>t :ALEHover<CR>
