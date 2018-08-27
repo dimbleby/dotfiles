@@ -1,7 +1,5 @@
 setlocal colorcolumn=80
 
-let b:ale_linters = []
-
 nnoremap <buffer> <silent> <localleader>= :BlockFormat<CR>
 nnoremap <buffer> <silent> <localleader>c :call LanguageClient#cquery_callers() <bar> copen<CR>
 nnoremap <buffer> <silent> <localleader>v :call LanguageClient#cquery_vars() <bar> copen<CR>

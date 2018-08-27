@@ -148,6 +148,13 @@ endif
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
+let g:ale_linters = {
+    \ 'c': [],
+    \ 'cpp': [],
+    \ 'rust': [],
+    \ 'scala': [],
+    \ 'yang': [],
+    \}
 
 " Deoplete {{{2
 let g:deoplete#enable_at_startup = 1
@@ -257,8 +264,11 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>h :History<CR>
 
-" Language servers {{{2
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
-nnoremap <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
+" Language server {{{2
+augroup lsp_mappings
+    autocmd!
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
+augroup END
