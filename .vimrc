@@ -267,7 +267,7 @@ nnoremap <Leader>h :History<CR>
 augroup lsp_mappings
     autocmd!
     autocmd FileType c,cpp,rust,scala,yang nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>
-    autocmd FileType c,cpp,rust,scala,yang nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    autocmd FileType c,cpp,rust,scala,yang nnoremap <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
-    autocmd FileType c,cpp,rust,scala,yang nnoremap <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
+    autocmd FileType c,cpp,rust,scala,yang nnoremap <buffer> <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
 augroup END
