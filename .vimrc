@@ -91,6 +91,7 @@ if has('user_commands')
     " Language-specific highlighting and suchlike {{{3
     Plug 'pearofducks/ansible-vim'
     Plug 'ElmCast/elm-vim'
+    Plug 'dimbleby/vim-p4-syntax'
     Plug 'vim-perl/vim-perl'
     if has('python3')
         Plug 'dimbleby/black.vim'
