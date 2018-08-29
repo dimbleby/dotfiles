@@ -1,6 +1,9 @@
 {
     "pyls": {
         "plugins": {
+            "mccabe": {
+                "enabled": false
+            },
             "pyflakes": {
                 "enabled": false
             }
