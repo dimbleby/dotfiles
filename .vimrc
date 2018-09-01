@@ -71,6 +71,7 @@ highlight TermCursorNC guibg=DimGray ctermbg=LightGray
 augroup memory
     autocmd!
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 augroup END
 
 " Plugins {{{1
