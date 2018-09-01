@@ -4,6 +4,9 @@
             "mccabe": {
                 "enabled": false
             },
+            "pycodestyle": {
+                "enabled": false
+            },
             "pyflakes": {
                 "enabled": false
             }
