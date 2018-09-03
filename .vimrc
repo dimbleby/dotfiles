@@ -173,11 +173,6 @@ let g:LanguageClient_serverCommands = {
     \ }
 let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
-    \ 'c': ['compile_commands.json'],
-    \ 'cpp': ['compile_commands.json'],
-    \ 'python': ['setup.py', 'Pipfile'],
-    \ 'rust': ['Cargo.toml'],
-    \ 'scala': ['build.sbt'],
     \ 'yang': ['yang.settings'],
     \ }
 
