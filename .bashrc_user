@@ -1,0 +1,14 @@
+alias tmux='tmux -2'
+alias vi='nvim'
+export VISUAL=~/.local/bin/nvim
+export EDITOR=~/.local/bin/nvim
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+if ! shopt -q login_shell; then
+  return
+fi
+
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.gpm/bin
