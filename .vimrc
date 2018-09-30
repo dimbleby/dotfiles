@@ -37,7 +37,6 @@ augroup filetypes
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
     autocmd FileType make setlocal noexpandtab
     autocmd FileType c,cpp,ruby,sh,typescript,xml,yaml setlocal shiftwidth=2 softtabstop=2
-    autocmd FileType markdown setlocal linebreak
     if has('nvim')
         autocmd TermOpen * startinsert
     endif
