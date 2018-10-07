@@ -232,11 +232,8 @@ noremap Y y$
 " Avoid Ex mode {{{2
 nnoremap Q <nop>
 
-" Navigating splits {{{2
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" Improved <C-l> {{{2
+nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
 
 " Tab for completion {{{2
 inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
