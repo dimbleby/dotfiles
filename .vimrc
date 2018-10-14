@@ -265,9 +265,10 @@ nnoremap <Leader>h :History<CR>
 " Language server {{{2
 augroup lsp_mappings
     autocmd!
-    autocmd FileType c,cpp,python,rust,scala,yang
-        \ nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>
-        \|nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-        \|nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>
-        \|nnoremap <buffer> <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>
+    let s:langs = join(keys(g:LanguageClient_serverCommands), ',')
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>'
+    unlet s:langs
 augroup END
