@@ -269,6 +269,6 @@ augroup lsp_mappings
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>'
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>'
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>t :call LanguageClient#textDocument_hover()<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>'
     unlet s:langs
 augroup END
