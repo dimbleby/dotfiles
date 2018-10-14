@@ -1,3 +1,6 @@
+setlocal shiftwidth=2
+setlocal softtabstop=2
+
 if executable('prettier')
     setlocal equalprg=prettier\ --parser=yaml\ --prose-wrap=always
 
