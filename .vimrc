@@ -29,6 +29,12 @@ set softtabstop=4
 set tabstop=4
 set shiftround
 
+" ripgrep {{{2
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+
 " Filetype-specific variations {{{2
 augroup filetypes
     autocmd!
