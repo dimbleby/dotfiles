@@ -1,1 +1,4 @@
 set editing-mode vi
+$if Bash
+    Space: magic-space
+$endif
