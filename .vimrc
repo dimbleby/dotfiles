@@ -42,7 +42,7 @@ augroup filetypes
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
     autocmd FileType make setlocal noexpandtab
-    autocmd FileType ruby,sh,typescript setlocal shiftwidth=2 softtabstop=2
+    autocmd FileType ruby,sh,typescript setlocal shiftwidth=2 softtabstop=2 tabstop=2
     if has('nvim')
         autocmd TermOpen * startinsert
     endif
