@@ -48,7 +48,7 @@ augroup filetypes
     endif
 augroup END
 let c_space_errors = 1
-let python_space_error_highlight = 1
+let g:pyindent_open_paren = '&sw'
 
 " Backups {{{2
 " Consider a crontab entry like this:
