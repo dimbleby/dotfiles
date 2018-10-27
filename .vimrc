@@ -121,13 +121,11 @@ if has('user_commands')
     endif
 
     " Completions {{{3
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    elseif has('job')
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-        Plug 'Shougo/deoplete.nvim'
-    endif
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-ultisnips'
 
     " Block formatting, IPS trace navigation {{{3
     if has('python') || has('python3')
@@ -163,9 +161,6 @@ let g:ale_linters = {
     \ 'yang': [],
     \}
 
-" Deoplete {{{2
-let g:deoplete#enable_at_startup = 1
-
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
@@ -193,41 +188,34 @@ let g:lightline = {
     \ },
     \ }
 
-" UltiSnips {{{2
-let g:UltiSnipsExpandTrigger='<C-j>'
-let g:UltiSnipsJumpForwardTrigger='<C-j>'
-let g:UltiSnipsJumpBackwardTrigger='<C-k>'
-
-" https://github.com/autozimu/LanguageClient-neovim/issues/379#issuecomment-403876177
-let g:ulti_expand_res = 0
-function! CompleteSnippet()
-  if empty(v:completed_item)
-    return
-  endif
-
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res > 0
-    return
-  endif
-
-  let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
-  let l:comp_len = len(l:complete)
-
-  let l:cur_col = mode() ==# 'i' ? col('.') - 2 : col('.') - 1
-  let l:cur_line = getline('.')
-
-  let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
-  let l:end = l:cur_col < len(l:cur_line) ? l:cur_line[l:cur_col + 1 :] : ''
-
-  call setline('.', l:start . l:end)
-  call cursor('.', l:cur_col - l:comp_len + 2)
-
-  call UltiSnips#Anon(l:complete)
-endfunction
-
-augroup ultisnips
-    autocmd CompleteDone * call CompleteSnippet()
+" NCM2 {{{2
+augroup ncm2
+    autocmd!
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+    autocmd User Ncm2PopupClose set completeopt=menu,preview
 augroup END
+
+" UltiSnips {{{2
+" This section is mostly about expanding snippets as provided by language
+" servers - if it weren't for that we'd simply set the ExpandTrigger and
+" JumpForwardTrigger and be done.
+"
+" As it is, we're going to do some extra work to make C-j smart - and so we
+" dummy out those settings.
+let g:UltiSnipsExpandTrigger       = '<Plug>(ultisnips_dummy)'
+let g:UltiSnipsJumpForwardTrigger  = '<Plug>(ultisnips_dummy)'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+" First try expanding with ncm2_ultisnips. This is what handles language
+" server snippets.
+"
+" Only after that try UltiSnips, as if we had set the ExpandTrigger and
+" JumpForwardTrigger.
+inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)")
+inoremap <silent> <Plug>(ultisnips_expand) <C-R>=UltiSnips#ExpandSnippetOrJump()<CR>
+snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
+xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
 
 " Mappings {{{1
 " Leader {{{2
@@ -242,7 +230,7 @@ nnoremap Q <nop>
 " Improved <C-l> {{{2
 nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
 
-" Tab for completion {{{2
+" Tab for cycling through completions {{{2
 inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
