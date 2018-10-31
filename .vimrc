@@ -104,7 +104,7 @@ if has('user_commands')
     endif
     Plug 'rust-lang/rust.vim'
     Plug 'derekwyatt/vim-scala'
-    Plug 'dimbleby/yang.vim'
+    Plug 'nathanalderson/yang.vim'
 
     " Linting {{{3
     Plug 'w0rp/ale'
