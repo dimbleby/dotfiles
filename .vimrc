@@ -85,10 +85,8 @@ if has('user_commands')
     if empty(glob('~/.vim/autoload/plug.vim'))
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        augroup plug
-            autocmd!
-            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        augroup END
+        " vint: next-line -ProhibitAutocmdWithNoGroup
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
     " Install plugins {{{2
