@@ -118,11 +118,13 @@ if has('python') || has('python3')
 endif
 
 " Completions {{{3
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
+if has('python3')
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-ultisnips'
+endif
 
 " Block formatting, IPS trace navigation {{{3
 if has('python') || has('python3')
@@ -185,33 +187,35 @@ let g:lightline = {
     \ }
 
 " NCM2 {{{2
-augroup ncm2
-    autocmd!
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-    autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-    autocmd User Ncm2PopupClose set completeopt=menu,preview
-augroup END
+if has('python3')
+    augroup ncm2
+        autocmd!
+        autocmd BufEnter * call ncm2#enable_for_buffer()
+        autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+        autocmd User Ncm2PopupClose set completeopt=menu,preview
+    augroup END
+endif
 
 " UltiSnips {{{2
-" This section is mostly about expanding snippets as provided by language
-" servers - if it weren't for that we'd simply set the ExpandTrigger and
-" JumpForwardTrigger and be done.
-"
-" As it is, we're going to do some extra work to make C-j smart - and so we
-" dummy out those settings.
-let g:UltiSnipsExpandTrigger       = '<Plug>(ultisnips_dummy)'
-let g:UltiSnipsJumpForwardTrigger  = '<Plug>(ultisnips_dummy)'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-
-" First try expanding with ncm2_ultisnips. This is what handles language
-" server snippets.
-"
-" Only after that try UltiSnips, as if we had set the ExpandTrigger and
-" JumpForwardTrigger.
-inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)")
-inoremap <silent> <Plug>(ultisnips_expand) <C-R>=UltiSnips#ExpandSnippetOrJump()<CR>
-snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
-xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+if has('python3')
+    " This section is all about expanding snippets as provided by language
+    " servers - we need to make <C-j> smarter.
+    "
+    " We use that key first to try expanding with ncm2-ultisnips - which will
+    " handle language server snippets - and only after that fall back to
+    " regular UltiSnips function.
+    let g:UltiSnipsExpandTrigger       = '<Plug>(ultisnips_dummy)'
+    let g:UltiSnipsJumpForwardTrigger  = '<Plug>(ultisnips_dummy)'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+    inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)")
+    inoremap <silent> <Plug>(ultisnips_expand) <C-r>=UltiSnips#ExpandSnippetOrJump()<CR>
+    snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
+    xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+elseif has('python')
+    let g:UltiSnipsExpandTrigger       = '<C-j>'
+    let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+endif
 
 " Mappings {{{1
 " Leader {{{2
