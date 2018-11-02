@@ -80,73 +80,71 @@ augroup memory
 augroup END
 
 " Plugins {{{1
-if has('user_commands')
-    " Load plug.vim automatically {{{2
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        " vint: next-line -ProhibitAutocmdWithNoGroup
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-
-    " Install plugins {{{2
-    call plug#begin('~/.vim/plugged')
-
-    " Language-specific highlighting and suchlike {{{3
-    Plug 'pearofducks/ansible-vim'
-    Plug 'ElmCast/elm-vim'
-    Plug 'dimbleby/vim-p4-syntax'
-    Plug 'vim-perl/vim-perl'
-    if has('python3')
-        Plug 'dimbleby/black.vim'
-    endif
-    Plug 'rust-lang/rust.vim'
-    Plug 'derekwyatt/vim-scala'
-    Plug 'nathanalderson/yang.vim'
-
-    " Linting {{{3
-    Plug 'w0rp/ale'
-
-    " Language-client {{{3
-    if has('job') || has('nvim')
-        Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
-    endif
-
-    " Snippets {{{3
-    if has('python') || has('python3')
-        Plug 'SirVer/ultisnips'
-        Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
-    endif
-
-    " Completions {{{3
-    Plug 'roxma/nvim-yarp'
-    Plug 'ncm2/ncm2'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-ultisnips'
-
-    " Block formatting, IPS trace navigation {{{3
-    if has('python') || has('python3')
-        Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
-        Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
-    endif
-
-    " Status line {{{3
-    Plug 'itchyny/lightline.vim'
-
-    " Fuzzy finder {{{3
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-
-    " Miscellany {{{3
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-vinegar'
-    call plug#end()
+" Load plug.vim automatically {{{2
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " vint: next-line -ProhibitAutocmdWithNoGroup
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" Install plugins {{{2
+call plug#begin('~/.vim/plugged')
+
+" Language-specific highlighting and suchlike {{{3
+Plug 'pearofducks/ansible-vim'
+Plug 'ElmCast/elm-vim'
+Plug 'dimbleby/vim-p4-syntax'
+Plug 'vim-perl/vim-perl'
+if has('python3')
+    Plug 'dimbleby/black.vim'
+endif
+Plug 'rust-lang/rust.vim'
+Plug 'derekwyatt/vim-scala'
+Plug 'nathanalderson/yang.vim'
+
+" Linting {{{3
+Plug 'w0rp/ale'
+
+" Language-client {{{3
+if has('job') || has('nvim')
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+endif
+
+" Snippets {{{3
+if has('python') || has('python3')
+    Plug 'SirVer/ultisnips'
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
+endif
+
+" Completions {{{3
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+
+" Block formatting, IPS trace navigation {{{3
+if has('python') || has('python3')
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
+    Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
+endif
+
+" Status line {{{3
+Plug 'itchyny/lightline.vim'
+
+" Fuzzy finder {{{3
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Miscellany {{{3
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+call plug#end()
 
 " Ale {{{2
 let g:ale_fix_on_save = 1
