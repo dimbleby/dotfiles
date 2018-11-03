@@ -6,6 +6,11 @@ setlocal softtabstop=2
 setlocal tabstop=2
 
 nnoremap <buffer> <silent> <localleader>q :BlockFormat<CR>
-nnoremap <buffer> <silent> <localleader>c :call LanguageClient#cquery_callers() <bar> copen<CR>
-nnoremap <buffer> <silent> <localleader>v :call LanguageClient#cquery_vars() <bar> copen<CR>
-nnoremap <buffer> <silent> <localleader>i :call LanguageClient#textDocument_implementation() <bar> copen<CR>
+
+" ccls specials.
+nnoremap <silent> <localleader>h :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+nnoremap <silent> <localleader>j :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+nnoremap <silent> <localleader>k :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+nnoremap <silent> <localleader>l :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+nnoremap <silent> <localleader>c :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
+nnoremap <silent> <localleader>v :call LanguageClient#findLocations({'method':'$ccls/vars'})<cr>

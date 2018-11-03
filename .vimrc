@@ -163,8 +163,8 @@ let g:ale_linters = {
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
 let g:LanguageClient_serverCommands = {
-    \ 'c': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
-    \ 'cpp': ['cquery', '--init={"cacheDirectory": "'.$HOME.'/.cache/cquery"}'],
+    \ 'c': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
+    \ 'cpp': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
     \ 'python': ['pyls'],
     \ 'rust': ['rls'],
     \ 'scala': ['scalameta_lsp'],
@@ -257,7 +257,8 @@ augroup lsp_mappings
     let s:langs = join(keys(g:LanguageClient_serverCommands), ',')
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>'
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references() <bar> copen<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references()<CR>'
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <localleader>i :call LanguageClient#textDocument_implementation()<CR>'
     unlet s:langs
 augroup END
