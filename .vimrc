@@ -159,6 +159,9 @@ let g:ale_linters = {
     \ 'yang': [],
     \}
 
+" Black {{{2
+let g:black_skip_numeric_underscore_normalization = 1
+
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
