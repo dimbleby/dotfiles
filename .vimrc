@@ -152,12 +152,12 @@ call plug#end()
 let g:ale_fix_on_save = 1
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
 let g:ale_linters = {
-    \ 'c': [],
-    \ 'cpp': [],
-    \ 'rust': [],
-    \ 'scala': [],
-    \ 'yang': [],
-    \}
+    \   'c': [],
+    \   'cpp': [],
+    \   'rust': [],
+    \   'scala': [],
+    \   'yang': [],
+    \ }
 
 " Black {{{2
 let g:black_skip_numeric_underscore_normalization = 1
@@ -166,27 +166,29 @@ let g:black_skip_numeric_underscore_normalization = 1
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
 let g:LanguageClient_serverCommands = {
-    \ 'c': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
-    \ 'cpp': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
-    \ 'python': ['pyls'],
-    \ 'rust': ['rls'],
-    \ 'scala': ['scalameta_lsp'],
-    \ 'yang': ['/opt/yang-language-server/bin/yang-language-server'],
+    \   'c': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
+    \   'cpp': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
+    \   'python': ['pyls'],
+    \   'rust': ['rls'],
+    \   'scala': ['scalameta_lsp'],
+    \   'yang': ['/opt/yang-language-server/bin/yang-language-server'],
     \ }
 let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
-    \ 'yang': ['yang.settings'],
+    \   'yang': ['yang.settings']
     \ }
 
 " Lightline {{{2
 let g:lightline = {
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
-    \ },
+    \   'active': {
+    \     'left': [
+    \       [ 'mode', 'paste' ],
+    \       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+    \     ]
+    \   },
+    \   'component_function': {
+    \     'gitbranch': 'fugitive#head'
+    \   },
     \ }
 
 " NCM2 {{{2
