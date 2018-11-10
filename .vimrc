@@ -118,7 +118,7 @@ if has('python') || has('python3')
 endif
 
 " Completions {{{3
-if has('python3')
+if has('nvim')
     Plug 'roxma/nvim-yarp'
     Plug 'ncm2/ncm2'
     Plug 'ncm2/ncm2-bufword'
@@ -192,7 +192,7 @@ let g:lightline = {
     \ }
 
 " NCM2 {{{2
-if has('python3')
+if has('nvim')
     augroup ncm2
         autocmd!
         autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -202,7 +202,7 @@ if has('python3')
 endif
 
 " UltiSnips {{{2
-if has('python3')
+if has('nvim')
     " This section is all about expanding snippets as provided by language
     " servers - we need to make <C-j> smarter.
     "
@@ -216,7 +216,7 @@ if has('python3')
     inoremap <silent> <Plug>(ultisnips_expand) <C-r>=UltiSnips#ExpandSnippetOrJump()<CR>
     snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
     xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
-elseif has('python')
+else
     let g:UltiSnipsExpandTrigger       = '<C-j>'
     let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
