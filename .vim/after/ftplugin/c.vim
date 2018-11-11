@@ -1,10 +1,14 @@
-" Weird textwidth to make room for boxed comments per coding standards
-setlocal colorcolumn=80
+" Weird textwidth to make room for boxed comments.
 setlocal textwidth=76
+setlocal colorcolumn=80
 setlocal shiftwidth=2
 setlocal softtabstop=2
 setlocal tabstop=2
 
+" Don't indent C++ scope declarations, align on (.
+setlocal cinoptions=g0(0
+
+" Boxed comments.
 nnoremap <buffer> <silent> <localleader>q :BlockFormat<CR>
 
 " ccls specials.
