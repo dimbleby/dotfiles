@@ -132,6 +132,9 @@ if has('python') || has('python3')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
 
+" Wrapping and unwrapping arguments {{{3
+Plug 'FooSoft/vim-argwrap'
+
 " Status line {{{3
 Plug 'itchyny/lightline.vim'
 
@@ -251,6 +254,9 @@ if !has('nvim')
     cnoremap w!! w !sudo tee % > /dev/null
 endif
 
+" ArgWrap {{{2
+nnoremap <Leader>a :ArgWrap<CR>
+
 " FZF helpers {{{2
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
@@ -264,6 +270,6 @@ augroup lsp_mappings
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>'
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references()<CR>'
     execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <localleader>i :call LanguageClient#textDocument_implementation()<CR>'
+    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>i :call LanguageClient#textDocument_implementation()<CR>'
     unlet s:langs
 augroup END

@@ -1,1 +1,1 @@
-nnoremap <buffer> <localleader>= :RustFmt<CR>
+nnoremap <buffer> <LocalLeader>= :RustFmt<CR>

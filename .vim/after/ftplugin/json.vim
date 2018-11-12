@@ -3,4 +3,4 @@ if executable('prettier')
 else
     setlocal equalprg=python\ -m\ json.tool
 endif
-nnoremap <buffer> <localleader>= gg=G``
+nnoremap <buffer> <LocalLeader>= gg=G``
