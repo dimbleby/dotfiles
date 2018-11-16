@@ -5,6 +5,11 @@ setlocal shiftwidth=2
 setlocal softtabstop=2
 setlocal tabstop=2
 
+if executable('clang-format')
+    setlocal equalprg=clang-format
+    nnoremap <buffer> <LocalLeader>= gg=G``
+endif
+
 " Don't indent C++ scope declarations, align on (.
 setlocal cinoptions=g0(0
 
@@ -31,9 +36,9 @@ function! s:AlignParams(...) abort
 endfunction
 
 command! -range -bar -buffer AlignParams call s:AlignParams(<line1>, <line2>)
-nnoremap <expr> <buffer> <silent> <LocalLeader>=  <SID>AlignParams()
-xnoremap <expr> <buffer> <silent> <LocalLeader>=  <SID>AlignParams()
-nnoremap <expr> <buffer> <silent> <LocalLeader>== <SID>AlignParams() . '_'
+nnoremap <expr> <buffer> <silent> <LocalLeader>p  <SID>AlignParams()
+xnoremap <expr> <buffer> <silent> <LocalLeader>p  <SID>AlignParams()
+nnoremap <expr> <buffer> <silent> <LocalLeader>pp <SID>AlignParams() . '_'
 
 " Boxed comments.
 nnoremap <buffer> <silent> <LocalLeader>q :BlockFormat<CR>

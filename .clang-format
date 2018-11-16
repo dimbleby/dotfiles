@@ -1,0 +1,9 @@
+AllowAllParametersOfDeclarationOnNextLine: false
+BinPackArguments: false
+BinPackParameters: false
+BreakBeforeBraces: Allman
+ColumnLimit: 79
+Cpp11BracedListStyle: false
+IndentCaseLabels: true
+ReflowComments: false
+SortIncludes: false
