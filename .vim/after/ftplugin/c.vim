@@ -6,8 +6,8 @@ setlocal softtabstop=2
 setlocal tabstop=2
 
 if executable('clang-format')
-    setlocal equalprg=clang-format
-    nnoremap <buffer> <LocalLeader>= gg=G``
+    setlocal formatprg=clang-format\ --style=file
+    nnoremap <buffer> <LocalLeader>q gg:keepjumps normal! gqG<CR>``
 endif
 
 " Don't indent C++ scope declarations, align on (.
@@ -36,12 +36,12 @@ function! s:AlignParams(...) abort
 endfunction
 
 command! -range -bar -buffer AlignParams call s:AlignParams(<line1>, <line2>)
-nnoremap <expr> <buffer> <silent> <LocalLeader>p  <SID>AlignParams()
-xnoremap <expr> <buffer> <silent> <LocalLeader>p  <SID>AlignParams()
-nnoremap <expr> <buffer> <silent> <LocalLeader>pp <SID>AlignParams() . '_'
+nnoremap <expr> <buffer> <silent> <LocalLeader>=  <SID>AlignParams()
+xnoremap <expr> <buffer> <silent> <LocalLeader>=  <SID>AlignParams()
+nnoremap <expr> <buffer> <silent> <LocalLeader>== <SID>AlignParams() . '_'
 
 " Boxed comments.
-nnoremap <buffer> <silent> <LocalLeader>q :BlockFormat<CR>
+nnoremap <buffer> <silent> <LocalLeader>w :BlockFormat<CR>
 
 " ccls specials.
 nnoremap <buffer> <silent> <LocalLeader>h :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<CR>

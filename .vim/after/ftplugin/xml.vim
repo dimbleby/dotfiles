@@ -3,5 +3,7 @@ setlocal softtabstop=2
 setlocal tabstop=2
 
 if executable('xmllint')
-    nnoremap <buffer> <LocalLeader>= :%!xmllint --format --recover -<CR>
+    setlocal formatexpr=
+    setlocal formatprg=xmllint\ --format\ -
+    nnoremap <buffer> <LocalLeader>q gg:keepjumps normal! gqG<CR>``
 endif

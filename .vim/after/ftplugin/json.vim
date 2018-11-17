@@ -1,6 +1,6 @@
 if executable('prettier')
-    setlocal equalprg=prettier\ --parser=json-stringify
+    setlocal formatprg=prettier\ --parser=json-stringify
 else
-    setlocal equalprg=python\ -m\ json.tool
+    setlocal formatprg=python\ -m\ json.tool
 endif
-nnoremap <buffer> <LocalLeader>= gg=G``
+nnoremap <buffer> <LocalLeader>q gg:keepjumps normal! gqG<CR>``
