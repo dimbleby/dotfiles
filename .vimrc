@@ -142,6 +142,18 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Markdown preview {{{3
+function! BuildComposer(info)
+  if a:info.status !=# 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+
 " Miscellany {{{3
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -193,6 +205,9 @@ let g:lightline = {
     \     'gitbranch': 'fugitive#head'
     \   },
     \ }
+
+" Markdown-composer.
+let g:markdown_composer_autostart = 0
 
 " NCM2 {{{2
 if has('nvim')
