@@ -1,17 +1,14 @@
 " Weird textwidth to make room for boxed comments.
-setlocal textwidth=76
-setlocal colorcolumn=80
-setlocal shiftwidth=2
-setlocal softtabstop=2
-setlocal tabstop=2
+setlocal textwidth=76 colorcolumn=80
+setlocal shiftwidth=2 softtabstop=2 tabstop=2
+
+" Don't indent C++ scope declarations, align on (.
+setlocal cinoptions=g0(0
 
 if executable('clang-format')
     setlocal formatprg=clang-format\ --style=file
     nnoremap <buffer> <LocalLeader>q gg:keepjumps normal! gqG<CR>``
 endif
-
-" Don't indent C++ scope declarations, align on (.
-setlocal cinoptions=g0(0
 
 " Don't wrap the closing brace in parameter lists.
 let b:argwrap_wrap_closing_brace = 0

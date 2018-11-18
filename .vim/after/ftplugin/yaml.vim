@@ -1,6 +1,4 @@
-setlocal shiftwidth=2
-setlocal softtabstop=2
-setlocal tabstop=2
+setlocal shiftwidth=2 softtabstop=2 tabstop=2
 setlocal textwidth=80
 
 if executable('prettier')
