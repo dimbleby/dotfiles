@@ -18,15 +18,11 @@ if exists('&inccommand')
 endif
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-set scrolloff=1
-set sidescrolloff=5
-set splitbelow
-set splitright
+set scrolloff=1 sidescrolloff=5
+set splitbelow splitright
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=4 softtabstop=4 tabstop=4
 set shiftround
 
 " ripgrep {{{2
@@ -42,7 +38,6 @@ augroup filetypes
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd BufNewFile,BufReadPost *.cli set filetype=xml
     autocmd FileType make setlocal noexpandtab
-    autocmd FileType ruby,typescript setlocal shiftwidth=2 softtabstop=2 tabstop=2
     if has('nvim')
         autocmd TermOpen * startinsert
     endif
