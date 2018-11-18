@@ -5,10 +5,8 @@ setlocal shiftwidth=2 softtabstop=2 tabstop=2
 " Don't indent C++ scope declarations, align on (.
 setlocal cinoptions=g0(0
 
-if executable('clang-format')
-    setlocal formatprg=clang-format\ --style=file
-    nnoremap <buffer> <LocalLeader>q gg:keepjumps normal! gqG<CR>``
-endif
+setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+nnoremap <buffer> <silent> <LocalLeader>q :call LanguageClient#textDocument_formatting()<CR>
 
 " Don't wrap the closing brace in parameter lists.
 let b:argwrap_wrap_closing_brace = 0
