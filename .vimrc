@@ -274,13 +274,17 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>h :History<CR>
 
 " Language server {{{2
-augroup lsp_mappings
-    autocmd!
-    let s:langs = join(keys(g:LanguageClient_serverCommands), ',')
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>r :call LanguageClient#textDocument_references()<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>'
-    execute 'autocmd FileType ' . s:langs . ' nnoremap <buffer> <silent> <LocalLeader>i :call LanguageClient#textDocument_implementation()<CR>'
-    unlet s:langs
-augroup END
+if has('nvim') || has('job')
+    augroup lsp_mappings
+        autocmd!
+        let s:lsp_fts = join(keys(g:LanguageClient_serverCommands), ',')
+        let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nnoremap <buffer> <silent> '
+        execute s:lsp_map . '<F5> :call LanguageClient_contextMenu()<CR>'
+        execute s:lsp_map . 'gd :call LanguageClient#textDocument_definition()<CR>'
+        execute s:lsp_map . '<LocalLeader>r :call LanguageClient#textDocument_references()<CR>'
+        execute s:lsp_map . 'K :call LanguageClient#textDocument_hover()<CR>'
+        execute s:lsp_map . '<LocalLeader>i :call LanguageClient#textDocument_implementation()<CR>'
+        unlet s:lsp_map
+        unlet s:lsp_fts
+    augroup END
+endif
