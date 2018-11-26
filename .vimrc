@@ -12,13 +12,14 @@ endif
 " Preferences {{{1
 " Defaults {{{2
 set diffopt=vertical
-set incsearch
 if exists('&inccommand')
     set inccommand=nosplit
 endif
+set incsearch
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=1 sidescrolloff=5
+set showcmd
 set splitbelow splitright
 
 set expandtab
