@@ -6,7 +6,7 @@ setlocal shiftwidth=2 softtabstop=2 tabstop=2
 setlocal cinoptions=g0(0
 
 setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-nnoremap <buffer> <silent> <LocalLeader>q :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <buffer> <silent> <Leader>q :call LanguageClient#textDocument_formatting()<CR>
 
 " Don't wrap the closing brace in parameter lists.
 let b:argwrap_wrap_closing_brace = 0

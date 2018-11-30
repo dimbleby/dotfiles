@@ -273,6 +273,9 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>h :History<CR>
 
+" Formatting the whole file {{{2
+nnoremap <Leader>q gg:keepjumps normal! gqG<CR>``
+
 " Language server {{{2
 if has('nvim') || has('job')
     augroup lsp_mappings

@@ -1,1 +1,1 @@
-nnoremap <buffer> <LocalLeader>q :ElmFormat<CR>
+nnoremap <buffer> <Leader>q :ElmFormat<CR>
