@@ -26,6 +26,12 @@ set expandtab
 set shiftwidth=4 softtabstop=4 tabstop=4
 set shiftround
 
+" Folding {{{2
+set foldlevel=99 foldmethod=syntax
+let g:markdown_folding = 1
+let g:sh_fold_enabled = 7
+let g:xml_syntax_folding = 1
+
 " ripgrep {{{2
 if executable('rg')
     set grepprg=rg\ --vimgrep
@@ -65,8 +71,9 @@ endif
 if exists('&termguicolors')
     set termguicolors
 endif
-highlight ColorColumn guibg=DimGray ctermbg=LightGray
-highlight TermCursorNC guibg=DimGray ctermbg=LightGray
+highlight ColorColumn guibg=DimGrey ctermbg=DarkGrey
+highlight Folded guibg=DimGrey ctermbg=DarkGrey
+highlight TermCursorNC guibg=DimGrey ctermbg=DarkGrey
 
 " Save cursor position {{{2
 augroup memory
