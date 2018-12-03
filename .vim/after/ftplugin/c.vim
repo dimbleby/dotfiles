@@ -3,7 +3,7 @@ setlocal textwidth=76 colorcolumn=80
 setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Don't indent C++ scope declarations, align on (.
-setlocal cinoptions=g0(0
+setlocal cinoptions=g0,(0
 
 setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 nnoremap <buffer> <silent> <Leader>q :call LanguageClient#textDocument_formatting()<CR>
