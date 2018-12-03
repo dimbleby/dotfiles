@@ -1,4 +1,3 @@
-setlocal shiftwidth=2 softtabstop=2 tabstop=2
 if executable('prettier')
     setlocal formatprg=prettier\ --parser=json-stringify
 else

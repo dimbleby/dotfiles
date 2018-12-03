@@ -32,25 +32,24 @@ let g:markdown_folding = 1
 let g:sh_fold_enabled = 7
 let g:xml_syntax_folding = 1
 
-" ripgrep {{{2
+" Filetype-specific variations {{{2
+let c_space_errors = 1
+let c_syntax_for_h = 1
+let g:pyindent_open_paren = '&sw'
+
+" Open terminal in insert mode {{{2
+if has('nvim')
+    augroup OpenTerminal
+        autocmd!
+        autocmd TermOpen,WinEnter term://* startinsert
+    augroup END
+endif
+
+" Use ripgrep {{{2
 if executable('rg')
     set grepprg=rg\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif
-
-" Filetype-specific variations {{{2
-augroup filetypes
-    autocmd!
-    autocmd BufNewFile,BufReadPost *.h set filetype=c
-    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-    autocmd BufNewFile,BufReadPost *.cli set filetype=xml
-    autocmd FileType make setlocal noexpandtab
-    if has('nvim')
-        autocmd TermOpen * startinsert
-    endif
-augroup END
-let c_space_errors = 1
-let g:pyindent_open_paren = '&sw'
 
 " Backups {{{2
 " Consider a crontab entry like this:
@@ -75,11 +74,10 @@ highlight ColorColumn guibg=DimGrey ctermbg=DarkGrey
 highlight Folded guibg=DimGrey ctermbg=DarkGrey
 highlight TermCursorNC guibg=DimGrey ctermbg=DarkGrey
 
-" Save cursor position {{{2
-augroup memory
+" Restore cursor position {{{2
+augroup RestoreCursor
     autocmd!
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-    autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 augroup END
 
 " Plugins {{{1
@@ -214,7 +212,7 @@ let g:markdown_composer_autostart = 0
 
 " NCM2 {{{2
 if has('nvim')
-    augroup ncm2
+    augroup NCM2
         autocmd!
         autocmd BufEnter * call ncm2#enable_for_buffer()
         autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
@@ -285,7 +283,7 @@ nnoremap <Leader>q gg:keepjumps normal! gqG<CR>``
 
 " Language server {{{2
 if has('nvim') || has('job')
-    augroup lsp_mappings
+    augroup LanguageServerMappings
         autocmd!
         let s:lsp_fts = join(keys(g:LanguageClient_serverCommands), ',')
         let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nnoremap <buffer> <silent> '
