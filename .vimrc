@@ -73,6 +73,7 @@ endif
 highlight ColorColumn guibg=DimGrey ctermbg=DarkGrey
 highlight Folded guibg=DimGrey ctermbg=DarkGrey
 highlight TermCursorNC guibg=DimGrey ctermbg=DarkGrey
+highlight Visual guibg=DimGrey ctermbg=DarkGrey
 
 " Restore cursor position {{{2
 augroup RestoreCursor
