@@ -16,8 +16,7 @@ if exists('&inccommand')
     set inccommand=nosplit
 endif
 set incsearch
-set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=1 sidescrolloff=5
 set showcmd
 set splitbelow splitright
@@ -27,8 +26,9 @@ set shiftwidth=4 softtabstop=4 tabstop=4
 set shiftround
 
 " Folding {{{2
-set foldlevel=99 foldmethod=syntax
+set nofoldenable foldlevel=99
 let g:markdown_folding = 1
+let g:rust_fold = 1
 let g:sh_fold_enabled = 7
 let g:xml_syntax_folding = 1
 
