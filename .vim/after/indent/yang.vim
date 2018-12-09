@@ -1,2 +1,2 @@
 " Not perfect, but mostly good enough...
-setlocal cindent cinwords=
+setlocal smartindent cinwords=
