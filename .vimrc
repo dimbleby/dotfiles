@@ -5,8 +5,7 @@ scriptencoding utf-8
 " Python environment {{{1
 if has('nvim')
     let g:loaded_python_provider = 1
-    let g:black_virtualenv = $HOME.'/.virtualenvs/neovim-py-EP0-X3ss'
-    let g:python3_host_prog = g:black_virtualenv.'/bin/python3'
+    let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
 endif
 
 " Preferences {{{1
@@ -98,9 +97,6 @@ Plug 'pearofducks/ansible-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'dimbleby/vim-p4-syntax'
 Plug 'vim-perl/vim-perl'
-if has('python3')
-    Plug 'dimbleby/black.vim'
-endif
 Plug 'rust-lang/rust.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'nathanalderson/yang.vim'
@@ -175,9 +171,6 @@ let g:ale_linters = {
     \   'scala': [],
     \   'yang': [],
     \ }
-
-" Black {{{2
-let g:black_skip_numeric_underscore_normalization = 1
 
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
