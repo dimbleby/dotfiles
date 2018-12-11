@@ -26,10 +26,6 @@ set shiftround
 
 " Folding {{{2
 set nofoldenable foldlevel=99
-let g:markdown_folding = 1
-let g:rust_fold = 1
-let g:sh_fold_enabled = 7
-let g:xml_syntax_folding = 1
 
 " Filetype-specific variations {{{2
 let c_space_errors = 1
