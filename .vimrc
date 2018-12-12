@@ -175,7 +175,7 @@ let g:LanguageClient_serverCommands = {
     \   'cpp': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
     \   'python': ['pyls'],
     \   'rust': ['rls'],
-    \   'scala': ['scalameta_lsp'],
+    \   'scala': ['metals-vim'],
     \   'yang': ['/opt/yang-language-server/bin/yang-language-server'],
     \ }
 let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
