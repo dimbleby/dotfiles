@@ -25,7 +25,7 @@ set shiftwidth=4 softtabstop=4 tabstop=4
 set shiftround
 
 " Folding {{{2
-set nofoldenable foldlevel=99
+set foldlevel=99
 
 " Filetype-specific variations {{{2
 let c_space_errors = 1
@@ -92,7 +92,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'pearofducks/ansible-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'dimbleby/vim-p4-syntax'
-Plug 'vim-perl/vim-perl'
 Plug 'rust-lang/rust.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'nathanalderson/yang.vim'
