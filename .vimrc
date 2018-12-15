@@ -11,6 +11,7 @@ endif
 " Preferences {{{1
 " Defaults {{{2
 set diffopt=vertical
+set foldlevel=99
 if exists('&inccommand')
     set inccommand=nosplit
 endif
@@ -20,12 +21,11 @@ set scrolloff=1 sidescrolloff=5
 set showcmd
 set splitbelow splitright
 
+" Indenting and formatting {{{2
 set expandtab
 set shiftwidth=4 softtabstop=4 tabstop=4
 set shiftround
-
-" Folding {{{2
-set foldlevel=99
+set formatlistpat=^\\s*[-*+]\\s\\+
 
 " Filetype-specific variations {{{2
 let c_space_errors = 1
