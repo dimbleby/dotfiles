@@ -6,6 +6,12 @@ scriptencoding utf-8
 if has('nvim')
     let g:loaded_python_provider = 1
     let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
+elseif has('pythonx')
+    set pythonthreehome=~/.virtualenvs/neovim
+    set pyxversion=3
+
+    " For the benefit of nvim-yarp.
+    let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
 endif
 
 " Preferences {{{1
@@ -111,7 +117,10 @@ if has('python') || has('python3')
 endif
 
 " Completions {{{3
-if has('nvim')
+if has('nvim') || (has('python3') && has('job'))
+    if !has('nvim')
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
     Plug 'roxma/nvim-yarp'
     Plug 'ncm2/ncm2'
     Plug 'ncm2/ncm2-bufword'
@@ -200,7 +209,7 @@ let g:lightline = {
 let g:markdown_composer_autostart = 0
 
 " NCM2 {{{2
-if has('nvim')
+if has('nvim') || (has('python3') && has('job'))
     augroup NCM2
         autocmd!
         autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -210,7 +219,7 @@ if has('nvim')
 endif
 
 " UltiSnips {{{2
-if has('nvim')
+if has('nvim') || (has('python3') && has('job'))
     " This section is all about expanding snippets as provided by language
     " servers - we need to make <C-j> smarter.
     "
@@ -248,8 +257,10 @@ inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Terminal mode {{{2
-if has('nvim')
+if has('nvim') || has('terminal')
     tnoremap <Esc> <C-\><C-n>
+endif
+if has('nvim')
     tnoremap <C-w> <C-\><C-n><C-w>
 endif
 
