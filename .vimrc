@@ -17,7 +17,7 @@ endif
 " Preferences {{{1
 " Defaults {{{2
 set diffopt=vertical
-set foldlevel=99
+set foldlevelstart=99
 if exists('&inccommand')
     set inccommand=nosplit
 endif
