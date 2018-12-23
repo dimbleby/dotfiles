@@ -29,7 +29,7 @@ set splitbelow splitright
 
 " Indenting and formatting {{{2
 set expandtab
-set shiftwidth=4 softtabstop=4 tabstop=4
+set tabstop=4 shiftwidth=0 softtabstop=-1
 set shiftround
 set formatlistpat=^\\s*[-*+]\\s\\+
 
