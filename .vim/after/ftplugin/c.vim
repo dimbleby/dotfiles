@@ -7,29 +7,10 @@ nnoremap <buffer> <silent> <Leader>q :call LanguageClient#textDocument_formattin
 " Don't wrap the closing brace in parameter lists.
 let b:argwrap_wrap_closing_brace = 0
 
-" Left-align function parameters so that the longest line touches the
-" right-hand margin.
-function! s:AlignParams(...) abort
-    if !a:0
-        let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
-        return 'g@'
-    elseif a:0 > 1
-        let [l:lnum1, l:lnum2] = [a:1, a:2]
-    else
-        let [l:lnum1, l:lnum2] = [line("'["), line("']")]
-    endif
-
-    execute l:lnum1 . ',' . l:lnum2 . 'right 79'
-    let l:lines = getline(l:lnum1, l:lnum2)
-    let l:lefts = map(l:lines, {key, val -> match(val, '\S')})
-    let l:leftmost = min(l:lefts)
-    execute l:lnum1 . ',' . l:lnum2 . 'left ' . l:leftmost
-endfunction
-
-command! -range -bar -buffer AlignParams call s:AlignParams(<line1>, <line2>)
-nnoremap <expr> <buffer> <silent> <LocalLeader>=  <SID>AlignParams()
-xnoremap <expr> <buffer> <silent> <LocalLeader>=  <SID>AlignParams()
-nnoremap <expr> <buffer> <silent> <LocalLeader>== <SID>AlignParams() . '_'
+" Align function parameters, in idiosyncratic style.
+nnoremap <expr> <buffer> <silent> <LocalLeader>=  alignParams#AlignParams()
+xnoremap <expr> <buffer> <silent> <LocalLeader>=  alignParams#AlignParams()
+nnoremap <expr> <buffer> <silent> <LocalLeader>== alignParams#AlignParams() . '_'
 
 " Boxed comments.
 nnoremap <buffer> <silent> <LocalLeader>w :BlockFormat<CR>
