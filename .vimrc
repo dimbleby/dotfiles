@@ -165,17 +165,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 call plug#end()
 
-" Ale {{{2
-let g:ale_fix_on_save = 1
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
-let g:ale_linters = {
-    \   'c': [],
-    \   'cpp': [],
-    \   'rust': [],
-    \   'scala': [],
-    \   'yang': [],
-    \ }
-
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
@@ -191,6 +180,11 @@ let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
     \   'yang': ['yang.settings']
     \ }
+
+" Ale {{{2
+let g:ale_fix_on_save = 1
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
+let g:ale_linters = map(copy(g:LanguageClient_serverCommands), '[]')
 
 " Lightline {{{2
 let g:lightline = {

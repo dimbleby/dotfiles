@@ -1,15 +1,9 @@
 {
-    "pyls": {
-        "plugins": {
-            "mccabe": {
-                "enabled": false
-            },
-            "pycodestyle": {
-                "enabled": false
-            },
-            "pyflakes": {
-                "enabled": false
-            }
-        }
+  "pyls": {
+    "plugins": {
+      "mccabe": {
+        "enabled": false
+      }
     }
+  }
 }
