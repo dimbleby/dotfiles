@@ -3,15 +3,23 @@
 scriptencoding utf-8
 
 " Python environment {{{1
+" Prefer python3 {{{2
 if has('nvim')
     let g:loaded_python_provider = 1
-    let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
-elseif has('pythonx')
-    set pythonthreehome=~/.virtualenvs/neovim
+endif
+if has('pythonx')
     set pyxversion=3
+elseif has('python3')
+    " Forces python3 when we have both python/dyn and python3/dyn
+endif
 
-    " For the benefit of nvim-yarp.
-    let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
+" Prefer the neovim virtualenv {{{2
+"
+" g:python3_host_prog is a neovim-only thing, but it's used unconditionally by
+" nvim-yarp - so set it always.
+let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
+if exists('&pythonthreehome')
+    set pythonthreehome=~/.virtualenvs/neovim
 endif
 
 " Preferences {{{1
@@ -54,13 +62,9 @@ endif
 
 " Backups {{{2
 " Consider a crontab entry like this:
-" 0 0 * * *   find ~/.local/share/vim/backup -not -newerat "1 month ago" -type f -delete
+" 0 0 * * *   find ~/.local/share/nvim/backup -not -newerat "1 month ago" -type f -delete
 set backup
-if has('nvim')
-    set backupdir=~/.local/share/nvim/backup
-else
-    set backupdir=~/.local/share/vim/backup
-endif
+set backupdir=~/.local/share/nvim/backup
 
 " Colours {{{2
 set background=dark
@@ -111,7 +115,7 @@ if has('job') || has('nvim')
 endif
 
 " Snippets {{{3
-if has('python') || has('python3')
+if has('python3') || has('python')
     Plug 'SirVer/ultisnips'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
 endif
@@ -129,7 +133,7 @@ if has('nvim') || (has('python3') && has('job'))
 endif
 
 " Block formatting, IPS trace navigation {{{3
-if has('python') || has('python3')
+if has('python3') || has('python')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
