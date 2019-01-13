@@ -4,6 +4,7 @@ alias tmux='tmux -2'
 alias vi='nvim'
 export VISUAL=~/.local/bin/nvim
 export EDITOR=~/.local/bin/nvim
+export HISTCONTROL=ignoreboth:erasedups
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
