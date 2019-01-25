@@ -30,6 +30,7 @@ if exists('&inccommand')
     set inccommand=nosplit
 endif
 set incsearch
+set laststatus=2
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set scrolloff=1 sidescrolloff=5
 set showcmd
