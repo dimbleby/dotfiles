@@ -185,6 +185,7 @@ let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
     \   'yang': ['yang.settings']
     \ }
+let g:LanguageClient_useVirtualText = 0
 
 " Ale {{{2
 let g:ale_fix_on_save = 1
@@ -232,6 +233,8 @@ if has('nvim') || (has('python3') && has('job'))
     inoremap <silent> <Plug>(ultisnips_expand) <C-r>=UltiSnips#ExpandSnippetOrJump()<CR>
     snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
     xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+
+    let g:LanguageClient_hasSnippetSupport = 1
 else
     let g:UltiSnipsExpandTrigger       = '<C-j>'
     let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
