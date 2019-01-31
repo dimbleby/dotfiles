@@ -205,21 +205,21 @@ let g:lightline = {
     \   },
     \ }
 
-" Markdown-composer.
+" Markdown preview {{{2
 let g:markdown_composer_autostart = 0
 
-" NCM2 {{{2
+" Completion and snippets {{{2
 if has('nvim') || (has('python3') && has('job'))
+    " NCM2 {{{3
     augroup NCM2
         autocmd!
         autocmd BufEnter * call ncm2#enable_for_buffer()
         autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
         autocmd User Ncm2PopupClose set completeopt=menu,preview
     augroup END
-endif
 
-" UltiSnips {{{2
-if has('nvim') || (has('python3') && has('job'))
+    " UltiSnips with NCM2 {{{3
+    "
     " This section is all about expanding snippets as provided by language
     " servers - we need to make <C-j> smarter.
     "
@@ -234,8 +234,10 @@ if has('nvim') || (has('python3') && has('job'))
     snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
     xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
 
+    " Enable LanguageClient snippet support {{{3
     let g:LanguageClient_hasSnippetSupport = 1
 else
+    " UltiSnips without NCM2 {{{3
     let g:UltiSnipsExpandTrigger       = '<C-j>'
     let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
