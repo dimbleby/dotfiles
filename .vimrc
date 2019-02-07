@@ -150,16 +150,18 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Markdown preview {{{3
-function! BuildComposer(info)
-  if a:info.status !=# 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
+if has('nvim') || has('job')
+    function! BuildComposer(info)
+    if a:info.status !=# 'unchanged' || a:info.force
+        if has('nvim')
+        !cargo build --release
+        else
+        !cargo build --release --no-default-features --features json-rpc
+        endif
     endif
-  endif
-endfunction
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+    endfunction
+    Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+endif
 
 " Miscellany {{{3
 Plug 'justinmk/vim-dirvish'
