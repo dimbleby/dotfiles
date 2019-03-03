@@ -24,20 +24,29 @@ endif
 
 " Preferences {{{1
 " Defaults {{{2
+set autoread
+set complete-=i
+set display+=lastline
 set diffopt=vertical
 set foldlevelstart=99
+set formatoptions+=j
+set history=10000
 if exists('&inccommand')
     set inccommand=nosplit
 endif
 set incsearch
 set laststatus=2
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-set scrolloff=1 sidescrolloff=5
+set nrformats-=octal
+set scrolloff=1 sidescrolloff=5 sidescroll=1
+set sessionoptions-=options
 set showcmd
 set splitbelow splitright
+set tabpagemax=50
+set wildmenu
 
 " Indenting and formatting {{{2
-set expandtab
+set expandtab smarttab
 set tabstop=4 shiftwidth=0 softtabstop=-1
 set shiftround
 set formatlistpat=^\\s*[-*+]\\s\\+
