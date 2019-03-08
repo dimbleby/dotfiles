@@ -1,6 +1,6 @@
 let s:formatprgs = []
 if executable('isort')
-    call add(s:formatprgs, 'isort -')
+    call add(s:formatprgs, 'isort --quiet -')
 endif
 if executable('black')
     call add(s:formatprgs, 'black -q -N -')
