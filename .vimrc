@@ -185,8 +185,8 @@ call plug#end()
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
 let g:LanguageClient_serverCommands = {
-    \   'c': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
-    \   'cpp': ['ccls', '--init={"cacheDirectory": "'.$HOME.'/.cache/ccls"}'],
+    \   'c': ['ccls', '--init={"cache": {"directory": "'.$HOME.'/.cache/ccls"}}'],
+    \   'cpp': ['ccls', '--init={"cache": {"directory": "'.$HOME.'/.cache/ccls"}}'],
     \   'python': ['pyls'],
     \   'rust': ['rls'],
     \   'scala': ['metals-vim'],
