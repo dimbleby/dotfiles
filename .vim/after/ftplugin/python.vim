@@ -3,7 +3,7 @@ if executable('isort')
     call add(s:formatprgs, 'isort --quiet -')
 endif
 if executable('black')
-    call add(s:formatprgs, 'black -q -N -')
+    call add(s:formatprgs, 'black --quiet -')
 endif
 let &l:formatprg = join(s:formatprgs, '|')
 unlet s:formatprgs
