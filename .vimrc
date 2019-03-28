@@ -76,20 +76,6 @@ endif
 set backup
 set backupdir=~/.local/share/nvim/backup
 
-" Colours {{{2
-set background=dark
-if !has('nvim')
-    set t_8f=[38;2;%lu;%lu;%lum
-    set t_8b=[48;2;%lu;%lu;%lum
-endif
-if exists('&termguicolors')
-    set termguicolors
-endif
-highlight ColorColumn guibg=DimGrey ctermbg=DarkGrey
-highlight Folded guibg=DimGrey ctermbg=DarkGrey
-highlight TermCursorNC guibg=DimGrey ctermbg=DarkGrey
-highlight Visual guibg=DimGrey ctermbg=DarkGrey
-
 " Restore cursor position {{{2
 augroup RestoreCursor
     autocmd!
@@ -107,6 +93,9 @@ endif
 
 " Install plugins {{{2
 call plug#begin('~/.vim/plugged')
+
+" Color scheme {{{3
+Plug 'morhetz/gruvbox'
 
 " Language-specific highlighting and suchlike {{{3
 Plug 'pearofducks/ansible-vim'
@@ -180,6 +169,19 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
+
+" Colours {{{2
+set background=dark
+if !has('nvim')
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+endif
+if exists('&termguicolors')
+    set termguicolors
+endif
+let g:gruvbox_italic = 1
+colorscheme gruvbox
+highlight Normal guibg=NONE ctermbg=NONE
 
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
