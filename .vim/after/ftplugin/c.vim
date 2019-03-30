@@ -1,8 +1,9 @@
 " Weird textwidth to make room for boxed comments.
 setlocal textwidth=76 colorcolumn=80
 
-setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-nnoremap <buffer> <silent> <Leader>q :call LanguageClient#textDocument_formatting()<CR>
+if executable('clang-format')
+    setlocal formatprg=clang-format\ -assume-filename=%
+endif
 
 " Don't wrap the closing brace in parameter lists.
 let b:argwrap_wrap_closing_brace = 0
