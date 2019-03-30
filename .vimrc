@@ -186,9 +186,14 @@ highlight Normal guibg=NONE ctermbg=NONE
 " LanguageClient {{{2
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
+let s:ccls_options = '--init=
+    \{
+    \  "cache": {"directory": "'.$HOME.'/.cache/ccls"},
+    \  "completion": {"filterAndSort": false}
+    \}'
 let g:LanguageClient_serverCommands = {
-    \   'c': ['ccls', '--init={"cache": {"directory": "'.$HOME.'/.cache/ccls"}}'],
-    \   'cpp': ['ccls', '--init={"cache": {"directory": "'.$HOME.'/.cache/ccls"}}'],
+    \   'c': ['ccls', s:ccls_options],
+    \   'cpp': ['ccls', s:ccls_options],
     \   'python': ['pyls'],
     \   'rust': ['rls'],
     \   'scala': ['metals-vim'],
