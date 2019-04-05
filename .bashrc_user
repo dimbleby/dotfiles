@@ -2,13 +2,14 @@ stty -ixon
 
 alias tmux='tmux -2'
 alias vi='nvim'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 export VISUAL=~/.local/bin/nvim
 export EDITOR=~/.local/bin/nvim
 export HISTCONTROL=ignoreboth:erasedups
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 if ! shopt -q login_shell; then
   return
