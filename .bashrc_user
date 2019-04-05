@@ -7,6 +7,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 export VISUAL=~/.local/bin/nvim
 export EDITOR=~/.local/bin/nvim
 export HISTCONTROL=ignoreboth:erasedups
+export LS_COLORS='ow=0:di=0;94:'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
