@@ -247,10 +247,8 @@ if has('nvim') || (has('python3') && has('job'))
     let g:UltiSnipsExpandTrigger       = '<Plug>(ultisnips_dummy)'
     let g:UltiSnipsJumpForwardTrigger  = '<Plug>(ultisnips_dummy)'
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-    inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)")
-    inoremap <silent> <Plug>(ultisnips_expand) <C-r>=UltiSnips#ExpandSnippetOrJump()<CR>
-    snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
-    xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+    inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_dummy)")
+    vmap <silent> <C-j> <Plug>(ultisnips_dummy)
 
     " Enable LanguageClient snippet support {{{3
     let g:LanguageClient_hasSnippetSupport = 1
