@@ -273,8 +273,8 @@ nnoremap Q <nop>
 nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
 
 " Tab for cycling through completions {{{2
-inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent> <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent> <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Terminal mode {{{2
 if has('nvim') || has('terminal')
