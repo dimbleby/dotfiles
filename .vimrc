@@ -40,7 +40,7 @@ set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5 sidescroll=1
 set sessionoptions-=options
-set showcmd
+set showcmd noshowmode
 set splitbelow splitright
 set tabpagemax=50
 set wildmenu
