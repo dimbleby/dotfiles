@@ -1,0 +1,2 @@
+[registries.metaswitch]
+index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
