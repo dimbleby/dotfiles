@@ -16,3 +16,5 @@
     editor = nvim
 [push]
     default = simple
+[diff]
+    algorithm = histogram

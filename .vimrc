@@ -27,7 +27,10 @@ endif
 set autoread
 set complete-=i
 set display+=lastline
-set diffopt=vertical
+set diffopt+=vertical
+if has('nvim') || has('patch-8.1.0360')
+    set diffopt+=algorithm:histogram,indent-heuristic
+endif
 set foldlevelstart=99
 set formatoptions+=j
 set history=10000
