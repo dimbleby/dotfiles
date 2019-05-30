@@ -98,7 +98,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Color scheme {{{3
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 
 " Language-specific highlighting and suchlike {{{3
 Plug 'pearofducks/ansible-vim'
