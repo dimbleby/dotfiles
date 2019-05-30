@@ -59,6 +59,9 @@ let c_space_errors = 1
 let c_syntax_for_h = 1
 let g:pyindent_open_paren = '&sw'
 
+" Enable Cfilter {{{2
+packadd cfilter
+
 " Open terminal in insert mode {{{2
 if has('nvim')
     augroup OpenTerminal
