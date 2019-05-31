@@ -60,7 +60,9 @@ let c_syntax_for_h = 1
 let g:pyindent_open_paren = '&sw'
 
 " Enable Cfilter {{{2
-packadd cfilter
+if has('nvim') || has('patch-8.1.311')
+    packadd cfilter
+endif
 
 " Open terminal in insert mode {{{2
 if has('nvim')
