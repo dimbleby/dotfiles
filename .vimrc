@@ -110,6 +110,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'dimbleby/vim-p4-syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'hashivim/vim-terraform'
 Plug 'derekwyatt/vim-scala'
 Plug 'nathanalderson/yang.vim'
 
