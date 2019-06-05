@@ -1,5 +1,4 @@
 " Prelude {{{1
-" vim: foldmethod=marker
 scriptencoding utf-8
 
 " Python environment {{{1
@@ -40,6 +39,7 @@ endif
 set incsearch
 set laststatus=2
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set nomodeline
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5 sidescroll=1
 set sessionoptions-=options
