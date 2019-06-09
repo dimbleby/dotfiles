@@ -146,9 +146,6 @@ if has('python3') || has('python')
     Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
 endif
 
-" Wrapping and unwrapping arguments {{{3
-Plug 'FooSoft/vim-argwrap'
-
 " Status line {{{3
 Plug 'itchyny/lightline.vim'
 
@@ -299,9 +296,6 @@ endif
 if !has('nvim')
     cnoremap w!! w !sudo tee % > /dev/null
 endif
-
-" ArgWrap {{{2
-nnoremap <Leader>a :ArgWrap<CR>
 
 " FZF helpers {{{2
 nnoremap <Leader>b :Buffers<CR>
