@@ -193,6 +193,7 @@ colorscheme gruvbox
 highlight Normal guibg=NONE ctermbg=NONE
 
 " LanguageClient {{{2
+let g:LanguageClient_completionPreferTextEdit = 1
 let g:LanguageClient_diagnosticsList = 'Location'
 let g:LanguageClient_selectionUI = 'Quickfix'
 let s:ccls_options = '--init=
