@@ -316,6 +316,7 @@ if has('nvim') || has('job')
         execute s:lsp_map . '<LocalLeader>r :call LanguageClient#textDocument_references()<CR>'
         execute s:lsp_map . 'K :call LanguageClient#textDocument_hover()<CR>'
         execute s:lsp_map . '<LocalLeader>i :call LanguageClient#textDocument_implementation()<CR>'
+        execute s:lsp_map . '<LocalLeader>a :call LanguageClient#textDocument_codeAction()<CR>'
         unlet s:lsp_map
         unlet s:lsp_fts
     augroup END
