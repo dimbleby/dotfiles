@@ -1,0 +1,16 @@
+snippet #! "Python shebang" b
+#!/usr/bin/env python
+${0}
+endsnippet
+
+snippet ifmain "ifmain" b
+if __name__ == "__main__":
+	${1:${VISUAL:main()}}
+endsnippet
+
+snippet class "simple class" b
+class ${1:MyClass}(${2:object}):
+	"""${3}"""
+	def __init__(self${4}):
+		${0}
+endsnippet

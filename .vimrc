@@ -125,7 +125,6 @@ endif
 " Snippets {{{3
 if has('python3') || has('python')
     Plug 'SirVer/ultisnips'
-    Plug 'ssh://git@gitlab.datcon.co.uk/dch/snippets.git'
 endif
 
 " Completions {{{3

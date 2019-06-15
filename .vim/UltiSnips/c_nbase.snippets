@@ -1,0 +1,145 @@
+snippet mod "NBASE file header" b
+/**MOD+***********************************************************************/
+`!p snip.rv = "/* Module:    " + snip.fn + " " * (63 - len(snip.fn)) + "*/"`
+/*                                                                           */
+/* Purpose:   ${1}                                                           */
+/*                                                                           */
+/*            (C) COPYRIGHT METASWITCH NETWORKS `date +%Y`                         */
+/*                                                                           */
+/**MOD-***********************************************************************/
+${0}
+endsnippet
+
+snippet incl "NBASE include file header" b
+`!p snip.rv = "#ifndef " + snip.basename.upper() + "_INCLUDED"`
+`!p snip.rv = "#define " + snip.basename.upper() + "_INCLUDED"`
+/**INC+***********************************************************************/
+`!p snip.rv = "/* Header:    " + snip.fn + " " * (63 - len(snip.fn)) + "*/"`
+/*                                                                           */
+/* Purpose:   ${1}                                                           */
+/*                                                                           */
+/*            (C) COPYRIGHT METASWITCH NETWORKS `date +%Y`                         */
+/*                                                                           */
+/**INC-***********************************************************************/
+${0}
+#endif
+endsnippet
+
+snippet func "NBASE Function definition" b
+/**PROC+**********************************************************************/
+/* Name:      ${1:${VISUAL}}                                                 */
+/*                                                                           */
+/* Purpose:   ${2}                                                           */
+/*                                                                           */
+/* Returns:   ${3:Nothing}                                                   */
+/*                                                                           */
+/* Params:                                                                   */
+/*                                                                           */
+/* Operation: ${4:Should be used for complex functions, but not required}    */
+/*                                                                           */
+/**PROC-**********************************************************************/
+${5:NBB_VOID} $1(${6})
+{
+	${0}
+
+	NBB_TRC_ENTRY("$1");
+
+	NBB_TRC_EXIT();
+
+	return;
+
+} /* $1 */
+endsnippet
+
+snippet struct "NBASE Structure definition" b
+/**STRUCT+********************************************************************/
+/* Structure:   ${1}                                                         */
+/*                                                                           */
+/* Description: ${2}                                                         */
+/*                                                                           */
+/*****************************************************************************/
+typedef struct ${1/\w+\s*/\L$0\E/g}
+{
+	${0}
+
+} ${1};
+/**STRUCT-********************************************************************/
+endsnippet
+
+snippet if "NBASE if statement" b
+if (${1})
+{
+	NBB_TRC_FLOW((NBB_FORMAT "${2}"));
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet el "NBASE else statement" b
+else
+{
+	NBB_TRC_FLOW((NBB_FORMAT "${1}"));
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet eif "NBASE else if statement" b
+else if (${1})
+{
+	NBB_TRC_FLOW((NBB_FORMAT "${2}"));
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet for "NBASE for loop" b
+for (${1}; ${2}; ${3})
+{
+	NBB_TRC_FLOW((NBB_FORMAT "${4}"));
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fori "NBASE for ii loop" b
+for (${1:ii} = 0; $1 < ${2:count}; ${3:++$1})
+{
+	NBB_TRC_FLOW((NBB_FORMAT "${4:$1=%d}", $1));
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet wh "NBASE while loop" b
+while (${1})
+{
+	NBB_TRC_FLOW((NBB_FORMAT "${2}"));
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet switch "NBASE switch statement" bm
+switch (${1:${VISUAL}})
+{
+	case ${4}:
+		NBB_TRC_FLOW((NBB_FORMAT "${5:$4}"));
+		${0}
+		break;
+
+	default:
+		NBB_TRC_FLOW((NBB_FORMAT "${2:Default}"));
+		${3:NBB_ASSERT_INVALID_BRANCH;}
+		break;
+}
+endsnippet
+
+snippet case "NBASE case statement" b
+case ${1:${VISUAL}}:
+	NBB_TRC_FLOW((NBB_FORMAT "${2:$1}"));
+	${0}
+	break;
+endsnippet
+
+snippet detail "NBB_TRC_DETAIL" b
+NBB_TRC_DETAIL((NBB_FORMAT "${0}"));
+endsnippet
+
+snippet flow "NBB_TRC_FLOW" b
+NBB_TRC_FLOW((NBB_FORMAT "${0}"));
+endsnippet
