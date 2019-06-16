@@ -37,6 +37,7 @@ if exists('&inccommand')
 endif
 set incsearch
 set laststatus=2
+set lazyredraw
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nomodeline
 set nrformats-=octal
