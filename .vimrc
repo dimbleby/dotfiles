@@ -46,6 +46,9 @@ set sessionoptions-=options
 set showcmd noshowmode
 set splitbelow splitright
 set tabpagemax=50
+if !has('nvim')
+    set ttyfast
+endif
 set wildmenu
 
 " Indenting and formatting {{{2
