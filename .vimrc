@@ -31,7 +31,6 @@ if has('nvim') || has('patch-8.1.0360')
     set diffopt+=algorithm:histogram,indent-heuristic
 endif
 set foldlevelstart=99
-set formatoptions+=j
 set history=10000
 if exists('&inccommand')
     set inccommand=nosplit
@@ -53,6 +52,7 @@ set expandtab smarttab
 set tabstop=4 shiftwidth=0 softtabstop=-1
 set shiftround
 set formatlistpat=^\\s*[-*+]\\s\\+
+set formatoptions-=t formatoptions+=croqnlj
 
 " Filetype-specific variations {{{2
 let c_space_errors = 1
