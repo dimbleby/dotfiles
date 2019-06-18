@@ -257,7 +257,7 @@ if has('nvim') || (has('python3') && has('job'))
     let g:UltiSnipsExpandTrigger       = '<Plug>(ultisnips_dummy)'
     let g:UltiSnipsJumpForwardTrigger  = '<Plug>(ultisnips_dummy)'
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-    inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_dummy)")
+    inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or('<Plug>(ultisnips_dummy)')
     vmap <silent> <C-j> <Plug>(ultisnips_dummy)
 
     " Enable LanguageClient snippet support {{{3
@@ -283,8 +283,8 @@ nnoremap Q <nop>
 nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
 
 " Tab for cycling through completions {{{2
-inoremap <silent> <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent> <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent> <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
+inoremap <silent> <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
 
 " Terminal mode {{{2
 if has('nvim') || has('terminal')
