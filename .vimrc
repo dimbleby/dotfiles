@@ -300,9 +300,10 @@ if !has('nvim')
     cnoremap w!! w !sudo tee % > /dev/null
 endif
 
-" FZF helpers {{{2
+" Searching {{{2
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Files<CR>
+nnoremap <expr> <Leader>g exists(':Ggrep') ? ':Ggrep!<Space>' : ':Rg<CR>'
 nnoremap <Leader>h :History<CR>
 
 " Formatting the whole file {{{2
