@@ -5,9 +5,6 @@ if executable('clang-format')
     setlocal formatprg=clang-format\ -assume-filename=%
 endif
 
-" Don't wrap the closing brace in parameter lists.
-let b:argwrap_wrap_closing_brace = 0
-
 " Align function parameters, in idiosyncratic style.
 nnoremap <expr> <buffer> <silent> <LocalLeader>=  alignParams#AlignParams()
 xnoremap <expr> <buffer> <silent> <LocalLeader>=  alignParams#AlignParams()

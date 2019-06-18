@@ -10,4 +10,3 @@ unlet s:formatprgs
 
 setlocal foldmethod=indent
 setlocal textwidth=88
-let b:argwrap_tail_comma = 1
