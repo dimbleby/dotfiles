@@ -1,10 +1,6 @@
 {
   "pyls": {
     "plugins": {
-      "jedi_definition": {
-        "follow_imports": true,
-        "follow_builtin_imports": true
-      },
       "mccabe": {
         "enabled": false
       }
