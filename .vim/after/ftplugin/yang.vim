@@ -1,3 +1,5 @@
 setlocal textwidth=100
-nnoremap <buffer> <silent> <Leader>q :call LanguageClient#textDocument_formatting()<CR>
+if executable('pyang')
+    setlocal formatprg=pyang\ --format\ yang\ --yang-canonical\ --keep-comments\ --\ 2>/dev/null
+endif
 setlocal foldmethod=syntax
