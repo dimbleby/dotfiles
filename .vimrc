@@ -120,7 +120,7 @@ Plug 'cespare/vim-toml'
 Plug 'nathanalderson/yang.vim'
 
 " Linting {{{3
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Language-client {{{3
 if has('job') || has('nvim')
