@@ -210,6 +210,7 @@ let g:LanguageClient_serverCommands = {
     \   'scala': ['metals-vim'],
     \   'yang': ['yang-language-server'],
     \ }
+unlet s:ccls_options
 let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
     \   'yang': ['yang.settings']
