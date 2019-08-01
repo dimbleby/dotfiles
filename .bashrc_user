@@ -16,4 +16,4 @@ if ! shopt -q login_shell; then
   return
 fi
 
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.gpm/bin:$HOME/.poetry/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.poetry/bin
