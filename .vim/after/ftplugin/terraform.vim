@@ -1,5 +1,3 @@
 setlocal textwidth=100
-if executable('terraform')
-    setlocal formatprg=terraform\ fmt\ -
-endif
+nnoremap <buffer> <Leader>q :TerraformFmt<CR>
 setlocal foldmethod=syntax
