@@ -311,7 +311,7 @@ nnoremap <Leader>h :History<CR>
 nnoremap <Leader>r :Rg<CR>
 
 " Formatting the whole file {{{2
-nnoremap <Leader>q gg:keepjumps normal! gqG<CR>``
+nnoremap <silent> <Leader>q :call format#FormatFile()<CR>
 
 " Language server {{{2
 if has('nvim') || has('job')
