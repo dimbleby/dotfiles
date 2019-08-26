@@ -4,7 +4,7 @@
 function! format#FormatFile()
   let l:curw = winsaveview()
   normal! ix
-  normal! x
+  normal! "_x
   silent execute '%!' . &l:formatprg
   call winrestview(l:curw)
 endfunction
