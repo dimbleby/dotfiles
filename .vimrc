@@ -25,6 +25,7 @@ endif
 " Defaults {{{2
 set autoread
 set complete-=i
+set dictionary=/usr/share/dict/words
 set display+=lastline
 set diffopt+=vertical
 if has('nvim') || has('patch-8.1.0360')
@@ -162,9 +163,9 @@ if has('nvim') || has('job')
     function! BuildComposer(info)
     if a:info.status !=# 'unchanged' || a:info.force
         if has('nvim')
-        !cargo build --release
+            !cargo build --release
         else
-        !cargo build --release --no-default-features --features json-rpc
+            !cargo build --release --no-default-features --features json-rpc
         endif
     endif
     endfunction
