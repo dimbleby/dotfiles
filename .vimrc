@@ -286,6 +286,10 @@ nnoremap Q <nop>
 " Improved <C-l> {{{2
 nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
 
+" Insert undo point before deleting a line or word {{{2
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
 " Tab for cycling through completions {{{2
 inoremap <silent> <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
 inoremap <silent> <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
