@@ -6,7 +6,7 @@ endif
 " And before this patch, vim set anything it didn't recognize to `conf`, with
 " no notion of fallback.
 if has('patch-8.0.0613')
-    autocmd BufRead,BufNewFile *.md setfiletype=markdown
+    autocmd BufRead,BufNewFile *.md setfiletype markdown
 else
     autocmd BufRead,BufNewFile *.md set filetype=markdown
 endif
