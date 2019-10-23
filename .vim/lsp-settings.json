@@ -1,8 +1,12 @@
 {
   "pyls": {
+    "configurationSources": ["flake8"],
     "plugins": {
       "flake8": {
         "enabled": true
+      },
+      "jedi_completion": {
+        "include_params": true
       },
       "mccabe": {
         "enabled": false
