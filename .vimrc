@@ -147,8 +147,8 @@ endif
 
 " Block formatting, IPS trace navigation {{{3
 if has('python3') || has('python')
-    Plug 'ssh://git@gitlab.datcon.co.uk/dch/BlockFormat.git'
-    Plug 'ssh://git@gitlab.datcon.co.uk/dch/vimips.git'
+    Plug 'https://gitlab.datcon.co.uk/dch/BlockFormat.git'
+    Plug 'https://gitlab.datcon.co.uk/dch/vimips.git'
 endif
 
 " Status line {{{3
