@@ -239,6 +239,9 @@ let g:lightline = {
 " Markdown preview {{{2
 let g:markdown_composer_autostart = 0
 
+" Elm {{{2
+let g:elm_format_autosave = 0
+
 " Completion and snippets {{{2
 if has('nvim') || (has('python3') && has('job'))
     " NCM2 {{{3
