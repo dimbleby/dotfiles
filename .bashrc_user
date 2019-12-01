@@ -1,6 +1,5 @@
 stty -ixon
 
-alias tmux='tmux -2'
 alias vi='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
