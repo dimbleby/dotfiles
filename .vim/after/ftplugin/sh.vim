@@ -1,5 +1,5 @@
-if executable('docker')
-    setlocal formatprg=docker\ run\ -i\ --rm\ mvdan/shfmt:v2.6.4\ -i\ 2\ -sr\ -ci
+if executable('shfmt')
+    setlocal formatprg=shfmt\ -i\ 2\ -sr\ -ci
 endif
 
 " Via tpope/vim-apathy
