@@ -2,6 +2,5 @@
 [repositories.artifactory]
 url = "http://artifactory.metaswitch.com/api/pypi/pypi-virtual/simple"
 
-[settings]
-[settings.virtualenvs]
+[virtualenvs]
 path = "/data/developer/.virtualenvs"
