@@ -216,7 +216,7 @@ let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
     \   'yang': ['yang.settings']
     \ }
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = 'CodeLens'
 
 " Ale {{{2
 let g:ale_fix_on_save = 1
