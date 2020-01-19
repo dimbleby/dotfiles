@@ -37,6 +37,9 @@ if exists('&inccommand')
     set inccommand=nosplit
 endif
 set incsearch
+if exists('&jumpoptions')
+    set jumpoptions=stack
+endif
 set laststatus=2
 set lazyredraw
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
