@@ -3,11 +3,6 @@
     email = david.hotham@metaswitch.com
 [grep]
     lineNumber = true
-[color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
 [color "status"]
     untracked = red
     changed = yellow
