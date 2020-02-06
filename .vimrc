@@ -158,7 +158,7 @@ endif
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy finder {{{3
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Markdown preview {{{3
