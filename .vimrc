@@ -116,6 +116,7 @@ Plug 'gruvbox-community/gruvbox'
 " Language-specific highlighting and suchlike {{{3
 Plug 'pearofducks/ansible-vim'
 Plug 'ElmCast/elm-vim'
+Plug 'dimbleby/vim-minizinc'
 Plug 'dimbleby/vim-p4-syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'derekwyatt/vim-scala'
