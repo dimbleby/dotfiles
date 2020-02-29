@@ -7,10 +7,10 @@ function! ventilate#Ventilate(...) abort
     endif
 
     " Format the selection with a massive textwidth to get long lines.
-    let l:oldtw=&l:textwidth
+    let oldtw=&l:textwidth
     let &l:textwidth=999999
     execute 'normal! ''[gw'']'
-    let &l:textwidth=l:oldtw
+    let &l:textwidth=oldtw
 
     " Split on .!?
     execute '''[,'']substitute/\v[.!?]\zs +/\r/ge'

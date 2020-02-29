@@ -8,10 +8,10 @@ function! alignParams#AlignParams(...) abort
 
     " This style is only used by a particular codebase, so the hardcoding of
     " the right-hand margin isn't a big deal.
-    let [l:lnum1, l:lnum2] = [line("'["), line("']")]
-    execute l:lnum1 . ',' . l:lnum2 . 'right 79'
-    let l:lines = getline(l:lnum1, l:lnum2)
-    let l:lefts = map(l:lines, {key, val -> match(val, '\S')})
-    let l:leftmost = min(l:lefts)
-    execute l:lnum1 . ',' . l:lnum2 . 'left ' . l:leftmost
+    let [lnum1, lnum2] = [line("'["), line("']")]
+    execute lnum1 . ',' . lnum2 . 'right 79'
+    let lines = getline(lnum1, lnum2)
+    let lefts = map(lines, {key, val -> match(val, '\S')})
+    let leftmost = min(lefts)
+    execute lnum1 . ',' . lnum2 . 'left ' . leftmost
 endfunction
