@@ -211,7 +211,7 @@ let g:LanguageClient_serverCommands = {
     \   'c': ['ccls', s:ccls_options],
     \   'cpp': ['ccls', s:ccls_options],
     \   'python': ['pyls'],
-    \   'rust': ['rls'],
+    \   'rust': ['rust-analyzer'],
     \   'scala': ['metals-vim'],
     \   'yang': ['yang-language-server'],
     \ }
