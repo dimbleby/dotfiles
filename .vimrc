@@ -151,15 +151,15 @@ endif
 
 " Block formatting, IPS trace navigation {{{3
 if has('python3') || has('python')
-    Plug 'https://gitlab.datcon.co.uk/dch/BlockFormat.git'
-    Plug 'https://gitlab.datcon.co.uk/dch/vimips.git'
+    Plug 'https://git.datcon.co.uk/dch/BlockFormat.git'
+    Plug 'https://git.datcon.co.uk/dch/vimips.git'
 endif
 
 " Status line {{{3
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy finder {{{3
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Markdown preview {{{3
