@@ -72,6 +72,13 @@ if has('nvim') || has('patch-8.1.311')
     packadd cfilter
 endif
 
+" Recognise various archives {{{2
+augroup ArchiveFiles
+    autocmd!
+    autocmd BufReadCmd *.whl call zip#Browse(expand("<amatch>"))
+    autocmd BufReadCmd *.ova call tar#Browse(expand("<amatch>"))
+augroup END
+
 " Open terminal in insert mode {{{2
 if has('nvim')
     augroup OpenTerminal
