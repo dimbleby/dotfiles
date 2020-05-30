@@ -9,7 +9,8 @@ export HISTCONTROL=ignoreboth:erasedups
 export LS_COLORS='ow=0:di=0;94:'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if ! shopt -q login_shell; then
   return
