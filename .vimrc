@@ -220,6 +220,7 @@ let g:LanguageClient_serverCommands = {
     \   'python': ['pyls'],
     \   'rust': ['rust-analyzer'],
     \   'scala': ['metals-vim'],
+    \   'terraform': ['terraform-ls', 'serve'],
     \   'yang': ['yang-language-server'],
     \ }
 unlet s:ccls_options
@@ -337,13 +338,13 @@ if has('nvim') || has('job')
     augroup LanguageServerMappings
         autocmd!
         let s:lsp_fts = join(keys(g:LanguageClient_serverCommands), ',')
-        let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nnoremap <buffer> <silent> '
-        execute s:lsp_map . '<F5> :call LanguageClient_contextMenu()<CR>'
-        execute s:lsp_map . 'gd :call LanguageClient#textDocument_definition()<CR>'
-        execute s:lsp_map . '<LocalLeader>r :call LanguageClient#textDocument_references()<CR>'
-        execute s:lsp_map . 'K :call LanguageClient#textDocument_hover()<CR>'
-        execute s:lsp_map . '<LocalLeader>i :call LanguageClient#textDocument_implementation()<CR>'
-        execute s:lsp_map . '<LocalLeader>a :call LanguageClient#textDocument_codeAction()<CR>'
+        let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nmap <buffer> <silent> '
+        execute s:lsp_map . '<F5> <Plug>(lcn-menu)'
+        execute s:lsp_map . 'gd <Plug>(lcn-definition)'
+        execute s:lsp_map . '<LocalLeader>r <Plug>(lcn-references)'
+        execute s:lsp_map . 'K <Plug>(lcn-hover)'
+        execute s:lsp_map . '<LocalLeader>i <Plug>(lcn-implementation)'
+        execute s:lsp_map . '<LocalLeader>a <Plug>(lcn-code-action)'
         unlet s:lsp_map
         unlet s:lsp_fts
     augroup END
