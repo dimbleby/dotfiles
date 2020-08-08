@@ -217,7 +217,7 @@ let s:ccls_options = '--init=
 let g:LanguageClient_serverCommands = {
     \   'c': ['ccls', s:ccls_options],
     \   'cpp': ['ccls', s:ccls_options],
-    \   'python': ['pyls'],
+    \   'python': ['jedi-language-server'],
     \   'rust': ['rust-analyzer'],
     \   'scala': ['metals-vim'],
     \   'terraform': ['terraform-ls', 'serve'],
@@ -226,6 +226,7 @@ let g:LanguageClient_serverCommands = {
 unlet s:ccls_options
 let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
 let g:LanguageClient_rootMarkers = {
+    \   'terraform': ['main.tf'],
     \   'yang': ['yang.settings']
     \ }
 let g:LanguageClient_useVirtualText = 'CodeLens'
@@ -234,6 +235,7 @@ let g:LanguageClient_useVirtualText = 'CodeLens'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
 let g:ale_linters = map(copy(g:LanguageClient_serverCommands), '[]')
+unlet g:ale_linters.python
 
 " Lightline {{{2
 let g:lightline = {
@@ -338,14 +340,23 @@ if has('nvim') || has('job')
     augroup LanguageServerMappings
         autocmd!
         let s:lsp_fts = join(keys(g:LanguageClient_serverCommands), ',')
+
         let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nmap <buffer> <silent> '
         execute s:lsp_map . '<F5> <Plug>(lcn-menu)'
         execute s:lsp_map . 'gd <Plug>(lcn-definition)'
+        execute s:lsp_map . '<LocalLeader>t <Plug>(lcn-type-definition)'
         execute s:lsp_map . '<LocalLeader>r <Plug>(lcn-references)'
         execute s:lsp_map . 'K <Plug>(lcn-hover)'
         execute s:lsp_map . '<LocalLeader>i <Plug>(lcn-implementation)'
+        execute s:lsp_map . '<LocalLeader>l <Plug>(lcn-code-lens-action)'
+        execute s:lsp_map . '<LocalLeader>a <Plug>(lcn-code-action)'
+        execute s:lsp_map . '<LocalLeader>n <Plug>(lcn-rename)'
+
+        " This one is useful in visual mode too.
+        let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' vmap <buffer> <silent> '
         execute s:lsp_map . '<LocalLeader>a <Plug>(lcn-code-action)'
         unlet s:lsp_map
+
         unlet s:lsp_fts
     augroup END
 endif
