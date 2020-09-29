@@ -343,7 +343,7 @@ if has('nvim') || has('job')
 
         let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nmap <buffer> <silent> '
         execute s:lsp_map . '<F5> <Plug>(lcn-menu)'
-        execute s:lsp_map . 'gd <Plug>(lcn-definition)'
+        execute s:lsp_map . '<C-]> <Plug>(lcn-definition)'
         execute s:lsp_map . '<LocalLeader>t <Plug>(lcn-type-definition)'
         execute s:lsp_map . '<LocalLeader>r <Plug>(lcn-references)'
         execute s:lsp_map . 'K <Plug>(lcn-hover)'
