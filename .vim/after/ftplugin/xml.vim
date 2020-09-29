@@ -3,3 +3,4 @@ if executable('xmllint')
     setlocal formatprg=xmllint\ --format\ -
 endif
 setlocal foldmethod=indent
+setlocal textwidth=100
