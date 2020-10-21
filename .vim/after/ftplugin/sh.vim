@@ -1,3 +1,4 @@
+setlocal textwidth=100
 if executable('shfmt')
     setlocal formatprg=shfmt\ -i\ 2\ -sr\ -ci
 endif
