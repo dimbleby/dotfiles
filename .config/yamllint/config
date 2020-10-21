@@ -1,3 +1,5 @@
 rules:
+  line-length:
+    max: 100
   braces:
     max-spaces-inside: 1
