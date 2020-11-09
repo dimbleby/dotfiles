@@ -214,6 +214,7 @@ let s:ccls_options = '--init=
 let g:LanguageClient_serverCommands = {
     \   'c': ['ccls', s:ccls_options],
     \   'cpp': ['ccls', s:ccls_options],
+    \   'go': ['gopls'],
     \   'python': ['jedi-language-server'],
     \   'rust': ['rust-analyzer'],
     \   'scala': ['metals-vim'],
