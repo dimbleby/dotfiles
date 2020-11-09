@@ -2,23 +2,20 @@
 scriptencoding utf-8
 
 " Python environment {{{1
-" Prefer python3 {{{2
-if has('nvim')
-    let g:loaded_python_provider = 1
-endif
-if has('pythonx')
-    set pyxversion=3
-elseif has('python3')
-    " Forces python3 when we have both python/dyn and python3/dyn
-endif
-
-" Prefer the neovim virtualenv {{{2
+" Use the neovim virtualenv {{{2
 "
 " g:python3_host_prog is a neovim-only thing, but it's used unconditionally by
-" nvim-yarp - so set it always.
+" nvim-yarp - so set it always
 let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
-if exists('&pythonthreehome')
-    set pythonthreehome=~/.virtualenvs/neovim
+
+" Use python3, not python2 {{{2
+if has('pythonx')
+    set pyxversion=3
+endif
+if has('nvim')
+    let g:loaded_python_provider = 0
+elseif has('python3')
+    let $PYTHONPATH = $HOME.'/.virtualenvs/neovim/lib/python3.9/site-packages'
 endif
 
 " Preferences {{{1
@@ -166,7 +163,7 @@ endif
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy finder {{{3
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': function('fzf#install') }
 Plug 'junegunn/fzf.vim'
 
 " Markdown preview {{{3
