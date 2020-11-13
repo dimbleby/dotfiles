@@ -205,9 +205,12 @@ endif
 if exists('&termguicolors')
     set termguicolors
 endif
+augroup ColorOverrides
+    autocmd!
+    autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+augroup end
 let g:gruvbox_italic = 1
 colorscheme gruvbox
-highlight Normal guibg=NONE ctermbg=NONE
 
 " LanguageClient {{{2
 let g:LanguageClient_completionPreferTextEdit = 1
