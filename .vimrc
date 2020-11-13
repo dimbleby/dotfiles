@@ -99,7 +99,10 @@ set backupdir=~/.local/share/nvim/backup
 " Restore cursor position {{{2
 augroup RestoreCursor
     autocmd!
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    autocmd BufReadPost *
+      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
 augroup END
 
 " Plugins {{{1
