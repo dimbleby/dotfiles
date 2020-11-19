@@ -243,7 +243,7 @@ let g:LanguageClient_useVirtualText = 'CodeLens'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
 let g:ale_linters = map(copy(g:LanguageClient_serverCommands), '[]')
-let g:ale_linters.python = ['flake8']
+let g:ale_linters.python = ['flake8', 'mypy']
 
 " Lightline {{{2
 let g:lightline = {
