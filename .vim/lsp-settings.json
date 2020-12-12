@@ -1,5 +1,13 @@
 {
   "gopls": {
     "usePlaceholders": true
+  },
+  "rust-analyzer": {
+    "cargo": {
+      "loadOutDirsFromCheck": true
+    },
+    "procMacro": {
+      "enable": true
+    }
   }
 }
