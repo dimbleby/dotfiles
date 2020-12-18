@@ -34,6 +34,8 @@ fi
 # Most servers don't have terminfo for tmux.
 function ssh()
 {
-    local LOCAL_TERM=$(echo -n "$TERM" | sed -e s/tmux/xterm/)
+    local LOCAL_TERM=${TERM/tmux/xterm}
     env TERM="$LOCAL_TERM" command ssh "$@"
 }
+
+export NIPAP_SERVER=10.231.137.79
