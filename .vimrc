@@ -134,9 +134,16 @@ Plug 'nathanalderson/yang.vim'
 " Linting {{{3
 Plug 'dense-analysis/ale'
 
-" Language-client {{{3
+" LanguageClient {{{3
 if has('job') || has('nvim')
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+endif
+
+" Treesitter {{{3
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/playground'
 endif
 
 " Snippets {{{3
@@ -238,6 +245,65 @@ let g:LanguageClient_rootMarkers = {
     \   'yang': ['yang.settings']
     \ }
 let g:LanguageClient_useVirtualText = 'CodeLens'
+
+" Treesitter {{{2
+if has('nvim')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    'bash',
+    'c',
+    'cpp',
+    'go',
+    'json',
+    'lua',
+    'python',
+    'rust',
+    'toml',
+    'yaml',
+    'query',
+  },
+  highlight = {
+    enable = true,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@comment.outer",
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+      },
+    },
+  },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  },
+}
+EOF
+endif
 
 " Ale {{{2
 let g:ale_fix_on_save = 1
