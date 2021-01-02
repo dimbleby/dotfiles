@@ -3,4 +3,4 @@
 url = "http://artifactory.metaswitch.com/api/pypi/pypi-virtual/simple"
 
 [virtualenvs]
-path = "/data/developer/.virtualenvs"
+path = "/home/dch/.virtualenvs"
