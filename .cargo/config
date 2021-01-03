@@ -1,11 +1,11 @@
-[registry]
-default = "metaswitch"
+# [registry]
+# default = "metaswitch"
 
 [registries.metaswitch]
 index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
 
-[source.crates-io-mirror]
-registry = "https://git.datcon.co.uk/infrastructure.public/crates.io-mirror.git"
+# [source.crates-io-mirror]
+# registry = "https://git.datcon.co.uk/infrastructure.public/crates.io-mirror.git"
 
-[source.crates-io]
-replace-with = "crates-io-mirror"
+# [source.crates-io]
+# replace-with = "crates-io-mirror"
