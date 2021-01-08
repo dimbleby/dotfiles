@@ -1,6 +1,7 @@
 [user]
     name = David Hotham
     email = david.hotham@metaswitch.com
+    signingkey = E7EBDF65019C7473
 [grep]
     lineNumber = true
 [color "status"]
@@ -13,3 +14,5 @@
     default = simple
 [diff]
     algorithm = histogram
+[commit]
+    gpgsign = true
