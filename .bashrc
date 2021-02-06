@@ -87,6 +87,7 @@ if ! shopt -oq posix; then
 fi
 
 stty -ixon
+stty werase undef
 
 export VISUAL=~/.local/bin/nvim
 export EDITOR=~/.local/bin/nvim
