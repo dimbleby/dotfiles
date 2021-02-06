@@ -98,7 +98,7 @@ export KUBECTX_IGNORE_FZF=1
 export NIPAP_SERVER=10.231.137.79
 
 # add virtualenv and virtualenvwrapper paths
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 source ~/.local/bin/virtualenvwrapper.sh
