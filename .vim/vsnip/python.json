@@ -1,0 +1,35 @@
+{
+  "class": {
+    "prefix": [
+      "class"
+    ],
+    "body": [
+      "class ${1:MyClass}(${2:object}):",
+      "\t\"\"\"",
+      "\t${3}",
+      "\t\"\"\"",
+      "\tdef __init__(self${4}):"
+    ],
+    "description": "Code snippet for a class definition"
+  },
+  "ifmain": {
+    "prefix": [
+      "ifmain"
+    ],
+    "body": [
+      "if __name__ == \"__main__\":",
+      "\t${1:main()}"
+    ],
+    "description": "Code snippet for a `if __name__ == \"__main__\": ...` block"
+  },
+  "shebang": {
+    "prefix": [
+      "#!"
+    ],
+    "body": [
+      "#!/usr/bin/env python3",
+      "${0}"
+    ],
+    "description": "Code snippet for a python3 shebang"
+  }
+}

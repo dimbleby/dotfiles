@@ -44,6 +44,7 @@ set nomodeline
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5 sidescroll=1
 set sessionoptions-=options
+set shortmess+=c
 set showcmd noshowmode
 set splitbelow splitright
 set tabpagemax=50
@@ -134,9 +135,9 @@ Plug 'nathanalderson/yang.vim'
 " Linting {{{3
 Plug 'dense-analysis/ale'
 
-" LanguageClient {{{3
-if has('job') || has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+" Language Servers {{{3
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
 endif
 
 " Treesitter {{{3
@@ -146,21 +147,10 @@ if has('nvim')
     Plug 'nvim-treesitter/playground'
 endif
 
-" Snippets {{{3
-if has('python3') || has('python')
-    Plug 'SirVer/ultisnips'
-endif
-
-" Completions {{{3
-if has('nvim') || (has('python3') && has('job'))
-    if !has('nvim')
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
-    Plug 'roxma/nvim-yarp'
-    Plug 'ncm2/ncm2'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-ultisnips'
+" Completions and snippets {{{3
+if has('nvim')
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/vim-vsnip'
 endif
 
 " Block formatting, IPS trace navigation {{{3
@@ -173,22 +163,14 @@ endif
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy finder {{{3
-if has('lambda')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-else
-Plug 'junegunn/fzf'
-endif
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Markdown preview {{{3
-if has('nvim') || has('job')
+if has('nvim')
     function! BuildComposer(info)
     if a:info.status !=# 'unchanged' || a:info.force
-        if has('nvim')
-            !cargo build --release
-        else
-            !cargo build --release --no-default-features --features json-rpc
-        endif
+        !cargo build --release
     endif
     endfunction
     Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
@@ -219,32 +201,14 @@ augroup end
 let g:gruvbox_italic = 1
 colorscheme gruvbox
 
-" LanguageClient {{{2
-let g:LanguageClient_completionPreferTextEdit = 1
-let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_selectionUI = 'Quickfix'
-let s:ccls_options = '--init=
-    \{
-    \  "cache": {"directory": "'.$HOME.'/.cache/ccls"},
-    \  "completion": {"filterAndSort": false}
-    \}'
-let g:LanguageClient_serverCommands = {
-    \   'c': ['ccls', s:ccls_options],
-    \   'cpp': ['ccls', s:ccls_options],
-    \   'go': ['gopls'],
-    \   'python': ['jedi-language-server'],
-    \   'rust': ['rust-analyzer'],
-    \   'scala': ['metals-vim'],
-    \   'terraform': ['terraform-ls', 'serve'],
-    \   'yang': ['yang-language-server'],
-    \ }
-unlet s:ccls_options
-let g:LanguageClient_settingsPath = $HOME.'/.vim/lsp-settings.json'
-let g:LanguageClient_rootMarkers = {
-    \   'terraform': ['main.tf'],
-    \   'yang': ['yang.settings']
-    \ }
-let g:LanguageClient_useVirtualText = 'CodeLens'
+" Language servers {{{2
+if has('nvim')
+    lua require('lsp')
+    augroup LspSettings
+        autocmd!
+        autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false})
+    augroup END
+endif
 
 " Treesitter {{{2
 if has('nvim')
@@ -254,8 +218,14 @@ endif
 " Ale {{{2
 let g:ale_fix_on_save = 1
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
-let g:ale_linters = map(copy(g:LanguageClient_serverCommands), '[]')
+let g:ale_linters = {}
+let g:ale_linters.c = []
+let g:ale_linters.cpp = []
+let g:ale_linters.go = []
 let g:ale_linters.python = ['flake8', 'mypy']
+let g:ale_linters.rust = []
+let g:ale_linters.terraform = []
+let g:ale_linters.yang = []
 
 " Lightline {{{2
 let g:lightline = {
@@ -277,37 +247,10 @@ let g:markdown_composer_autostart = 0
 let g:elm_format_autosave = 0
 
 " Completion and snippets {{{2
-if has('nvim') || (has('python3') && has('job'))
-    " NCM2 {{{3
-    augroup NCM2
-        autocmd!
-        autocmd BufEnter * call ncm2#enable_for_buffer()
-        autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-        autocmd User Ncm2PopupClose set completeopt=menu,preview
-    augroup END
-
-    " UltiSnips with NCM2 {{{3
-    "
-    " This section is all about expanding snippets as provided by language
-    " servers - we need to make <C-j> smarter.
-    "
-    " We use that key first to try expanding with ncm2-ultisnips - which will
-    " handle language server snippets - and only after that fall back to
-    " regular UltiSnips function.
-    let g:UltiSnipsExpandTrigger       = '<Plug>(ultisnips_dummy)'
-    let g:UltiSnipsJumpForwardTrigger  = '<Plug>(ultisnips_dummy)'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-    inoremap <silent> <expr> <C-j> ncm2_ultisnips#expand_or('<Plug>(ultisnips_dummy)')
-    snoremap <silent> <C-j> <Esc>:call UltiSnips#ExpandSnippetOrJump()<CR>
-    xnoremap <silent> <C-j> :call UltiSnips#SaveLastVisualSelection()<CR>gvs
-
-    " Enable LanguageClient snippet support {{{3
-    let g:LanguageClient_hasSnippetSupport = 1
-else
-    " UltiSnips without NCM2 {{{3
-    let g:UltiSnipsExpandTrigger       = '<C-j>'
-    let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+set completeopt=menuone,noselect
+if has('nvim')
+    lua require('completion')
+    let g:vsnip_snippet_dir = $HOME.'/.vim/vsnip'
 endif
 
 " Mappings {{{1
@@ -326,10 +269,6 @@ nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
 " Insert undo point before deleting a line or word {{{2
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
-
-" Tab for cycling through completions {{{2
-inoremap <silent> <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
-inoremap <silent> <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
 
 " Terminal mode {{{2
 if has('nvim') || has('terminal')
@@ -354,29 +293,3 @@ nnoremap <Leader>r :Rg<CR>
 
 " Formatting the whole file {{{2
 nnoremap <silent> <Leader>q :call format#FormatFile()<CR>
-
-" Language server {{{2
-if has('nvim') || has('job')
-    augroup LanguageServerMappings
-        autocmd!
-        let s:lsp_fts = join(keys(g:LanguageClient_serverCommands), ',')
-
-        let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' nmap <buffer> <silent> '
-        execute s:lsp_map . '<F5> <Plug>(lcn-menu)'
-        execute s:lsp_map . '<C-]> <Plug>(lcn-definition)'
-        execute s:lsp_map . '<LocalLeader>t <Plug>(lcn-type-definition)'
-        execute s:lsp_map . '<LocalLeader>r <Plug>(lcn-references)'
-        execute s:lsp_map . 'K <Plug>(lcn-hover)'
-        execute s:lsp_map . '<LocalLeader>i <Plug>(lcn-implementation)'
-        execute s:lsp_map . '<LocalLeader>l <Plug>(lcn-code-lens-action)'
-        execute s:lsp_map . '<LocalLeader>a <Plug>(lcn-code-action)'
-        execute s:lsp_map . '<LocalLeader>n <Plug>(lcn-rename)'
-
-        " This one is useful in visual mode too.
-        let s:lsp_map = 'autocmd FileType ' . s:lsp_fts . ' vmap <buffer> <silent> '
-        execute s:lsp_map . '<LocalLeader>a <Plug>(lcn-code-action)'
-        unlet s:lsp_map
-
-        unlet s:lsp_fts
-    augroup END
-endif

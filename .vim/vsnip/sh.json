@@ -1,0 +1,12 @@
+{
+  "shebang": {
+    "prefix": [
+      "#!"
+    ],
+    "body": [
+      "#!/bin/bash",
+      "${0}"
+    ],
+    "description": "Code snippet for a bash shebang"
+  }
+}

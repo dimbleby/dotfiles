@@ -1,0 +1,137 @@
+{
+    "const": {
+        "prefix": "const",
+        "body": [
+            "const ${1:CONST}: ${2:Type} = ${4:init};"
+        ],
+        "description": "const …: … = …;"
+    },
+    "else": {
+        "prefix": "else",
+        "body": [
+            "else {",
+            "    ${1:unimplemented!();}",
+            "}"
+        ],
+        "description": "else { … }"
+    },
+    "enum": {
+        "prefix": "enum",
+        "body": [
+            "#[derive(Debug)]",
+            "enum ${1:Name} {",
+            "    ${2:Variant1},",
+            "    ${3:Variant2},",
+            "}"
+        ],
+        "description": "enum … { … }"
+    },
+    "fn": {
+        "prefix": "fn",
+        "body": [
+            "fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
+            "    ${5:unimplemented!();}",
+            "}"
+        ],
+        "description": "fn …(…) { … }"
+    },
+    "for": {
+        "prefix": "for",
+        "body": [
+            "for ${1:pat} in ${2:expr} {",
+            "    ${3:unimplemented!();}",
+            "}"
+        ],
+        "description": "for … in … { … }"
+    },
+    "if-let": {
+        "prefix": "if-let",
+        "body": [
+            "if let ${1:Some(pat)} = ${2:expr} {",
+            "    ${2:unimplemented!();}",
+            "}"
+        ],
+        "description": "if let … = … { … }"
+    },
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if ${1:condition} {",
+            "    ${2:unimplemented!();}",
+            "}"
+        ],
+        "description": "if … { … }"
+    },
+    "impl-trait": {
+        "prefix": "impl-trait",
+        "body": [
+            "impl ${1:Trait} for ${2:Type} {",
+            "    ${0}",
+            "}"
+        ],
+        "description": "impl … for … { … }"
+    },
+    "impl": {
+        "prefix": "impl",
+        "body": [
+            "impl ${1:Type} {",
+            "    ${0}",
+            "}"
+        ],
+        "description": "impl … { … }"
+    },
+    "loop": {
+        "prefix": "loop",
+        "body": [
+            "loop {",
+            "    ${2:unimplemented!();}",
+            "}"
+        ],
+        "description": "loop { … }"
+    },
+    "match": {
+        "prefix": "match",
+        "body": [
+            "match ${1:expr} {",
+            "    ${2:expr} => ${3:expr},",
+            "    ${4:expr} => ${5:expr},",
+            "}"
+        ],
+        "description": "match … { … }"
+    },
+    "static": {
+        "prefix": "static",
+        "body": [
+            "static ${1:STATIC}: ${2:Type} = ${4:init};"
+        ],
+        "description": "static …: … = …;"
+    },
+    "struct": {
+        "prefix": "struct",
+        "body": [
+            "#[derive(Debug)]",
+            "struct ${1:Name} {",
+            "    ${2:field}: ${3:Type}",
+            "}"
+        ],
+        "description": "struct … { … }"
+    },
+    "while-let": {
+        "prefix": "while-let",
+        "body": [
+            "while let ${1:Some(pat)} = ${2:expr} {",
+            "    ${2:unimplemented!();}",
+            "}"
+        ],
+        "description": "while let … = … { … }"
+    },
+    "while": {
+        "prefix": "while",
+        "body": [
+            "while ${1:condition} {",
+            "    ${2:unimplemented!();}",
+            "}"
+        ],
+        "description": "while … { … }"
+    }
+}
