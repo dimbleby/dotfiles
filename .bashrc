@@ -4,9 +4,6 @@ case $- in
   *) return ;;
 esac
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then . /etc/bashrc; fi
-
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
@@ -38,7 +35,7 @@ shopt -s globstar
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  eval "$(dircolors -b ~/.dircolors)"
   alias ls='ls --color=auto'
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
@@ -48,10 +45,8 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-# Avoid dark blue on a black background.
-export LS_COLORS='ow=0;36:di=0;36:'
-
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 # Completions.
 if ! shopt -oq posix; then
@@ -61,12 +56,20 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# shellcheck source=/dev/null
 if [ -f ~/.fzf/shell/key-bindings.bash ]; then . ~/.fzf/shell/key-bindings.bash; fi
 
 stty -ixon
 stty werase undef
 
+# shellcheck source=/dev/null
 source ~/.local/bin/virtualenvwrapper.sh
 
 alias vi='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Many servers don't have terminfo for tmux.
+function ssh() {
+  local LOCAL_TERM=${TERM/tmux/xterm}
+  env TERM="$LOCAL_TERM" /usr/bin/ssh "$@"
+}
