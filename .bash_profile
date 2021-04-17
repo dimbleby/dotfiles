@@ -31,19 +31,7 @@ if type -p bat > /dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
-ssh-add -l &> /dev/null
-if [ "$?" == 2 ]; then
-  test -r ~/.ssh-agent && eval "$(< ~/.ssh-agent)" > /dev/null
-
-  ssh-add -l &> /dev/null
-  if [ "$?" == 2 ]; then
-    (
-      umask 066
-      ssh-agent > ~/.ssh-agent
-    )
-    eval "$(< ~/.ssh-agent)" > /dev/null
-  fi
-fi
+eval "$(keychain --quiet --eval --agents gpg,ssh)"
 
 # shellcheck source=/dev/null
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
