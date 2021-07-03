@@ -1,3 +1,5 @@
 setlocal textwidth=100
 nnoremap <buffer> <Leader>q :TerraformFmt<CR>
-setlocal foldmethod=syntax
+if !exists('*nvim_treesitter#foldexpr()')
+    setlocal foldmethod=syntax
+endif
