@@ -205,7 +205,7 @@ if has('nvim')
     lua require('lsp')
     augroup LspSettings
         autocmd!
-        autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false})
+        autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open=false})
     augroup END
 endif
 
