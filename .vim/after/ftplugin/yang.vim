@@ -4,4 +4,6 @@ if executable('pyang')
     let &l:formatprg = 'pyang --path '.s:path.' --format yang --yang-canonical --keep-comments --'
     unlet s:path
 endif
-setlocal foldmethod=syntax
+if !exists('*nvim_treesitter#foldexpr()')
+    setlocal foldmethod=syntax
+endif
