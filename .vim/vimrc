@@ -2,20 +2,14 @@
 scriptencoding utf-8
 
 " Python environment {{{1
-" Use the neovim virtualenv {{{2
 "
-" g:python3_host_prog is a neovim-only thing, but it's used unconditionally by
-" nvim-yarp - so set it always
-let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
-
 " Use python3, not python2 {{{2
-if has('pythonx')
-    set pyxversion=3
-endif
+set pyxversion=3
+
+" Use the neovim virtualenv {{{2
 if has('nvim')
+    let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
     let g:loaded_python_provider = 0
-elseif has('python3')
-    let $PYTHONPATH = $HOME.'/.virtualenvs/neovim/lib/python3.9/site-packages'
 endif
 
 " Preferences {{{1
