@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<LocalLeader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('v', '<LocalLeader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>w', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>s', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 end
 
