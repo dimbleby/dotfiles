@@ -280,7 +280,7 @@ nnoremap <silent> <Leader>q :call format#FormatFile()<CR>
 
 " Open the URL under the cursor in a browser {{{2
 if has('nvim')
-    nnoremap gx <Cmd>call jobstart(["xdg-open", expand("<cfile>")])<CR>
+    nnoremap gx <Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>
 else
     nnoremap gx :call job_start('xdg-open '.expand('<cfile>'))<CR>
 endif
