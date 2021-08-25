@@ -49,8 +49,8 @@ if ! shopt -oq posix; then
   fi
 fi
 # shellcheck source=/dev/null
-if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
-  . ~/.vim/plugged/fzf/shell/key-bindings.bash
+if [ -f ~/.local/fzf/shell/key-bindings.bash ]; then
+  . ~/.local/fzf/shell/key-bindings.bash
 fi
 
 stty -ixon

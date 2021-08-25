@@ -157,8 +157,11 @@ if has('nvim')
 endif
 
 " Fuzzy finder {{{3
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+if has('nvim')
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+endif
 
 " Markdown preview {{{3
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
@@ -269,11 +272,12 @@ if !has('nvim')
 endif
 
 " Searching {{{2
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>f :Files<CR>
-nnoremap <expr> <Leader>g exists(':Ggrep') ? ':Ggrep!<Space>' : ':Rg<CR>'
-nnoremap <Leader>h :History<CR>
-nnoremap <Leader>r :Rg<CR>
+if has('nvim')
+    nnoremap <Leader>b <Cmd>Telescope buffers<CR>
+    nnoremap <Leader>f <Cmd>Telescope find_files<CR>
+    nnoremap <Leader>h <Cmd>Telescope oldfiles<CR>
+    nnoremap <Leader>r <Cmd>Telescope live_grep<CR>
+endif
 
 " Formatting the whole file {{{2
 nnoremap <silent> <Leader>q :call format#FormatFile()<CR>

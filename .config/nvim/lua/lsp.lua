@@ -6,16 +6,16 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = {noremap = true, silent = true}
-  buf_set_keymap('n', '<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<C-]>', '<Cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>t', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>n', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('v', '<LocalLeader>a', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>s', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
-  buf_set_keymap('n', '<LocalLeader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>i', '<Cmd>Telescope lsp_implementations<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>n', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>r', '<Cmd>Telescope lsp_references<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('v', '<LocalLeader>a', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>s', '<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>e', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 end
 
 local lspconfig = require'lspconfig'
