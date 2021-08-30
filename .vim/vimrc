@@ -249,7 +249,9 @@ endif
 let mapleader = "\<Space>"
 
 " Logical Y {{{2
-noremap Y y$
+if !has('nvim')
+    noremap Y y$
+endif
 
 " Avoid Ex mode {{{2
 nnoremap Q <nop>
