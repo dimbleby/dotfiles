@@ -92,15 +92,6 @@ endif
 set backup
 set backupdir=~/.local/share/nvim/backup
 
-" Restore cursor position {{{2
-augroup RestoreCursor
-    autocmd!
-    autocmd BufReadPost *
-      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-      \ |   exe "normal! g`\""
-      \ | endif
-augroup END
-
 " Plugins {{{1
 " Load plug.vim automatically {{{2
 if empty(glob('~/.vim/autoload/plug.vim'))
