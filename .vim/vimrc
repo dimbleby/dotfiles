@@ -24,6 +24,7 @@ if has('nvim') || has('patch-8.1.0360')
     set diffopt+=algorithm:histogram,indent-heuristic
 endif
 set foldlevelstart=99
+set nohidden
 set history=10000
 if exists('&inccommand')
     set inccommand=nosplit
@@ -239,20 +240,18 @@ endif
 " Leader {{{2
 let mapleader = "\<Space>"
 
-" Logical Y {{{2
-if !has('nvim')
-    noremap Y y$
-endif
-
 " Avoid Ex mode {{{2
 nnoremap Q <nop>
 
-" Improved <C-l> {{{2
-nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
-
-" Insert undo point before deleting a line or word {{{2
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
+" {{{2 Improved default mappings.
+"
+" These are all default already in neovim.
+if !has('nvim')
+    noremap Y y$
+    nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
+    inoremap <C-u> <C-g>u<C-u>
+    inoremap <C-w> <C-g>u<C-w>
+endif
 
 " Terminal mode {{{2
 if has('nvim') || has('terminal')
