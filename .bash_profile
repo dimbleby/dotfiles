@@ -33,5 +33,11 @@ fi
 
 eval "$(keychain --quiet --eval --agents gpg,ssh)"
 
+if command -v dockerd > /dev/null; then
+  if [[ "$(service docker status)" != " * Docker is running" ]]; then
+    sudo service docker start
+  fi
+fi
+
 # shellcheck source=/dev/null
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+if [[ -f ~/.bashrc ]]; then . ~/.bashrc; fi
