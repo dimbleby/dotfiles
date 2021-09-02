@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<LocalLeader>e', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 end
 
-local lspconfig = require'lspconfig'
+local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.util.default_config = vim.tbl_extend(
@@ -75,7 +75,7 @@ lspconfig.terraformls.setup {
   root_dir = lspconfig.util.root_pattern(".terraform", "main.tf", ".git");
 }
 
-local configs = require'lspconfig/configs'
+local configs = require('lspconfig/configs')
 if not lspconfig.yang_language_server then
   configs.yang_language_server = {
     default_config = {
