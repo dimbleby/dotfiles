@@ -145,7 +145,7 @@ Plug 'https://git.datcon.co.uk/dch/vimips.git'
 
 " Status line {{{3
 if has('nvim')
-    Plug 'hoob3rt/lualine.nvim'
+    Plug 'shadmansaleh/lualine.nvim'
 endif
 
 " Fuzzy finder {{{3
@@ -267,6 +267,7 @@ if has('nvim')
     nnoremap <Leader>f <Cmd>Telescope find_files<CR>
     nnoremap <Leader>h <Cmd>Telescope oldfiles<CR>
     nnoremap <Leader>r <Cmd>Telescope live_grep<CR>
+    nnoremap <Leader>g <Cmd>Telescope grep_string<CR>
 endif
 
 " Formatting the whole file {{{2
