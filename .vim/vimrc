@@ -7,10 +7,8 @@ scriptencoding utf-8
 set pyxversion=3
 
 " Use the neovim virtualenv {{{2
-if has('nvim')
-    let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
-    let g:loaded_python_provider = 0
-endif
+let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
+let g:loaded_python_provider = 0
 
 " Preferences {{{1
 " Defaults {{{2
@@ -21,19 +19,13 @@ set completeopt=menuone,noselect
 set dictionary=/usr/share/dict/words
 set display+=lastline
 set diffopt+=vertical
-if has('nvim') || has('patch-8.1.0360')
-    set diffopt+=algorithm:histogram,indent-heuristic
-endif
+set diffopt+=algorithm:histogram,indent-heuristic
 set foldlevelstart=99
 set nohidden
 set history=10000
-if exists('&inccommand')
-    set inccommand=nosplit
-endif
+set inccommand=nosplit
 set incsearch
-if exists('&jumpoptions')
-    set jumpoptions=stack
-endif
+set jumpoptions=stack
 set laststatus=2
 set lazyredraw
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -45,9 +37,6 @@ set shortmess+=c
 set showcmd noshowmode
 set splitbelow splitright
 set tabpagemax=50
-if !has('nvim')
-    set ttyfast
-endif
 set wildmenu
 
 " Indenting and formatting {{{2
@@ -70,12 +59,10 @@ augroup ArchiveFiles
 augroup END
 
 " Open terminal in insert mode {{{2
-if has('nvim')
-    augroup OpenTerminal
-        autocmd!
-        autocmd TermOpen,WinEnter term://* startinsert
-    augroup END
-endif
+augroup OpenTerminal
+    autocmd!
+    autocmd TermOpen,WinEnter term://* startinsert
+augroup END
 
 " Use ripgrep {{{2
 if executable('rg')
@@ -89,92 +76,15 @@ endif
 set backup
 set backupdir=~/.local/share/nvim/backup
 
-" Plugins {{{1
-" Load plug.vim automatically {{{2
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    " vint: next-line -ProhibitAutocmdWithNoGroup
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" Configuration for lua plugins {{{2
+lua require('plugins')
 
-" Install plugins {{{2
-call plug#begin('~/.vim/plugged')
-
-" Color scheme {{{3
-Plug 'lifepillar/vim-gruvbox8'
-
-" Language-specific highlighting and suchlike {{{3
-Plug 'pearofducks/ansible-vim'
-Plug 'ElmCast/elm-vim'
-Plug 'dimbleby/vim-minizinc'
-Plug 'dimbleby/vim-p4-syntax'
-Plug 'rust-lang/rust.vim'
-Plug 'derekwyatt/vim-scala'
-Plug 'hashivim/vim-terraform'
-Plug 'cespare/vim-toml'
-Plug 'nathanalderson/yang.vim'
-
-" Linting {{{3
-Plug 'dense-analysis/ale'
-
-" Language Servers {{{3
-if has('nvim')
-    Plug 'neovim/nvim-lspconfig'
-endif
-
-" Treesitter {{{3
-if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-endif
-
-" Completions and snippets {{{3
-if has('nvim')
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-vsnip'
-endif
-
-" Block formatting, IPS trace navigation {{{3
-Plug 'https://git.datcon.co.uk/dch/BlockFormat.git'
-Plug 'https://git.datcon.co.uk/dch/vimips.git'
-
-" Status line {{{3
-if has('nvim')
-    Plug 'shadmansaleh/lualine.nvim'
-endif
-
-" Fuzzy finder {{{3
-if has('nvim')
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-endif
-
-" Markdown preview {{{3
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
-" Miscellany {{{3
-Plug 'justinmk/vim-dirvish'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-call plug#end()
+" Treesitter folding by default {{{2
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " Colours {{{2
-if !has('nvim')
-    set t_8f=[38;2;%lu;%lu;%lum
-    set t_8b=[48;2;%lu;%lu;%lum
-endif
-if exists('&termguicolors')
-    set termguicolors
-endif
+set termguicolors
 augroup ColorOverrides
     autocmd!
     autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
@@ -183,23 +93,10 @@ let g:gruvbox_italicize_strings = 0
 colorscheme gruvbox8
 
 " Language servers {{{2
-if has('nvim')
-    augroup LspSettings
-        autocmd!
-        autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open=false})
-    augroup END
-endif
-
-" Configuration for lua plugins {{{2
-if has('nvim')
-lua << EOF
-    require('completion')
-    require('lsp')
-    require('lualine-config')
-    require('telescope-config')
-    require('treesitter-config')
-EOF
-endif
+augroup LspSettings
+    autocmd!
+    autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open=false})
+augroup END
 
 " Ale {{{2
 let g:ale_fix_on_save = 1
@@ -220,15 +117,7 @@ let g:markdown_composer_autostart = 0
 let g:elm_format_autosave = 0
 
 " Snippets {{{2
-if has('nvim')
-    let g:vsnip_snippet_dir = $HOME.'/.vim/vsnip'
-endif
-
-" Treesitter folding by default {{{2
-if has('nvim')
-    set foldmethod=expr
-    set foldexpr=nvim_treesitter#foldexpr()
-endif
+let g:vsnip_snippet_dir = $HOME.'/.vim/vsnip'
 
 " Mappings {{{1
 " Leader {{{2
@@ -237,45 +126,19 @@ let mapleader = "\<Space>"
 " Avoid Ex mode {{{2
 nnoremap Q <nop>
 
-" {{{2 Improved default mappings.
-"
-" These are all default already in neovim.
-if !has('nvim')
-    noremap Y y$
-    nnoremap <C-l> :nohlsearch<Bar>diffupdate<CR><C-l>
-    inoremap <C-u> <C-g>u<C-u>
-    inoremap <C-w> <C-g>u<C-w>
-endif
-
 " Terminal mode {{{2
-if has('nvim') || has('terminal')
-    tnoremap <Esc> <C-\><C-n>
-endif
-if has('nvim')
-    tnoremap <C-w> <C-\><C-n><C-w>
-endif
-
-" Sudo write {{{2
-" NB broken in neovim - https://github.com/neovim/neovim/issues/1716
-if !has('nvim')
-    cnoremap w!! w !sudo tee % > /dev/null
-endif
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w> <C-\><C-n><C-w>
 
 " Searching {{{2
-if has('nvim')
-    nnoremap <Leader>b <Cmd>Telescope buffers<CR>
-    nnoremap <Leader>f <Cmd>Telescope find_files<CR>
-    nnoremap <Leader>h <Cmd>Telescope oldfiles<CR>
-    nnoremap <Leader>r <Cmd>Telescope live_grep<CR>
-    nnoremap <Leader>g <Cmd>Telescope grep_string<CR>
-endif
+nnoremap <Leader>b <Cmd>Telescope buffers<CR>
+nnoremap <Leader>f <Cmd>Telescope find_files<CR>
+nnoremap <Leader>h <Cmd>Telescope oldfiles<CR>
+nnoremap <Leader>r <Cmd>Telescope live_grep<CR>
+nnoremap <Leader>g <Cmd>Telescope grep_string<CR>
 
 " Formatting the whole file {{{2
 nnoremap <silent> <Leader>q :call format#FormatFile()<CR>
 
 " Open the URL under the cursor in a browser {{{2
-if has('nvim')
-    nnoremap gx <Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>
-else
-    nnoremap gx :call job_start('xdg-open '.expand('<cfile>'))<CR>
-endif
+nnoremap gx <Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>
