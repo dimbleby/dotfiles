@@ -17,6 +17,7 @@ endif
 set autoread
 set background=dark
 set complete-=i
+set completeopt=menuone,noselect
 set dictionary=/usr/share/dict/words
 set display+=lastline
 set diffopt+=vertical
@@ -183,16 +184,21 @@ colorscheme gruvbox8
 
 " Language servers {{{2
 if has('nvim')
-    lua require('lsp')
     augroup LspSettings
         autocmd!
         autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open=false})
     augroup END
 endif
 
-" Treesitter {{{2
+" Configuration for lua plugins {{{2
 if has('nvim')
-    lua require('treesitter-config')
+lua << EOF
+    require('completion')
+    require('lsp')
+    require('lualine-config')
+    require('telescope-config')
+    require('treesitter-config')
+EOF
 endif
 
 " Ale {{{2
@@ -207,21 +213,14 @@ let g:ale_linters.rust = []
 let g:ale_linters.terraform = []
 let g:ale_linters.yang = []
 
-" Lualine {{{2
-if has('nvim')
-    lua require('lualine-config')
-endif
-
 " Markdown preview {{{2
 let g:markdown_composer_autostart = 0
 
 " Elm {{{2
 let g:elm_format_autosave = 0
 
-" Completion and snippets {{{2
-set completeopt=menuone,noselect
+" Snippets {{{2
 if has('nvim')
-    lua require('completion')
     let g:vsnip_snippet_dir = $HOME.'/.vim/vsnip'
 endif
 
