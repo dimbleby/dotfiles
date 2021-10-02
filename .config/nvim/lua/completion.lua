@@ -16,8 +16,7 @@ cmp.setup {
 
   mapping = {
     ['<Tab>'] = cmp.mapping(function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t('<C-n>'), 'n')
+        if cmp.select_next_item() then
         elseif vim.fn['vsnip#available']() == 1 then
           vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'))
         else
@@ -26,8 +25,7 @@ cmp.setup {
       end,
       { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t('<C-p>'), 'n')
+        if cmp.select_prev_item() then
         elseif vim.fn['vsnip#available']() == 1 then
           vim.fn.feedkeys(t('<Plug>(vsnip-jump-prev)'))
         else
