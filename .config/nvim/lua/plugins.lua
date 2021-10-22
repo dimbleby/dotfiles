@@ -58,7 +58,7 @@ return require('packer').startup(function()
 
   -- Status line
   use {
-    'shadmansaleh/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     config = [[require('lualine-config')]]
   }
 
