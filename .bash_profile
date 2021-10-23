@@ -18,12 +18,6 @@ export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 
 export NIPAP_SERVER=10.231.137.79
 
-if [[ "$(< /proc/sys/kernel/osrelease)" == *microsoft* ]]; then
-  WSL_HOST=$(ip -4 route show default dev eth0 | awk '{ print $3 }')
-  export DISPLAY=$WSL_HOST:0
-  export LIBGL_ALWAYS_INDIRECT=1
-fi
-
 export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$PATH
 
 if type -p bat > /dev/null; then
