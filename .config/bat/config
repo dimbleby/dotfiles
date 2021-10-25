@@ -4,3 +4,4 @@
 --map-syntax "Mudlark.lock:YAML"
 --map-syntax "poetry.lock:TOML"
 --map-syntax "svalbard.lock:TOML"
+--map-syntax "*.sarif:JSON"
