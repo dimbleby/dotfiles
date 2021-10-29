@@ -20,7 +20,7 @@ export NIPAP_SERVER=10.231.137.79
 
 export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$PATH
 
-if type -p bat > /dev/null; then
+if command -v bat > /dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
