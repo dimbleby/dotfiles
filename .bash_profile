@@ -18,7 +18,7 @@ export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 
 export NIPAP_SERVER=10.231.137.79
 
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.msrustup/bin:$HOME/.cargo/bin:$PATH
 
 if command -v bat > /dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"

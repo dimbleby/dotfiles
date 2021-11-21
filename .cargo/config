@@ -4,6 +4,9 @@
 [registries.metaswitch]
 index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
 
+[registries.crates-ms]
+index = 'sparse+https://crates.microsoft.com/index/'
+
 # [source.crates-io-mirror]
 # registry = "https://git.datcon.co.uk/infrastructure.public/crates.io-mirror.git"
 
