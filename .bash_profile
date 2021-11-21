@@ -33,4 +33,6 @@ if command -v dockerd > /dev/null; then
 fi
 
 # shellcheck source=/dev/null
+if [[ -f ~/.set-secrets.sh ]]; then . ~/.set-secrets.sh; fi
+# shellcheck source=/dev/null
 if [[ -f ~/.bashrc ]]; then . ~/.bashrc; fi
