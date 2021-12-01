@@ -9,12 +9,12 @@ return require('packer').startup({
     use 'lifepillar/vim-gruvbox8'
 
     -- Language-specific highlighting and suchlike
-    use 'pearofducks/ansible-vim'
-    use 'ElmCast/elm-vim'
-    use 'dimbleby/vim-minizinc'
-    use 'dimbleby/vim-p4-syntax'
+    -- use 'pearofducks/ansible-vim'
+    -- use 'ElmCast/elm-vim'
+    -- use 'dimbleby/vim-minizinc'
+    -- use 'dimbleby/vim-p4-syntax'
     use 'rust-lang/rust.vim'
-    use 'derekwyatt/vim-scala'
+    -- use 'derekwyatt/vim-scala'
     use 'hashivim/vim-terraform'
     use 'cespare/vim-toml'
     use 'nathanalderson/yang.vim'
@@ -56,8 +56,8 @@ return require('packer').startup({
     }
 
     -- Block formatting, IPS trace navigation
-    use 'https://git.datcon.co.uk/dch/BlockFormat.git'
-    use 'https://git.datcon.co.uk/dch/vimips.git'
+    -- use 'https://git.datcon.co.uk/dch/BlockFormat.git'
+    -- use 'https://git.datcon.co.uk/dch/vimips.git'
 
     -- Status line
     use {
