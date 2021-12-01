@@ -78,14 +78,15 @@ lspconfig.terraformls.setup {
   root_dir = lspconfig.util.root_pattern(".terraform", "main.tf", ".git");
 }
 
-local configs = require('lspconfig/configs')
-if not lspconfig.yang_language_server then
+local configs = require('lspconfig.configs')
+local util = require('lspconfig.util')
+if not configs.yang_language_server then
   configs.yang_language_server = {
     default_config = {
-      cmd = {'yang-language-server'};
-      filetypes = {'yang'};
-      root_dir = lspconfig.util.root_pattern("yang.settings", ".git");
-      settings = {};
+      cmd = {'yang-language-server'},
+      filetypes = {'yang'},
+      root_dir = util.root_pattern("yang.settings", ".git"),
+      settings = {},
     };
   }
 end
