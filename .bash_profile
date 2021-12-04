@@ -24,7 +24,9 @@ if command -v bat > /dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
-eval "$(keychain --quiet --eval --agents gpg,ssh)"
+if command -v keychain > /dev/null; then
+  eval "$(keychain --quiet --eval --agents gpg,ssh)"
+fi
 
 if command -v dockerd > /dev/null; then
   if [[ "$(service docker status)" != " * Docker is running" ]]; then

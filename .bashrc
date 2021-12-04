@@ -57,7 +57,9 @@ stty -ixon
 stty werase undef
 
 # shellcheck source=/dev/null
-source ~/.local/bin/virtualenvwrapper.sh
+if [[ -f ~/.local/bin/virtualenvwrapper.sh ]]; then
+  source ~/.local/bin/virtualenvwrapper.sh
+fi
 
 alias vi='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
