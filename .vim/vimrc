@@ -97,7 +97,7 @@ colorscheme gruvbox8
 " Language servers {{{2
 augroup LspSettings
     autocmd!
-    autocmd User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open=false})
+    autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})
 augroup END
 
 " Ale {{{2
