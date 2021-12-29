@@ -80,6 +80,7 @@ set backupdir=~/.local/share/nvim/backup
 lua require('impatient')
 lua require('packer_compiled')
 lua require('plugins')
+lua require('diagnostics')
 
 " Treesitter folding by default {{{2
 set foldmethod=expr
@@ -94,23 +95,19 @@ augroup end
 let g:gruvbox_italicize_strings = 0
 colorscheme gruvbox8
 
-" Language servers {{{2
-augroup LspSettings
+" Diagnostics {{{2
+augroup Linting
     autocmd!
     autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})
+    autocmd BufWritePost * lua require('lint').try_lint()
+    autocmd FileType * lua require('lint').try_lint()
 augroup END
 
-" Ale {{{2
-let g:ale_fix_on_save = 1
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
-let g:ale_linters = {}
-let g:ale_linters.c = []
-let g:ale_linters.cpp = []
-let g:ale_linters.go = []
-let g:ale_linters.python = ['flake8', 'mypy']
-let g:ale_linters.rust = []
-let g:ale_linters.terraform = []
-let g:ale_linters.yang = []
+" Whitespace {{{2
+augroup Whitespace
+    autocmd!
+    autocmd BufWritePre * if !&binary | call format#TrimWhitespace() | endif
+augroup END
 
 " Markdown preview {{{2
 let g:markdown_composer_autostart = 0

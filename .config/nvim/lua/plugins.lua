@@ -20,7 +20,7 @@ return require('packer').startup({
     use 'nathanalderson/yang.vim'
 
     -- Linting
-    use 'dense-analysis/ale'
+    use 'mfussenegger/nvim-lint'
 
     -- Language Server
     use {
