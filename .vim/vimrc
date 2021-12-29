@@ -80,7 +80,6 @@ set backupdir=~/.local/share/nvim/backup
 lua require('impatient')
 lua require('packer_compiled')
 lua require('plugins')
-lua require('diagnostics')
 
 " Treesitter folding by default {{{2
 set foldmethod=expr
@@ -96,6 +95,8 @@ let g:gruvbox_italicize_strings = 0
 colorscheme gruvbox8
 
 " Diagnostics {{{2
+lua vim.diagnostic.config({virtual_text = false})
+
 augroup Linting
     autocmd!
     autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})

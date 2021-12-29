@@ -20,7 +20,18 @@ return require('packer').startup({
     use 'nathanalderson/yang.vim'
 
     -- Linting
-    use 'mfussenegger/nvim-lint'
+    use {
+      'mfussenegger/nvim-lint',
+      config = function()
+        require('lint').linters_by_ft = {
+          sh = {'shellcheck'},
+          dockerfile = {'hadolint'},
+          python = {'flake8', 'mypy'},
+          vim = {'vint'},
+          yaml = {'yamllint'},
+        }
+      end
+    }
 
     -- Language Server
     use {
@@ -62,7 +73,14 @@ return require('packer').startup({
     -- Status line
     use {
       'nvim-lualine/lualine.nvim',
-      config = [[require('lualine-config')]]
+      config = function()
+        require('lualine').setup {
+          options = {
+            icons_enabled = false,
+            theme = 'gruvbox'
+          }
+        }
+      end
     }
 
     -- Fuzzy finder
@@ -73,7 +91,11 @@ return require('packer').startup({
           'nvim-lua/plenary.nvim',
           'telescope-fzf-native.nvim',
         },
-        config = [[require('telescope-config')]]
+        config = function()
+          local telescope = require('telescope')
+          telescope.setup {}
+          telescope.load_extension('fzf')
+        end
       },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
