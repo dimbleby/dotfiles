@@ -139,5 +139,10 @@ nnoremap <Leader>g <Cmd>Telescope grep_string<CR>
 " Formatting the whole file {{{2
 nnoremap <silent> <Leader>q :call format#FormatFile()<CR>
 
+" Navigating diagnostics {{{2
+nnoremap <Leader>e <Cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>
+nnoremap [d <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap ]d <Cmd>lua vim.diagnostic.goto_next()<CR>
+
 " Open the URL under the cursor in a browser {{{2
 nnoremap gx <Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>
