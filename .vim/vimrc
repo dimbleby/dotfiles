@@ -99,7 +99,6 @@ lua vim.diagnostic.config({virtual_text = false})
 
 augroup Linting
     autocmd!
-    autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})
     autocmd BufWritePost * lua require('lint').try_lint()
     autocmd FileType * lua require('lint').try_lint()
 augroup END

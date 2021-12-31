@@ -17,6 +17,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('v', '<LocalLeader>a', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>s', '<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>e', '<Cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', opts)
+  buf_set_keymap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 end
 
 local lspconfig = require('lspconfig')
