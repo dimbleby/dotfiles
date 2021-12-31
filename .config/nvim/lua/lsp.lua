@@ -30,13 +30,6 @@ lspconfig.util.default_config = vim.tbl_extend(
     flags = {
       exit_timeout = false,
     },
-    handlers = {
-      ["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-      }
-      ),
-    },
     on_attach = on_attach
   }
 )
