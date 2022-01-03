@@ -54,18 +54,7 @@ lspconfig.gopls.setup {
 
 lspconfig.jedi_language_server.setup{}
 
-lspconfig.rust_analyzer.setup {
-  settings = {
-    ["rust-analyzer"] = {
-      cargo = {
-        loadOutDirsFromCheck = true
-      },
-      procMacro = {
-        enable = true
-      }
-    }
-  }
-}
+lspconfig.rust_analyzer.setup{}
 
 lspconfig.terraformls.setup {
   root_dir = lspconfig.util.root_pattern(".terraform", "main.tf", ".git");
