@@ -10,6 +10,10 @@ set pyxversion=3
 let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
 let g:loaded_python_provider = 0
 
+" Lua filetype detection {{{2
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
+
 " Preferences {{{1
 " Defaults {{{2
 set autoread
