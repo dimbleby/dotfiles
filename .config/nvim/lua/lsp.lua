@@ -57,7 +57,7 @@ lspconfig.jedi_language_server.setup{}
 lspconfig.rust_analyzer.setup{}
 
 lspconfig.terraformls.setup {
-  root_dir = lspconfig.util.root_pattern(".terraform", "main.tf", ".git");
+  root_dir = lspconfig.util.root_pattern(".terraform", "terraform.tfvars", ".git");
 }
 
 local configs = require('lspconfig.configs')
