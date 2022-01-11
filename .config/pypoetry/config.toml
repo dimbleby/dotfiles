@@ -2,5 +2,8 @@
 [repositories.artifactory]
 url = "http://artifactory.metaswitch.com/api/pypi/pypi-virtual/simple"
 
+[repositories.ado]
+url = "https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/python/pypi/simple/"
+
 [virtualenvs]
 path = "/home/dch/.virtualenvs"
