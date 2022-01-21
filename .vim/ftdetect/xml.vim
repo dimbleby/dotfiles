@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile *.ovf set filetype=xml
+autocmd BufRead,BufNewFile *.dita,*.ovf set filetype=xml
