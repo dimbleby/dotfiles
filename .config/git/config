@@ -1,7 +1,7 @@
 [user]
     name = David Hotham
-    email = david.hotham@metaswitch.com
-    signingkey = E7EBDF65019C7473
+    email = david.hotham@microsoft.com
+    signingkey = 2A8E236D8BB26B7B4C14462DFC427B0279945911
 [grep]
     lineNumber = true
 [color "status"]
