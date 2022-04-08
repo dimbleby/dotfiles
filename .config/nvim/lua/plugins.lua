@@ -17,7 +17,7 @@ return require('packer').startup({
     -- use 'derekwyatt/vim-scala'
     use 'hashivim/vim-terraform'
     use 'cespare/vim-toml'
-    use 'nathanalderson/yang.vim'
+    use { 'nathanalderson/yang.vim', branch = 'main' }
 
     -- Linting
     use {
