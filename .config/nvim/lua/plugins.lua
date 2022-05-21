@@ -112,10 +112,10 @@ return require('packer').startup({
 
     -- Miscellany
     use 'justinmk/vim-dirvish'
+    use 'machakann/vim-sandwich'
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-repeat'
-    use 'tpope/vim-surround'
     use 'tpope/vim-unimpaired'
   end,
   config = {
