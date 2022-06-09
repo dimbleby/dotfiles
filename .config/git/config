@@ -12,7 +12,16 @@
     editor = nvim
 [push]
     default = simple
-[diff]
-    algorithm = histogram
 [commit]
     gpgsign = true
+[diff]
+    algorithm = histogram
+    tool = difftastic
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft --display=inline "$LOCAL" "$REMOTE"
+[pager]
+    difftool = true
+[alias]
+    dft = difftool
