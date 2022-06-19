@@ -1,16 +1,7 @@
 " Prelude {{{1
 scriptencoding utf-8
 
-" Python environment {{{1
-"
-" Use python3, not python2 {{{2
-set pyxversion=3
-
-" Use the neovim virtualenv {{{2
-let g:python3_host_prog = $HOME.'/.virtualenvs/neovim/bin/python3'
-let g:loaded_python_provider = 0
-
-" Lua filetype detection {{{2
+" Lua filetype detection {{{1
 let g:do_filetype_lua = 1
 let g:did_load_filetypes = 0
 
