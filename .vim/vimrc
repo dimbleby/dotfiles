@@ -141,3 +141,12 @@ nnoremap ]d <Cmd>lua vim.diagnostic.goto_next()<CR>
 
 " Open the URL under the cursor in a browser {{{2
 nnoremap gx <Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>
+
+" Mappings for vim-sandwich {{{2
+let g:textobj_sandwich_no_default_key_mappings = 1
+nmap s <Nop>
+xmap s <Nop>
+xmap iq <Plug>(textobj-sandwich-query-i)
+omap iq <Plug>(textobj-sandwich-query-i)
+xmap aq <Plug>(textobj-sandwich-query-a)
+omap aq <Plug>(textobj-sandwich-query-a)
