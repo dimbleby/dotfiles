@@ -1,10 +1,6 @@
 " Prelude {{{1
 scriptencoding utf-8
 
-" Lua filetype detection {{{1
-let g:do_filetype_lua = 1
-let g:did_load_filetypes = 0
-
 " Preferences {{{1
 " Defaults {{{2
 set autoread
