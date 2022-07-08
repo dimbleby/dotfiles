@@ -25,3 +25,5 @@
     difftool = true
 [alias]
     dft = difftool
+[init]
+    defaultBranch = main
