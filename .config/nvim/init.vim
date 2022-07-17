@@ -20,6 +20,7 @@ set jumpoptions=stack
 set laststatus=2
 set lazyredraw
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set mouse=
 set nomodeline
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5 sidescroll=1
