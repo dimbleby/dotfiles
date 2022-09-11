@@ -33,16 +33,7 @@ lspconfig.util.default_config = vim.tbl_extend(
   }
 )
 
-lspconfig.ccls.setup {
-  init_options = {
-    cache = {
-      directory = vim.env.HOME .. '/.cache/ccls'
-    },
-    completion = {
-      filterAndSort = false
-    }
-  }
-}
+lspconfig.clangd.setup{}
 
 lspconfig.gopls.setup {
   settings = {
