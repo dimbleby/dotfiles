@@ -51,13 +51,12 @@ lspconfig.terraformls.setup {
 }
 
 local configs = require('lspconfig.configs')
-local util = require('lspconfig.util')
 if not configs.yang_language_server then
   configs.yang_language_server = {
     default_config = {
       cmd = {'yang-language-server'},
       filetypes = {'yang'},
-      root_dir = util.root_pattern("yang.settings", ".git"),
+      root_dir = lspconfig.util.root_pattern("yang.settings", ".git"),
       settings = {},
     };
   }
