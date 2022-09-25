@@ -14,7 +14,6 @@ return require('packer').startup({
     -- use 'dimbleby/vim-minizinc'
     -- use 'dimbleby/vim-p4-syntax'
     use 'rust-lang/rust.vim'
-    -- use 'derekwyatt/vim-scala'
     use 'hashivim/vim-terraform'
     use { 'nathanalderson/yang.vim', branch = 'main' }
 
