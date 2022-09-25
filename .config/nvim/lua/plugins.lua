@@ -10,7 +10,6 @@ return require('packer').startup({
 
     -- Language-specific highlighting and suchlike
     -- use 'pearofducks/ansible-vim'
-    -- use 'ElmCast/elm-vim'
     -- use 'dimbleby/vim-minizinc'
     -- use 'dimbleby/vim-p4-syntax'
     use 'rust-lang/rust.vim'
