@@ -104,9 +104,6 @@ augroup END
 " Markdown preview {{{2
 let g:markdown_composer_autostart = 0
 
-" Elm {{{2
-let g:elm_format_autosave = 0
-
 " Snippets {{{2
 let g:vsnip_snippet_dir = $HOME.'/.config/nvim/vsnip'
 
