@@ -1,9 +1,6 @@
 vim.lsp.set_log_level("OFF")
 
 local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
-
   -- Mappings.
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   local telescope_builtin = require('telescope.builtin')
@@ -25,9 +22,6 @@ lspconfig.util.default_config = vim.tbl_extend(
   lspconfig.util.default_config,
   {
     capabilities = capabilities,
-    flags = {
-      exit_timeout = false,
-    },
     on_attach = on_attach
   }
 )
