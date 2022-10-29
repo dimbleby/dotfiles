@@ -82,22 +82,16 @@ return require('packer').startup({
 
     -- Fuzzy finder
     use {
-      {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-          'nvim-lua/plenary.nvim',
-          'telescope-fzf-native.nvim',
-        },
-        config = function()
-          local telescope = require('telescope')
-          telescope.setup {}
-          telescope.load_extension('fzf')
-        end
-      },
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
-      }
+      'ibhagwan/fzf-lua',
+      config = function()
+        require('fzf-lua').setup {
+          keymap = {
+            fzf = {
+              ["CTRL-Q"] = "select-all+accept",
+            }
+          }
+        }
+      end
     }
 
     -- Markdown preview

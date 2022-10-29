@@ -116,11 +116,11 @@ tnoremap <Esc> <C-\><C-n>
 tnoremap <C-w> <C-\><C-n><C-w>
 
 " Searching {{{2
-nnoremap <Leader>b <Cmd>Telescope buffers<CR>
-nnoremap <Leader>f <Cmd>Telescope find_files<CR>
-nnoremap <Leader>h <Cmd>Telescope oldfiles<CR>
-nnoremap <Leader>r <Cmd>Telescope live_grep<CR>
-nnoremap <Leader>g <Cmd>Telescope grep_string<CR>
+nnoremap <Leader>b <Cmd>FzfLua buffers<CR>
+nnoremap <Leader>f <Cmd>FzfLua files<CR>
+nnoremap <Leader>h <Cmd>FzfLua oldfiles<CR>
+nnoremap <Leader>r <Cmd>FzfLua live_grep_native<CR>
+nnoremap <Leader>g <Cmd>FzfLua grep_cword<CR>
 
 " Formatting the whole file {{{2
 nnoremap <silent> <Leader>q :call format#FormatFile()<CR>

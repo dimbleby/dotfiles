@@ -3,15 +3,40 @@ vim.lsp.set_log_level("OFF")
 local on_attach = function(client, bufnr)
   -- Mappings.
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  local telescope_builtin = require('telescope.builtin')
-  vim.keymap.set('n', '<C-]>', telescope_builtin.lsp_definitions, opts)
+  vim.keymap.set(
+    'n',
+    '<C-]>',
+    function()
+      require('fzf-lua').lsp_definitions({jump_to_single_result = true})
+    end,
+    opts
+  )
   vim.keymap.set('n', '<LocalLeader>t', vim.lsp.buf.type_definition, opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<LocalLeader>i', telescope_builtin.lsp_implementations, opts)
+  vim.keymap.set(
+    'n',
+    '<LocalLeader>i',
+    function()
+      require('fzf-lua').lsp_implementations({jump_to_single_result = true})
+    end,
+    opts
+  )
   vim.keymap.set('n', '<LocalLeader>n', vim.lsp.buf.rename, opts)
-  vim.keymap.set('n', '<LocalLeader>r', telescope_builtin.lsp_references, opts)
+  vim.keymap.set(
+    'n',
+    '<LocalLeader>r',
+    function()
+      require('fzf-lua').lsp_references({jump_to_single_result = true})
+    end,
+    opts
+  )
   vim.keymap.set({'n', 'v'}, '<LocalLeader>a', vim.lsp.buf.code_action, opts)
-  vim.keymap.set('n', '<LocalLeader>s', telescope_builtin.lsp_dynamic_workspace_symbols, opts)
+  vim.keymap.set(
+    'n',
+    '<LocalLeader>s',
+    require('fzf-lua').lsp_live_workspace_symbols,
+    opts
+  )
 end
 
 local lspconfig = require('lspconfig')
