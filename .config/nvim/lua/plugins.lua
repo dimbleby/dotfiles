@@ -6,7 +6,14 @@ return require('packer').startup({
     use 'lewis6991/impatient.nvim'
 
     -- Colours
-    use 'lifepillar/vim-gruvbox8'
+    use {
+      'ellisonleao/gruvbox.nvim',
+      config = function()
+        require('gruvbox').setup({
+          transparent_mode = true
+        })
+      end
+    }
 
     -- Language-specific highlighting and suchlike
     -- use 'pearofducks/ansible-vim'

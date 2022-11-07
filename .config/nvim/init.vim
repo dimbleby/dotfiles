@@ -79,12 +79,7 @@ set foldexpr=nvim_treesitter#foldexpr()
 
 " Colours {{{2
 set termguicolors
-augroup ColorOverrides
-    autocmd!
-    autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
-augroup end
-let g:gruvbox_italicize_strings = 0
-colorscheme gruvbox8
+colorscheme gruvbox
 
 " Diagnostics {{{2
 lua vim.diagnostic.config({virtual_text = false})
