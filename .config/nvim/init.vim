@@ -9,8 +9,7 @@ set complete-=i
 set completeopt=menuone,noselect
 set dictionary=/usr/share/dict/words
 set display+=lastline
-set diffopt+=vertical
-set diffopt+=algorithm:histogram,indent-heuristic
+set diffopt+=algorithm:histogram,indent-heuristic,linematch:60,vertical
 set foldlevelstart=99
 set nohidden
 set history=10000
