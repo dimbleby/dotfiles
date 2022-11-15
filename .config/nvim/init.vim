@@ -70,6 +70,7 @@ set backupdir=~/.local/share/nvim/backup
 " Configuration for lua plugins {{{2
 lua require('impatient')
 lua require('packer_compiled')
+lua require('filetypes')
 lua require('plugins')
 
 " Treesitter folding by default {{{2
