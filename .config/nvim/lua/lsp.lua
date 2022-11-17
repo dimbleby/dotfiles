@@ -41,7 +41,7 @@ end
 
 local lspconfig = require('lspconfig')
 capabilities = require('cmp_nvim_lsp').default_capabilities()
-lspconfig.util.default_config = vim.tbl_extend(
+lspconfig.util.default_config = vim.tbl_deep_extend(
   "force",
   lspconfig.util.default_config,
   {
