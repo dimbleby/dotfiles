@@ -1,11 +1,11 @@
 -- Avoid Ex mode
 vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
 
--- Terminal mode {{{2
+-- Terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true })
 
--- Searching {{{2
+-- Searching
 vim.keymap.set('n', '<Leader>b', function()
   require('fzf-lua').buffers()
 end, { noremap = true })
@@ -22,17 +22,17 @@ vim.keymap.set('n', '<Leader>g', function()
   require('fzf-lua').grep_cword()
 end, { noremap = true })
 
--- Formatting the whole file {{{2
+-- Formatting the whole file
 vim.keymap.set('n', '<Leader>q', '<Cmd>call format#FormatFile()<CR>', { noremap = true })
 
--- Navigating diagnostics {{{2
+-- Navigating diagnostics
 vim.keymap.set('n', '<Leader>e', function()
   vim.diagnostic.open_float(0, { scope = 'line' })
 end, { noremap = true })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true })
 
--- Open the URL under the cursor in a browser {{{2
+-- Open the URL under the cursor in a browser
 vim.keymap.set(
   'n',
   'gx',
@@ -40,7 +40,7 @@ vim.keymap.set(
   { noremap = true }
 )
 
--- Mappings for vim-sandwich {{{2
+-- Mappings for vim-sandwich
 vim.keymap.set({ 'n', 'x' }, 's', '<nop>')
 vim.keymap.set({ 'o', 'x' }, 'iq', '<Plug>(textobj-sandwich-query-i)')
 vim.keymap.set({ 'o', 'x' }, 'aq', '<Plug>(textobj-sandwich-query-a)')
