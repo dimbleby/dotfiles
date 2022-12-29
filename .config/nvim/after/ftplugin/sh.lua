@@ -6,3 +6,5 @@ end
 -- Via tpope/vim-apathy
 vim.bo.include = '^\\s*\\%(\\.\\|source\\)\\s'
 vim.bo.define = '\\<\\%(\\i\\+\\s*()\\)\\@='
+
+require('utils.linting').set_up_linting()

@@ -9,3 +9,5 @@ if vim.fn.executable('black') then
   table.insert(formatprgs, 'black --quiet -')
 end
 vim.bo.formatprg = table.concat(formatprgs, '|')
+
+require('utils.linting').set_up_linting()

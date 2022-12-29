@@ -23,11 +23,12 @@ return {
   -- Linting
   {
     'mfussenegger/nvim-lint',
+    ft = { 'dockerfile', 'python', 'sh', 'vim', 'yaml' },
     config = function()
       require('lint').linters_by_ft = {
-        sh = { 'shellcheck' },
         dockerfile = { 'hadolint' },
         python = { 'flake8', 'mypy' },
+        sh = { 'shellcheck' },
         vim = { 'vint' },
         yaml = { 'yamllint' },
       }

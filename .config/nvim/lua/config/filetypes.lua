@@ -10,3 +10,16 @@ vim.filetype.add({
     ['Mudlark.lock'] = 'yaml',
   },
 })
+
+--- Recognise various archives
+vim.api.nvim_create_augroup('ArchiveFiles', { clear = true })
+vim.api.nvim_create_autocmd('BufReadCmd', {
+  group = 'ArchiveFiles',
+  pattern = '*.whl',
+  command = "call zip#Browse(expand('<amatch>'))",
+})
+vim.api.nvim_create_autocmd('BufReadCmd', {
+  group = 'ArchiveFiles',
+  pattern = '*.ova',
+  command = "call tar#Browse(expand('<amatch>'))",
+})
