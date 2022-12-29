@@ -1,5 +1,5 @@
-require('nvim-treesitter.configs').setup {
-  ensure_installed = "all",
+require('nvim-treesitter.configs').setup({
+  ensure_installed = 'all',
   highlight = {
     enable = true,
   },
@@ -15,9 +15,9 @@ require('nvim-treesitter.configs').setup {
     select = {
       enable = true,
       keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@comment.outer",
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@comment.outer',
       },
     },
     move = {
@@ -40,4 +40,4 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
-}
+})
