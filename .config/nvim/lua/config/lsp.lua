@@ -16,7 +16,9 @@ local on_attach = function(client, bufnr)
     require('fzf-lua').lsp_references({ jump_to_single_result = true })
   end, opts)
   vim.keymap.set({ 'n', 'v' }, '<LocalLeader>a', vim.lsp.buf.code_action, opts)
-  vim.keymap.set('n', '<LocalLeader>s', require('fzf-lua').lsp_live_workspace_symbols, opts)
+  vim.keymap.set('n', '<LocalLeader>s', function()
+    require('fzf-lua').lsp_live_workspace_symbols()
+  end, opts)
 end
 
 local lspconfig = require('lspconfig')
