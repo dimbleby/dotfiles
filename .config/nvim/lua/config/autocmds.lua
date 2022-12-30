@@ -9,6 +9,5 @@ vim.api.nvim_create_autocmd({ 'TermOpen', 'WinEnter' }, {
 vim.api.nvim_create_augroup('Whitespace', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = 'Whitespace',
-  pattern = '*',
   command = 'if !&binary | call format#TrimWhitespace() | endif',
 })

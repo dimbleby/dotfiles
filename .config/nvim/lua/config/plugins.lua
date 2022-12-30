@@ -80,6 +80,7 @@ return {
   -- Status line
   {
     'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
     config = function()
       require('lualine').setup({
         options = {
@@ -118,5 +119,5 @@ return {
   { 'tpope/vim-commentary' },
   { 'tpope/vim-fugitive' },
   { 'tpope/vim-repeat' },
-  { 'tpope/vim-unimpaired' },
+  { 'tpope/vim-unimpaired', event = 'VeryLazy' },
 }
