@@ -1,9 +1,9 @@
 -- Weird textwidth to make room for boxed comments.
-vim.bo.textwidth = 76
-vim.wo.colorcolumn = '80'
+vim.opt_local.textwidth = 76
+vim.opt_local.colorcolumn = '80'
 
 if vim.fn.executable('clang-format') then
-  vim.bo.formatprg = 'clang-format -assume-filename=%'
+  vim.opt_local.formatprg = 'clang-format -assume-filename=%'
 end
 
 -- Align function parameters, in idiosyncratic style.

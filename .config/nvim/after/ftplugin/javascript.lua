@@ -1,3 +1,3 @@
 if vim.fn.executable('prettier') then
-  vim.bo.formatprg = 'prettier --parser=babel'
+  vim.opt_local.formatprg = 'prettier --parser=babel'
 end

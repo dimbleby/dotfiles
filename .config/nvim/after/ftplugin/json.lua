@@ -1,3 +1,3 @@
 if vim.fn.executable('prettier') then
-  vim.bo.formatprg = 'prettier --parser=json-stringify'
+  vim.opt_local.formatprg = 'prettier --parser=json-stringify'
 end

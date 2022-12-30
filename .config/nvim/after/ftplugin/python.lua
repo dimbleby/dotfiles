@@ -1,5 +1,5 @@
-vim.bo.textwidth = 88
-vim.wo.foldmethod = 'indent'
+vim.opt_local.textwidth = 88
+vim.opt_local.foldmethod = 'indent'
 
 local formatprgs = {}
 if vim.fn.executable('isort') then
@@ -8,6 +8,6 @@ end
 if vim.fn.executable('black') then
   table.insert(formatprgs, 'black --quiet -')
 end
-vim.bo.formatprg = table.concat(formatprgs, '|')
+vim.opt_local.formatprg = table.concat(formatprgs, '|')
 
 require('utils.linting').set_up_linting()

@@ -80,7 +80,6 @@ return {
   -- Status line
   {
     'nvim-lualine/lualine.nvim',
-    lazy = true,
     config = function()
       require('lualine').setup({
         options = {

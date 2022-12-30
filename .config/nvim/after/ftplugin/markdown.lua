@@ -1,8 +1,8 @@
-vim.wo.spell = true
-vim.wo.linebreak = true
-vim.bo.textwidth = 80
+vim.opt_local.spell = true
+vim.opt_local.linebreak = true
+vim.opt_local.textwidth = 80
 if vim.fn.executable('prettier') then
-  vim.bo.formatprg = 'prettier --parser=markdown'
+  vim.opt_local.formatprg = 'prettier --parser=markdown'
 end
 vim.keymap.set('n', '<LocalLeader>m', '<Cmd>MarkdownPreview<CR>', { noremap = true, buffer = true })
 

@@ -1,4 +1,4 @@
-vim.bo.expandtab = false
+vim.opt_local.expandtab = false
 if vim.fn.executable('gofmt') then
-  vim.bo.formatprg = 'gofmt'
+  vim.opt_local.formatprg = 'gofmt'
 end

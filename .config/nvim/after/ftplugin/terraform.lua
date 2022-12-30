@@ -1,5 +1,5 @@
-vim.bo.textwidth = 100
+vim.opt_local.textwidth = 100
 
 if vim.fn.executable('terraform') then
-  vim.bo.formatprg = 'terraform fmt -no-color -'
+  vim.opt_local.formatprg = 'terraform fmt -no-color -'
 end

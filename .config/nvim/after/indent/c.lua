@@ -1,4 +1,4 @@
-vim.bo.tabstop = 2
+vim.opt_local.tabstop = 2
 
 -- Don't indent C++ scope declarations, align on (.
-vim.bo.cinoptions = 'g0,(0'
+vim.opt_local.cinoptions = 'g0,(0'

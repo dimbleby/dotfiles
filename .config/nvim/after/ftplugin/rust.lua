@@ -1,3 +1,3 @@
 if vim.fn.executable('rustfmt') then
-  vim.bo.formatprg = 'rustfmt --edition 2018 --color never --emit stdout'
+  vim.opt_local.formatprg = 'rustfmt --edition 2018 --color never --emit stdout'
 end
