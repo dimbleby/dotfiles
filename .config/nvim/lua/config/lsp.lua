@@ -2,7 +2,7 @@ vim.lsp.set_log_level('OFF')
 
 local on_attach = function(client, bufnr)
   -- Mappings.
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  local bufopts = { silent = true, buffer = bufnr }
   vim.keymap.set('n', '<C-]>', function()
     require('fzf-lua').lsp_definitions({ jump_to_single_result = true })
   end, opts)

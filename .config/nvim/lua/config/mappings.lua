@@ -1,5 +1,5 @@
 -- Avoid Ex mode
-vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
+vim.keymap.set('n', 'Q', '<nop>')
 
 -- Terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
@@ -8,37 +8,32 @@ vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true })
 -- Searching
 vim.keymap.set('n', '<Leader>b', function()
   require('fzf-lua').buffers()
-end, { noremap = true })
+end)
 vim.keymap.set('n', '<Leader>f', function()
   require('fzf-lua').files()
-end, { noremap = true })
+end)
 vim.keymap.set('n', '<Leader>h', function()
   require('fzf-lua').oldfiles()
-end, { noremap = true })
+end)
 vim.keymap.set('n', '<Leader>r', function()
   require('fzf-lua').live_grep_native()
-end, { noremap = true })
+end)
 vim.keymap.set('n', '<Leader>g', function()
   require('fzf-lua').grep_cword()
-end, { noremap = true })
+end)
 
 -- Formatting the whole file
-vim.keymap.set('n', '<Leader>q', '<Cmd>call format#FormatFile()<CR>', { noremap = true })
+vim.keymap.set('n', '<Leader>q', '<Cmd>call format#FormatFile()<CR>')
 
 -- Navigating diagnostics
 vim.keymap.set('n', '<Leader>e', function()
   vim.diagnostic.open_float(0, { scope = 'line' })
-end, { noremap = true })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true })
+end)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 -- Open the URL under the cursor in a browser
-vim.keymap.set(
-  'n',
-  'gx',
-  "<Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>",
-  { noremap = true }
-)
+vim.keymap.set('n', 'gx', "<Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>")
 
 -- Mappings for vim-sandwich
 vim.keymap.set({ 'n', 'x' }, 's', '<nop>')
