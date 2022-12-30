@@ -117,7 +117,7 @@ return {
   { 'justinmk/vim-dirvish' },
   { 'machakann/vim-sandwich' },
   { 'tpope/vim-commentary' },
-  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-fugitive', event = 'VeryLazy' },
   { 'tpope/vim-repeat' },
   { 'tpope/vim-unimpaired', event = 'VeryLazy' },
 }
