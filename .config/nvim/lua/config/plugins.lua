@@ -14,8 +14,11 @@ return {
 
   -- Language-specific highlighting and suchlike
   -- { 'pearofducks/ansible-vim' },
-  -- { 'dimbleby/vim-minizinc' },
-  -- { 'dimbleby/vim-p4-syntax' },
+  { 'dimbleby/vim-minizinc', ft = 'minizinc' },
+  { 'dimbleby/vim-p4-syntax', ft = 'p4' },
+  { 'mustache/vim-mustache-handlebars', ft = 'handlebars' },
+  { 'carlsmedstad/vim-bicep', ft = 'bicep' },
+  { 'glench/vim-jinja2-syntax', ft = 'jinja' },
   { 'rust-lang/rust.vim', ft = 'rust' },
   { 'hashivim/vim-terraform', ft = 'terraform' },
   { 'nathanalderson/yang.vim', branch = 'main', ft = 'yang' },
