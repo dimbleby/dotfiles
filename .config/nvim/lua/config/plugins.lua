@@ -117,7 +117,7 @@ return {
   },
 
   -- Miscellany
-  { 'justinmk/vim-dirvish' },
+  { 'elihunter173/dirbuf.nvim' },
   { 'machakann/vim-sandwich' },
   { 'tpope/vim-commentary' },
   { 'tpope/vim-fugitive', event = 'VeryLazy' },
