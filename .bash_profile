@@ -30,7 +30,7 @@ if command -v keychain > /dev/null; then
 fi
 
 if command -v chronyd > /dev/null; then
-  if [[ "$(service chrony status)" != " * chronyd is running" ]]; then
+  if [[ "$(sudo service chrony status)" != " * chronyd is running" ]]; then
     sudo service chrony start
   fi
 fi
