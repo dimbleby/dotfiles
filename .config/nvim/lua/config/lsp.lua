@@ -38,7 +38,13 @@ lspconfig.gopls.setup({
   },
 })
 
-lspconfig.jedi_language_server.setup({})
+lspconfig.jedi_language_server.setup({
+  init_options = {
+    diagnostics = {
+      enable = false,
+    },
+  },
+})
 
 lspconfig.rust_analyzer.setup({})
 
@@ -58,3 +64,15 @@ if not configs.yang_language_server then
   }
 end
 lspconfig.yang_language_server.setup({})
+
+lspconfig.yamlls.setup({
+  settings = {
+    redhat = { telemetry = { enabled = false } },
+    yaml = {
+      schemas = {
+        ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+        ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = '/.gitlab-ci.yml',
+      },
+    },
+  },
+})

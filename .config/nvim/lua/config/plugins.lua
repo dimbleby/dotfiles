@@ -41,7 +41,7 @@ return {
   -- Language Server
   {
     'neovim/nvim-lspconfig',
-    ft = { 'c', 'cpp', 'go', 'python', 'rust', 'terraform', 'yang' },
+    ft = { 'c', 'cpp', 'go', 'python', 'rust', 'terraform', 'yaml', 'yang' },
     config = function()
       require('config.lsp')
     end,
