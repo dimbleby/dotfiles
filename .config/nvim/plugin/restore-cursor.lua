@@ -1,31 +1,26 @@
 local ignore_buftype = { 'quickfix', 'nofile', 'help' }
 local ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' }
 
-local function run()
+local function set_cursor()
   if vim.tbl_contains(ignore_buftype, vim.bo.buftype) then
     return
   end
 
   if vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-    vim.cmd([[normal! gg]])
+    vim.api.nvim_win_set_cursor(0, {1, 0})
     return
   end
 
-  -- nvim file +num
-  if vim.fn.line('.') > 1 then
-    return
-  end
+  local row, column = unpack(vim.api.nvim_buf_get_mark(0, '"'))
+  local line_count = vim.api.nvim_buf_line_count(0)
 
-  local last_line = vim.fn.line([['"]])
-  local buff_last_line = vim.fn.line('$')
-
-  if last_line > 0 and last_line <= buff_last_line then
-    vim.cmd([[normal! g`"]])
+  if row > 0 and row <= line_count then
+    vim.api.nvim_win_set_cursor(0, {row, column})
   end
 end
 
 vim.api.nvim_create_augroup('RestoreCursor', { clear = true })
 vim.api.nvim_create_autocmd('BufWinEnter', {
   group = 'RestoreCursor',
-  callback = run,
+  callback = set_cursor,
 })
