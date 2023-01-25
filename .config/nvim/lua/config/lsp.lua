@@ -53,7 +53,7 @@ lspconfig.terraformls.setup({
 })
 
 lspconfig.bicep.setup({
-  cmd = { 'dotnet',  vim.env.HOME .. '/.local/bicep/Bicep.LangServer.dll' },
+  cmd = { 'dotnet', vim.env.HOME .. '/.local/bicep/Bicep.LangServer.dll' },
 })
 
 local configs = require('lspconfig.configs')
