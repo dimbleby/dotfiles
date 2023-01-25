@@ -52,6 +52,10 @@ lspconfig.terraformls.setup({
   root_dir = lspconfig.util.root_pattern('.terraform', 'terraform.tfvars', '.git'),
 })
 
+lspconfig.bicep.setup({
+  cmd = { 'dotnet',  vim.env.HOME .. '/.local/bicep/Bicep.LangServer.dll' },
+})
+
 local configs = require('lspconfig.configs')
 if not configs.yang_language_server then
   configs.yang_language_server = {
