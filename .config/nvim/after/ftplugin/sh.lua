@@ -1,5 +1,5 @@
 vim.opt_local.textwidth = 100
-if vim.fn.executable('shfmt') then
+if vim.fn.executable('shfmt') == 1 then
   vim.opt_local.formatprg = 'shfmt -i 2 -sr -ci'
 end
 

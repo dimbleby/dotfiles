@@ -1,6 +1,6 @@
 vim.opt_local.textwidth = 100
 
-if vim.fn.executable('pyang') then
+if vim.fn.executable('pyang') == 1 then
   local path = vim.fn.expand('%:p:h')
   vim.opt_local.formatprg = 'pyang --path '
     .. path

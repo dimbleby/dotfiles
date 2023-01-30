@@ -7,10 +7,10 @@ function M.set_up_linting()
     group = 'Linting',
     buffer = 0,
     callback = function()
-      require('lint').try_lint()
+      require('lint').try_lint(nil, { ignore_errors = true })
     end,
   })
-  require('lint').try_lint()
+  require('lint').try_lint(nil, { ignore_errors = true })
 end
 
 return M

@@ -2,7 +2,7 @@
 vim.opt_local.textwidth = 76
 vim.opt_local.colorcolumn = '80'
 
-if vim.fn.executable('clang-format') then
+if vim.fn.executable('clang-format') == 1 then
   vim.opt_local.formatprg = 'clang-format -assume-filename=%'
 end
 
