@@ -29,12 +29,6 @@ if command -v keychain > /dev/null; then
   eval "$(keychain --quiet --eval --agents gpg,ssh)"
 fi
 
-if command -v dockerd > /dev/null; then
-  if [[ "$(service docker status)" != " * Docker is running" ]]; then
-    sudo service docker start
-  fi
-fi
-
 # shellcheck source=/dev/null
 if [[ -f ~/.set-secrets.sh ]]; then . ~/.set-secrets.sh; fi
 
