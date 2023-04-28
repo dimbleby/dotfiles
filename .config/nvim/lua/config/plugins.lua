@@ -26,7 +26,6 @@ return {
   -- Linting
   {
     'mfussenegger/nvim-lint',
-    ft = { 'dockerfile', 'python', 'sh', 'vim', 'yaml' },
     config = function()
       require('lint').linters_by_ft = {
         dockerfile = { 'hadolint' },
@@ -41,7 +40,6 @@ return {
   -- Language Server
   {
     'neovim/nvim-lspconfig',
-    ft = { 'bicep', 'c', 'cpp', 'go', 'python', 'rust', 'terraform', 'yaml', 'yang' },
     config = function()
       require('config.lsp')
     end,
