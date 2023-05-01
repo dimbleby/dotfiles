@@ -29,7 +29,8 @@ lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.defa
 })
 
 -- https://github.com/neovim/neovim/issues/23291
-lspconfig.util.default_config.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+lspconfig.util.default_config.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration =
+  false
 
 lspconfig.clangd.setup({})
 
