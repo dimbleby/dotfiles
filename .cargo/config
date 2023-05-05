@@ -7,6 +7,9 @@ index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
 [registries.crates-ms]
 index = 'sparse+https://crates.microsoft.com/index/'
 
+[registries.afo]
+index = "sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/rust/Cargo/index/"
+
 [build]
 target = "x86_64-unknown-linux-gnu"
 
