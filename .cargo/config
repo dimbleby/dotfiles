@@ -1,14 +1,23 @@
-# [registry]
-# default = "metaswitch"
+# [source.crates-io]
+# replace-with = "afo-crates-io-mirror"
 
-[registries.metaswitch]
-index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
+# [registry]
+# default = "afo"
+
+[registries.ms-crates-io]
+index = 'sparse+https://crates.microsoft.com/crates-io/'
+
+[registries.afo-crates-io-mirror]
+index = "sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/crates-io-mirror/Cargo/index/"
+
+[registries.afo]
+index = "sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/rust/Cargo/index/"
 
 [registries.crates-ms]
 index = 'sparse+https://crates.microsoft.com/index/'
 
-[registries.afo]
-index = "sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/rust/Cargo/index/"
+[registries.metaswitch]
+index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
 
 [build]
 target = "x86_64-unknown-linux-gnu"
