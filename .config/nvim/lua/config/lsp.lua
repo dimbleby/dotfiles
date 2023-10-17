@@ -78,6 +78,7 @@ lspconfig.yamlls.setup({
     redhat = { telemetry = { enabled = false } },
     yaml = {
       schemas = {
+        ['https://json.schemastore.org/dependabot-2.0.json'] = '/.github/dependabot.yml',
         ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
         ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = '/.gitlab-ci.yml',
       },
