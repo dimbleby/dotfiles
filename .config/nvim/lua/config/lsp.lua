@@ -60,6 +60,8 @@ lspconfig.bicep.setup({
   cmd = { 'dotnet', vim.env.HOME .. '/.local/bls/Bicep.LangServer.dll' },
 })
 
+lspconfig.taplo.setup({})
+
 local configs = require('lspconfig.configs')
 if not configs.yang_language_server then
   configs.yang_language_server = {
@@ -78,9 +80,12 @@ lspconfig.yamlls.setup({
     redhat = { telemetry = { enabled = false } },
     yaml = {
       schemas = {
-        ['https://json.schemastore.org/dependabot-2.0.json'] = '/.github/dependabot.yml',
+        ['https://json.schemastore.org/clang-format.json'] = '/.clang-format',
+        ['https://json.schemastore.org/dependabot-2.0.json'] = '/.github/dependabot.ya?ml',
         ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
-        ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = '/.gitlab-ci.yml',
+        ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = '/.gitlab-ci.ya?ml',
+        ['https://json.schemastore.org/pre-commit-config.json'] = '/.pre-commit-config.ya?ml',
+        ['https://json.schemastore.org/pre-commit-hooks.json'] = '/.pre-commit-hooks.ya?ml',
       },
     },
   },

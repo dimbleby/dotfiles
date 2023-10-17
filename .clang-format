@@ -6,4 +6,4 @@ ColumnLimit: 79
 Cpp11BracedListStyle: false
 IndentCaseLabels: true
 ReflowComments: false
-SortIncludes: false
+SortIncludes: "Never"
