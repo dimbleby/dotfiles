@@ -1,5 +1,5 @@
 !.github
-!.gitlab-ci.yml
+!.gitlab-ci.{yaml,yml}
 !.pipelines
-!.pre-commit-config.yaml
-!.pre-commit-hooks.yaml
+!.pre-commit-config.{yaml,yml}
+!.pre-commit-hooks.{yaml,yml}
