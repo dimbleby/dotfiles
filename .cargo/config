@@ -1,8 +1,9 @@
 # [source.crates-io]
 # replace-with = "afo-crates-io-mirror"
 
-# [registry]
+[registry]
 # default = "afo"
+global-credential-providers = ["msrustup", "cargo:token"]
 
 [registries.ms-crates-io]
 index = 'sparse+https://crates.microsoft.com/crates-io/'
