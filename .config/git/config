@@ -27,3 +27,7 @@
     dft = difftool
 [init]
     defaultBranch = main
+[url "git@ssh.dev.azure.com:v3/msazuredev/AzureForOperators/"]
+    insteadOf = https://dev.azure.com/msazuredev/AzureForOperators/_git/
+[url "git@ssh.dev.azure.com:v3/msazuredev/AzureForOperatorsIndustry/"]
+    insteadOf = https://dev.azure.com/msazuredev/AzureForOperatorsIndustry/_git/
