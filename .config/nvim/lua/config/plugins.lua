@@ -109,9 +109,14 @@ return {
 
   -- Markdown preview
   {
-    'iamcco/markdown-preview.nvim',
+    'toppair/peek.nvim',
     ft = 'markdown',
-    build = 'cd app && yarn install',
+    build = 'deno task --quiet build:fast',
+    config = function()
+      require('peek').setup({
+        app = 'browser',
+      })
+    end,
   },
 
   -- Miscellany

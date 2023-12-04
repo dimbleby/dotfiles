@@ -4,7 +4,9 @@ vim.opt_local.textwidth = 80
 if vim.fn.executable('prettier') == 1 then
   vim.opt_local.formatprg = 'prettier --parser=markdown'
 end
-vim.keymap.set('n', '<LocalLeader>m', '<Cmd>MarkdownPreview<CR>', { buffer = true })
+vim.keymap.set('n', '<LocalLeader>m', function()
+  require('peek').open()
+end, { buffer = true })
 
 -- Formatting, with each new sentence on a new line.
 vim.keymap.set({ 'n', 'x' }, '<LocalLeader>w', function()
