@@ -10,7 +10,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export VISUAL=~/.local/bin/nvim
 export EDITOR=~/.local/bin/nvim
 
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python3
