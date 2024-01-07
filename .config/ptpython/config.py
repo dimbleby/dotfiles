@@ -1,13 +1,17 @@
-from __future__ import unicode_literals
+from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
+from prompt_toolkit.output import ColorDepth
 from ptpython.layout import CompletionVisualisation
-from pygments.token import Token
-from prompt_toolkit.styles import style_from_pygments_cls
+
+if TYPE_CHECKING:
+    from ptpython.repl import PythonRepl
 
 __all__ = ("configure",)
 
 
-def configure(repl):
+def configure(repl: PythonRepl) -> None:
     """
     Configuration method. This is called during the start-up of ptpython.
 
@@ -59,6 +63,10 @@ def configure(repl):
     # Vi mode.
     repl.vi_mode = True
 
+    # Enable the modal cursor (when using Vi mode). Other options are 'Block',
+    # 'Underline',  'Beam',  'Blink under', 'Blink block', and 'Blink beam'
+    repl.cursor_shape_config = "Modal (vi)"
+
     # Paste mode. (When True, don't insert whitespace after new line.)
     repl.paste_mode = False
 
@@ -99,7 +107,7 @@ def configure(repl):
     repl.use_code_colorscheme("fruity")
 
     # Set color depth (keep in mind that not all terminals support true color).
-    repl.color_depth = "DEPTH_24_BIT"  # True color.
+    repl.color_depth = ColorDepth.DEPTH_24_BIT
 
     # Syntax.
     repl.enable_syntax_highlighting = True
