@@ -19,6 +19,8 @@ export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 
 export NIPAP_SERVER=10.231.137.79
 
+export GOFUMPT_SPLIT_LONG_LINES=on
+
 export PATH=$HOME/.local/bin:$HOME/.msrustup/bin:$HOME/.cargo/bin:$PATH
 
 if command -v bat > /dev/null; then
