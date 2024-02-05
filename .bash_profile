@@ -12,6 +12,7 @@ export EDITOR=~/.local/bin/nvim
 
 export FZF_DEFAULT_COMMAND='fd --type file --ignore-file ~/.ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export KUBECTX_IGNORE_FZF=1
 
 export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
