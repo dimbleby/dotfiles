@@ -38,6 +38,13 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
+    ['<C-g>'] = cmp.mapping(function(fallback)
+      vim.api.nvim_feedkeys(
+        vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)),
+        'n',
+        true
+      )
+    end),
   },
 
   sources = {
@@ -49,5 +56,9 @@ cmp.setup({
 
   sorting = {
     priority_weight = 10,
+  },
+
+  experimental = {
+    ghost_text = false,
   },
 })

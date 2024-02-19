@@ -37,6 +37,9 @@ return {
     end,
   },
 
+  -- Copilot
+  { 'github/copilot.vim' },
+
   -- Language Server
   {
     'neovim/nvim-lspconfig',
