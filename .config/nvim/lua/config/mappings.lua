@@ -39,6 +39,3 @@ vim.keymap.set('n', 'gx', "<Cmd>call jobstart(['xdg-open', expand('<cfile>')])<C
 vim.keymap.set({ 'n', 'x' }, 's', '<nop>')
 vim.keymap.set({ 'o', 'x' }, 'iq', '<Plug>(textobj-sandwich-query-i)')
 vim.keymap.set({ 'o', 'x' }, 'aq', '<Plug>(textobj-sandwich-query-a)')
-
--- Mappings for copilot.
-vim.keymap.set('i', '<Plug>(vimrc:copilot-dummy-map)', '<Cmd>call copilot#Accept(<Tab>)<CR>')

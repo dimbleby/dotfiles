@@ -39,12 +39,13 @@ cmp.setup({
       select = true,
     }),
     ['<C-g>'] = cmp.mapping(function(fallback)
-      vim.api.nvim_feedkeys(
-        vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)),
-        'n',
-        true
-      )
-    end),
+      copilot_suggestion = require('copilot.suggestion')
+      if copilot_suggestion.is_visible() then
+        copilot_suggestion.accept()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
   },
 
   sources = {

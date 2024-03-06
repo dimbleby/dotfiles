@@ -50,7 +50,6 @@ vim.api.nvim_set_var('c_space_errors', 1)
 vim.api.nvim_set_var('c_syntax_for_h', 1)
 
 vim.g.pyindent_open_paren = '&sw'
-vim.g.copilot_no_tab_map = true
 
 if vim.fn.executable('rg') == 1 then
   vim.opt.grepprg = 'rg --vimgrep'
