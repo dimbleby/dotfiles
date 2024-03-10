@@ -21,7 +21,7 @@ return {
   { 'glench/vim-jinja2-syntax', ft = 'jinja' },
   { 'rust-lang/rust.vim', ft = 'rust' },
   { 'hashivim/vim-terraform', ft = 'terraform' },
-  { 'nathanalderson/yang.vim', branch = 'main', ft = 'yang' },
+  { 'nathanalderson/yang.vim', ft = 'yang' },
 
   -- Linting
   {
