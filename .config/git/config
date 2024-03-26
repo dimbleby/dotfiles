@@ -27,7 +27,9 @@
     dft = difftool
 [init]
     defaultBranch = main
-[url "git@ssh.dev.azure.com:v3/msazuredev/AzureForOperators/"]
-    insteadOf = https://dev.azure.com/msazuredev/AzureForOperators/_git/
-[url "git@ssh.dev.azure.com:v3/msazuredev/AzureForOperatorsIndustry/"]
-    insteadOf = https://dev.azure.com/msazuredev/AzureForOperatorsIndustry/_git/
+[credential]
+    helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+    azreposCredentialType = oauth
+    credentialStore = gpg
+[credential "https://dev.azure.com"]
+    useHttpPath = true
