@@ -25,13 +25,6 @@ end)
 -- Formatting the whole file
 vim.keymap.set('n', '<Leader>q', '<Cmd>call format#FormatFile()<CR>')
 
--- Navigating diagnostics
-vim.keymap.set('n', '<Leader>e', function()
-  vim.diagnostic.open_float(0, { scope = 'line' })
-end)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-
 -- Open the URL under the cursor in a browser
 vim.keymap.set('n', 'gx', "<Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>")
 

@@ -34,7 +34,6 @@ vim.opt.showmode = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.tabpagemax = 50
-vim.opt.termguicolors = true
 vim.opt.wildmenu = true
 vim.opt.expandtab = true
 vim.opt.smarttab = true
