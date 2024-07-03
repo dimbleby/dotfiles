@@ -62,7 +62,7 @@ vim.opt.backupdir = vim.env.HOME .. '/.local/share/nvim/backup'
 
 -- Treesitter folding by default
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.g.mapleader = ' '
 vim.diagnostic.config({ virtual_text = false })
