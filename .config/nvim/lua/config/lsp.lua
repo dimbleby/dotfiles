@@ -49,6 +49,8 @@ lspconfig.jedi_language_server.setup({
   },
 })
 
+lspconfig.jsonls.setup({})
+
 lspconfig.rust_analyzer.setup({})
 
 lspconfig.terraformls.setup({
