@@ -30,7 +30,7 @@ return {
     config = function()
       require('lint').linters_by_ft = {
         dockerfile = { 'hadolint' },
-        python = { 'flake8', 'mypy', 'ruff' },
+        python = { 'ruff', 'mypy', 'flake8' },
         sh = { 'shellcheck' },
         vim = { 'vint' },
         yaml = { 'yamllint' },
