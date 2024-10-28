@@ -14,10 +14,6 @@ export FZF_DEFAULT_COMMAND='fd --type file --ignore-file ~/.ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export KUBECTX_IGNORE_FZF=1
 
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/share/pipx/venvs/virtualenvwrapper/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/share/pipx/venvs/virtualenvwrapper/bin/virtualenv
-
 export NIPAP_SERVER=10.231.137.79
 
 export GOFUMPT_SPLIT_LONG_LINES=on

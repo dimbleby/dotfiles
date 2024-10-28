@@ -52,11 +52,6 @@ fi
 stty -ixon
 stty werase undef
 
-# shellcheck source=/dev/null
-if [[ -f ~/.local/bin/virtualenvwrapper.sh ]]; then
-  source ~/.local/bin/virtualenvwrapper.sh
-fi
-
 alias vi='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -64,4 +59,19 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 function ssh() {
   local LOCAL_TERM=${TERM/tmux/xterm}
   env TERM="$LOCAL_TERM" /usr/bin/ssh "$@"
+}
+
+# Automatically activate virtual environments when changing directories.
+function cd() {
+  builtin cd "$@" || return
+
+  if [[ -d ./.venv ]]; then
+    # shellcheck source=/dev/null
+    source ./.venv/bin/activate
+  elif [[ -n "$VIRTUAL_ENV" ]]; then
+    parentdir="$(dirname "$VIRTUAL_ENV")"
+    if [[ "$PWD"/ != "$parentdir"/* ]]; then
+      deactivate
+    fi
+  fi
 }
