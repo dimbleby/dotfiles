@@ -6,4 +6,4 @@ url = "https://artifactory.metaswitch.com/api/pypi/pypi-virtual/simple/"
 url = "https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/python/pypi/simple/"
 
 [virtualenvs]
-path = "/home/dch/.virtualenvs"
+in-project = true
