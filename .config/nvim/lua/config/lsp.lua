@@ -27,10 +27,6 @@ lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.defa
   on_attach = on_attach,
 })
 
--- https://github.com/neovim/neovim/issues/23291
-lspconfig.util.default_config.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration =
-  false
-
 lspconfig.clangd.setup({})
 
 lspconfig.gopls.setup({
