@@ -7,7 +7,7 @@ local function set_cursor()
   end
 
   if vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-    vim.api.nvim_win_set_cursor(0, {1, 0})
+    vim.api.nvim_win_set_cursor(0, { 1, 0 })
     return
   end
 
@@ -15,7 +15,7 @@ local function set_cursor()
   local line_count = vim.api.nvim_buf_line_count(0)
 
   if row > 0 and row <= line_count then
-    vim.api.nvim_win_set_cursor(0, {row, column})
+    vim.api.nvim_win_set_cursor(0, { row, column })
   end
 end
 
