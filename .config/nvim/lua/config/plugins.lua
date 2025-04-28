@@ -143,8 +143,12 @@ return {
     ft = 'markdown',
     build = 'deno task --quiet build:fast',
     config = function()
+      local app = 'browser'
+      if vim.fn.executable('wslview') == 1 then
+        app = 'wslview'
+      end
       require('peek').setup({
-        app = 'browser',
+        app = app,
       })
     end,
   },
