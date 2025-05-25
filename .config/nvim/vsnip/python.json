@@ -1,17 +1,4 @@
 {
-  "class": {
-    "prefix": [
-      "class"
-    ],
-    "body": [
-      "class ${1:MyClass}(${2:object}):",
-      "\t\"\"\"",
-      "\t${3}",
-      "\t\"\"\"",
-      "\tdef __init__(self${4}):"
-    ],
-    "description": "Code snippet for a class definition"
-  },
   "ifmain": {
     "prefix": [
       "ifmain"
