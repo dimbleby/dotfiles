@@ -156,6 +156,4 @@ return {
   { 'elihunter173/dirbuf.nvim' },
   { 'machakann/vim-sandwich' },
   { 'tpope/vim-fugitive', event = 'VeryLazy' },
-  { 'tpope/vim-repeat' },
-  { 'tpope/vim-unimpaired', event = 'VeryLazy' },
 }
