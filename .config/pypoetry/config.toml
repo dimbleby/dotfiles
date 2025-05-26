@@ -1,9 +1,2 @@
-[repositories]
-[repositories.artifactory]
-url = "https://artifactory.metaswitch.com/api/pypi/pypi-virtual/simple/"
-
-[repositories.afo]
-url = "https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/python/pypi/simple/"
-
 [virtualenvs]
 in-project = true
