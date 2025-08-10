@@ -1,27 +1,9 @@
 # [source.crates-io]
-# replace-with = "afo-crates-io-mirror"
+# replace-with = 'ms-crates-io'
 
-# [registry]
-# default = "afo"
-
-[registries.ms-crates-io]
-index = 'sparse+https://crates.microsoft.com/crates-io/'
-credential-provider = "msrustup"
-
-[registries.afo-crates-io-mirror]
-index = "sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/crates-io-mirror/Cargo/index/"
-credential-provider = "msrustup"
-
-[registries.afo]
-index = "sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperators/_packaging/rust/Cargo/index/"
-credential-provider = "msrustup"
-
-[registries.crates-ms]
-index = 'sparse+https://crates.microsoft.com/index/'
-credential-provider = "msrustup"
-
-[registries.metaswitch]
-index = "https://git.datcon.co.uk/infrastructure.public/crates-registry.git"
+# [registries.ms-crates-io]
+# index = 'sparse+https://pkgs.dev.azure.com/msazuredev/AzureForOperatorsIndustry/_packaging/AzureForOperatorsIndustry_PublicPackages/Cargo/index/'
+# credential-provider = "msrustup"
 
 [build]
 target = "x86_64-unknown-linux-gnu"
