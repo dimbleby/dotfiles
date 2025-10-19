@@ -6,9 +6,7 @@ vim.filetype.add({
   },
   filename = {
     ['poetry.lock'] = 'toml',
-    ['svalbard.lock'] = 'toml',
     ['uv.lock'] = 'toml',
-    ['Mudlark.lock'] = 'yaml',
   },
 })
 
