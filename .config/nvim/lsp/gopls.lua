@@ -1,7 +1,8 @@
 return {
   settings = {
-    ['gopls'] = {
+    gopls = {
       usePlaceholders = true,
+      gofumpt = true,
     },
   },
 }
