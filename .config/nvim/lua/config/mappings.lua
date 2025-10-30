@@ -1,3 +1,5 @@
+local M = {}
+
 -- Avoid Ex mode
 vim.keymap.set('n', 'Q', '<nop>')
 
@@ -32,3 +34,24 @@ vim.keymap.set('n', 'gx', "<Cmd>call jobstart(['xdg-open', expand('<cfile>')])<C
 vim.keymap.set({ 'n', 'x' }, 's', '<nop>')
 vim.keymap.set({ 'o', 'x' }, 'iq', '<Plug>(textobj-sandwich-query-i)')
 vim.keymap.set({ 'o', 'x' }, 'aq', '<Plug>(textobj-sandwich-query-a)')
+
+function M.lsp_mappings(bufnr)
+  local bufopts = { silent = true, buffer = bufnr }
+  vim.keymap.set('n', '<C-]>', function()
+    require('fzf-lua').lsp_definitions({ jump1 = true })
+  end, bufopts)
+  vim.keymap.set('n', '<LocalLeader>t', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<LocalLeader>i', function()
+    require('fzf-lua').lsp_implementations({ jump1 = true })
+  end, bufopts)
+  vim.keymap.set('n', '<LocalLeader>n', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<LocalLeader>r', function()
+    require('fzf-lua').lsp_references({ jump1 = true })
+  end, bufopts)
+  vim.keymap.set({ 'n', 'v' }, '<LocalLeader>a', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<LocalLeader>s', function()
+    require('fzf-lua').lsp_live_workspace_symbols()
+  end, bufopts)
+end
+
+return M
