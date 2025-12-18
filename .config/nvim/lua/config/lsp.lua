@@ -8,11 +8,11 @@ vim.lsp.enable({
   'bicep',
   'clangd',
   'gopls',
-  'jedi_language_server',
   'jsonls',
   'rust_analyzer',
   'taplo',
   'terraformls',
+  'ty',
   'yamlls',
   'yang_language_server',
 })
