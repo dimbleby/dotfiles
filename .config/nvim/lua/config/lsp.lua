@@ -10,7 +10,7 @@ vim.lsp.enable({
   'gopls',
   'jsonls',
   'rust_analyzer',
-  'taplo',
+  'tombi',
   'terraformls',
   'ty',
   'yamlls',
