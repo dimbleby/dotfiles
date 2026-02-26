@@ -12,6 +12,7 @@ vim.lsp.enable({
   'rust_analyzer',
   'tombi',
   'terraformls',
+  'tsp_server',
   'ty',
   'yamlls',
   'yang_language_server',
