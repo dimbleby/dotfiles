@@ -1,44 +1,41 @@
-require('nvim-treesitter.configs').setup({
-  ensure_installed = 'all',
-  ignore_install = { 'ipkg' },
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<CR>',
-      node_incremental = '<CR>',
-      node_decremental = '<BS>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@comment.outer',
-      },
-    },
-    move = {
-      enable = true,
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-  },
+-- Auto-install parsers on demand and enable treesitter features
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function(args)
+    local buf = args.buf
+    local ft = vim.bo[buf].filetype
+    if ft == '' then
+      return
+    end
+
+    local lang = vim.treesitter.language.get_lang(ft)
+    if not lang then
+      return
+    end
+
+    -- Install parser if not already available
+    if not vim.treesitter.language.add(lang) then
+      local ok, ts = pcall(require, 'nvim-treesitter')
+      if ok then
+        local available = vim.g.ts_available or ts.get_available()
+        if not vim.g.ts_available then
+          vim.g.ts_available = available
+        end
+        if vim.tbl_contains(available, lang) then
+          ts.install(lang)
+        end
+      end
+    end
+
+    -- Enable treesitter features if parser is available
+    if vim.treesitter.language.add(lang) then
+      vim.treesitter.start(buf, lang)
+      vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
 })
+
+-- Incremental selection: <CR> to init/expand, <BS> to shrink
+vim.keymap.set('n', '<CR>', 'van', { remap = true, desc = 'Start incremental selection' })
+vim.keymap.set('x', '<CR>', 'an', { remap = true, desc = 'Expand to parent node' })
+vim.keymap.set('x', '<BS>', 'in', { remap = true, desc = 'Shrink to child node' })

@@ -76,13 +76,19 @@ return {
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
-    event = 'BufReadPost',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    lazy = false,
     config = function()
       require('config.treesitter')
+    end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = 'main',
+    event = 'BufReadPost',
+    config = function()
+      require('config.textobjects')
     end,
   },
 
