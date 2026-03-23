@@ -30,6 +30,16 @@ vim.api.nvim_create_autocmd('FileType', {
     -- Enable treesitter features if parser is available
     if vim.treesitter.language.add(lang) then
       vim.treesitter.start(buf, lang)
+      if vim.treesitter.query.get(lang, 'folds') then
+        local win = vim.api.nvim_get_current_win()
+        vim.schedule(function()
+          if vim.api.nvim_win_is_valid(win) then
+            vim.wo[win].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.wo[win].foldmethod = 'expr'
+          end
+        end)
+      end
+
       -- Only set treesitter indent when an indent query exists for the language;
       -- otherwise leave Vim's built-in indent in place.
       if vim.treesitter.query.get(lang, 'indents') then
