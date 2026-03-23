@@ -30,7 +30,11 @@ vim.api.nvim_create_autocmd('FileType', {
     -- Enable treesitter features if parser is available
     if vim.treesitter.language.add(lang) then
       vim.treesitter.start(buf, lang)
-      vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      -- Only set treesitter indent when an indent query exists for the language;
+      -- otherwise leave Vim's built-in indent in place.
+      if vim.treesitter.query.get(lang, 'indents') then
+        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
     end
   end,
 })
