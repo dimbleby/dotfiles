@@ -1,0 +1,26 @@
+{
+  "lspServers": {
+    "rust": {
+      "command": "rust-analyzer",
+      "args": [],
+      "fileExtensions": {
+        ".rs": "rust"
+      }
+    },
+    "python": {
+      "command": "ty",
+      "args": ["server"],
+      "fileExtensions": {
+        ".py": "python",
+        ".pyi": "python"
+      }
+    },
+    "go": {
+      "command": "gopls",
+      "args": [],
+      "fileExtensions": {
+        ".go": "go"
+      }
+    }
+  }
+}
