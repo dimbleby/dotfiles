@@ -25,8 +25,8 @@ vim.opt.formatlistpat = '^\\s*[-*+]\\s\\+'
 vim.opt.formatoptions:remove('t')
 vim.opt.formatoptions:append('croqnlj')
 
-vim.api.nvim_set_var('c_space_errors', 1)
-vim.api.nvim_set_var('c_syntax_for_h', 1)
+vim.g.c_space_errors = 1
+vim.g.c_syntax_for_h = 1
 
 vim.g.pyindent_open_paren = '&sw'
 
