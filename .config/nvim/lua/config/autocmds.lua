@@ -8,7 +8,11 @@ vim.api.nvim_create_autocmd({ 'TermOpen', 'WinEnter' }, {
 vim.api.nvim_create_augroup('Whitespace', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = 'Whitespace',
-  command = 'if !&binary | call format#TrimWhitespace() | endif',
+  callback = function()
+    if not vim.bo.binary then
+      require('utils.format').trim_whitespace()
+    end
+  end,
 })
 
 vim.api.nvim_create_augroup('Lsp', { clear = true })

@@ -25,7 +25,9 @@ vim.keymap.set('n', '<Leader>g', function()
 end)
 
 -- Formatting the whole file
-vim.keymap.set('n', '<Leader>q', '<Cmd>call format#FormatFile()<CR>')
+vim.keymap.set('n', '<Leader>q', function()
+  require('utils.format').format_file()
+end)
 
 -- Mappings for vim-sandwich
 vim.keymap.set({ 'n', 'x' }, 's', '<nop>')
