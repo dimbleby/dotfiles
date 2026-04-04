@@ -26,8 +26,8 @@ if [[ -x /usr/bin/dircolors ]]; then
   eval "$(dircolors -b ~/.dircolors)"
   alias ls='ls --color=auto'
   alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  alias fgrep='grep -F --color=auto'
+  alias egrep='grep -E --color=auto'
 fi
 
 GPG_TTY=$(tty)
