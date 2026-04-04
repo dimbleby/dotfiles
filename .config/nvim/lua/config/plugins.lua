@@ -13,7 +13,6 @@ return {
   },
 
   -- Language-specific highlighting and suchlike
-  -- { 'pearofducks/ansible-vim' },
   { 'dimbleby/vim-minizinc', ft = 'minizinc' },
   { 'dimbleby/vim-p4-syntax', ft = 'p4' },
   { 'mustache/vim-mustache-handlebars', ft = 'handlebars' },
@@ -108,10 +107,6 @@ return {
       require('config.completion')
     end,
   },
-
-  -- Block formatting, IPS trace navigation
-  -- { 'https://git.datcon.co.uk/dch/BlockFormat.git' },
-  -- { 'https://git.datcon.co.uk/dch/vimips.git' },
 
   -- Status line
   {

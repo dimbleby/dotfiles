@@ -55,8 +55,4 @@ cmp.setup({
   sorting = {
     priority_weight = 10,
   },
-
-  experimental = {
-    ghost_text = false,
-  },
 })
