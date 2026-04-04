@@ -15,5 +15,5 @@ vim.lsp.enable({
   'tsp_server',
   'ty',
   'yamlls',
-  'yang_language_server',
+  'yang_lsp',
 })
