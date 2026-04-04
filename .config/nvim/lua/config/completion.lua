@@ -35,7 +35,7 @@ cmp.setup({
       select = true,
     }),
     ['<C-g>'] = cmp.mapping(function(fallback)
-      copilot_suggestion = require('copilot.suggestion')
+      local copilot_suggestion = require('copilot.suggestion')
       if copilot_suggestion.is_visible() then
         copilot_suggestion.accept()
       else
