@@ -10,8 +10,6 @@
     added = green
 [core]
     editor = nvim
-[push]
-    default = simple
 [commit]
     gpgsign = true
 [diff]
