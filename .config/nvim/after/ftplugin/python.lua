@@ -1,5 +1,4 @@
 vim.opt_local.textwidth = 88
-vim.opt_local.foldmethod = 'indent'
 
 local formatprgs = {}
 if vim.fn.executable('ruff') == 1 then
