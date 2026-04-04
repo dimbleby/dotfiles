@@ -1,6 +1,6 @@
 vim.opt.completeopt = 'menuone,noselect'
 vim.opt.dictionary = '/usr/share/dict/words'
-vim.opt.diffopt:append({ 'algorithm:histogram,indent-heuristic,linematch:60,vertical' })
+vim.opt.diffopt:append({ 'algorithm:histogram,vertical' })
 vim.opt.foldlevelstart = 99
 vim.opt.hidden = false
 vim.opt.jumpoptions = 'stack'
@@ -23,7 +23,7 @@ vim.opt.softtabstop = -1
 vim.opt.shiftround = true
 vim.opt.formatlistpat = '^\\s*[-*+]\\s\\+'
 vim.opt.formatoptions:remove('t')
-vim.opt.formatoptions:append('croqnlj')
+vim.opt.formatoptions:append('ronl')
 
 vim.g.c_space_errors = 1
 vim.g.c_syntax_for_h = 1
