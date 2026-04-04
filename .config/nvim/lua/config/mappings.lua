@@ -27,9 +27,6 @@ end)
 -- Formatting the whole file
 vim.keymap.set('n', '<Leader>q', '<Cmd>call format#FormatFile()<CR>')
 
--- Open the URL under the cursor in a browser
-vim.keymap.set('n', 'gx', "<Cmd>call jobstart(['xdg-open', expand('<cfile>')])<CR>")
-
 -- Mappings for vim-sandwich
 vim.keymap.set({ 'n', 'x' }, 's', '<nop>')
 vim.keymap.set({ 'o', 'x' }, 'iq', '<Plug>(textobj-sandwich-query-i)')
