@@ -45,11 +45,12 @@ vim.api.nvim_create_autocmd('FileType', {
       if vim.treesitter.query.get(lang, 'indents') then
         vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end
+
+      -- Incremental selection: <CR> to init/expand, <BS> to shrink
+      local bufopts = { buffer = buf, remap = true }
+      vim.keymap.set('n', '<CR>', 'van', vim.tbl_extend('force', bufopts, { desc = 'Start incremental selection' }))
+      vim.keymap.set('x', '<CR>', 'an', vim.tbl_extend('force', bufopts, { desc = 'Expand to parent node' }))
+      vim.keymap.set('x', '<BS>', 'in', vim.tbl_extend('force', bufopts, { desc = 'Shrink to child node' }))
     end
   end,
 })
-
--- Incremental selection: <CR> to init/expand, <BS> to shrink
-vim.keymap.set('n', '<CR>', 'van', { remap = true, desc = 'Start incremental selection' })
-vim.keymap.set('x', '<CR>', 'an', { remap = true, desc = 'Expand to parent node' })
-vim.keymap.set('x', '<BS>', 'in', { remap = true, desc = 'Shrink to child node' })
