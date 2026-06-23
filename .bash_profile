@@ -14,11 +14,9 @@ export FZF_DEFAULT_COMMAND='fd --type file --ignore-file ~/.ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export KUBECTX_IGNORE_FZF=1
 
-export NIPAP_SERVER=10.231.137.79
-
 export GOFUMPT_SPLIT_LONG_LINES=on
 
-export PATH=$HOME/.local/bin:$HOME/.msrustup/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.msrustup/bin:$HOME/.cargo/bin:$HOME/.dotnet:$PATH
 
 if command -v bat > /dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
