@@ -154,7 +154,6 @@ return {
   },
 
   -- Miscellany
-  { 'elihunter173/dirbuf.nvim' },
   { 'machakann/vim-sandwich' },
   { 'tpope/vim-fugitive', event = 'VeryLazy' },
 }
