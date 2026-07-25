@@ -1,5 +1,5 @@
 require('config.options')
 require('config.filetypes')
-require('config.lazy')
+require('config.plugins')
 require('config.autocmds')
 require('config.mappings')

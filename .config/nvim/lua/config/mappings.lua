@@ -1,5 +1,11 @@
 local M = {}
 
+-- fzf-lua is lazy-loaded (see config.plugins); ensure it's added before use.
+local function fzf_lua()
+  require('config.plugins').load_fzf_lua()
+  return require('fzf-lua')
+end
+
 -- Avoid Ex mode
 vim.keymap.set('n', 'Q', '<nop>')
 
@@ -9,19 +15,19 @@ vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true })
 
 -- Searching
 vim.keymap.set('n', '<Leader>b', function()
-  require('fzf-lua').buffers()
+  fzf_lua().buffers()
 end)
 vim.keymap.set('n', '<Leader>f', function()
-  require('fzf-lua').files()
+  fzf_lua().files()
 end)
 vim.keymap.set('n', '<Leader>h', function()
-  require('fzf-lua').oldfiles()
+  fzf_lua().oldfiles()
 end)
 vim.keymap.set('n', '<Leader>r', function()
-  require('fzf-lua').live_grep_native()
+  fzf_lua().live_grep_native()
 end)
 vim.keymap.set('n', '<Leader>g', function()
-  require('fzf-lua').grep_cword()
+  fzf_lua().grep_cword()
 end)
 
 -- Formatting the whole file
@@ -37,13 +43,13 @@ vim.keymap.set({ 'o', 'x' }, 'aq', '<Plug>(textobj-sandwich-query-a)')
 function M.lsp_mappings(bufnr)
   local bufopts = { silent = true, buffer = bufnr }
   vim.keymap.set('n', '<C-]>', function()
-    require('fzf-lua').lsp_definitions({ jump1 = true })
+    fzf_lua().lsp_definitions({ jump1 = true })
   end, bufopts)
   vim.keymap.set('n', 'grr', function()
-    require('fzf-lua').lsp_references({ jump1 = true })
+    fzf_lua().lsp_references({ jump1 = true })
   end, bufopts)
   vim.keymap.set('n', 'gri', function()
-    require('fzf-lua').lsp_implementations({ jump1 = true })
+    fzf_lua().lsp_implementations({ jump1 = true })
   end, bufopts)
 end
 
