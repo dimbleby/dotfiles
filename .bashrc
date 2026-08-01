@@ -23,7 +23,7 @@ shopt -s globstar
 
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then
-  eval "$(dircolors -b ~/.dircolors)"
+  eval "$(dircolors -b <(dircolors --print-database; cat ~/.dircolors))"
   alias ls='ls --color=auto'
   alias grep='grep --color=auto'
   alias fgrep='grep -F --color=auto'
