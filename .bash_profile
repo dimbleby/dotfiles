@@ -16,7 +16,7 @@ export KUBECTX_IGNORE_FZF=1
 
 export GOFUMPT_SPLIT_LONG_LINES=on
 
-export PATH=$HOME/.local/bin:$HOME/.msrustup/bin:$HOME/.cargo/bin:$HOME/.dotnet:$PATH
+export PATH=$HOME/.local/bin:$HOME/.msrustup/multiplexers/bin:$HOME/.cargo/bin:$HOME/.dotnet:$PATH
 
 if command -v bat > /dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
