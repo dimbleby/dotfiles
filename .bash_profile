@@ -16,6 +16,8 @@ export KUBECTX_IGNORE_FZF=1
 
 export GOFUMPT_SPLIT_LONG_LINES=on
 
+export COPILOT_FRICTION_DISABLED=1
+
 export PATH=$HOME/.local/bin:$HOME/.msrustup/multiplexers/bin:$HOME/.cargo/bin:$HOME/.dotnet:$PATH
 
 if command -v bat > /dev/null; then
@@ -24,7 +26,7 @@ if command -v bat > /dev/null; then
 fi
 
 if command -v keychain > /dev/null; then
-  eval "$(keychain --quiet --eval --agents gpg,ssh)"
+  eval "$(keychain --quiet --eval)"
 fi
 
 # shellcheck source=/dev/null
