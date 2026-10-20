@@ -9,6 +9,9 @@ end
 -- Avoid Ex mode
 vim.keymap.set('n', 'Q', '<nop>')
 
+-- Parent directory
+vim.keymap.set('n', '-', '<Plug>(nvim-dir-up)')
+
 -- Terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { noremap = true })
